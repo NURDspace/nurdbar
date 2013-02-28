@@ -28,14 +28,16 @@ class NurdBar(object):
     def getMemberByNick(self,nick):
         return self.session.query(Member).filter_by(nick=nick).first()
 
-    def getNewOrExistingMember(self,barcode,nick):
-        member=self.getMemberByBarcode(barcode) or self.getMemberByNick(nick)
+    def getNewOrExistingMember(self,barcode=False,nick=False):
+        member=(barcode and self.getMemberByBarcode(barcode)) or (nick and self.getMemberByNick(nick)) or None
         if not member:
             member=Member(barcode,nick)
             self.session.add(member)
         else:
-            member.nick=nick
-            member.barcode=barcode
+            if nick:
+                member.nick=nick
+            if barcode:
+                member.barcode=barcode
         self.session.commit()
         self.session.flush()
         return member
@@ -43,10 +45,11 @@ class NurdBar(object):
     def getItemByBarcode(self,barcode):
         self.session.query(Item).filter_by(barcode=barcode)
 
-    def getNewOrExistingItem(self,barcode):
-        item=self.getItemByBarcode(barcode)
+    def getNewOrExistingItem(self,barcode=None):
+        item=(barcode and self.getItemByBarcode(barcode)) or None
         if not item:
             item=Item(barcode,0)
+            self.session.add(item)
         self.session.commit()
         self.session.flush()
         return item
