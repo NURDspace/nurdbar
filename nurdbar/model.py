@@ -11,10 +11,12 @@ class Member(Base):
     member_id = Column(Integer, primary_key=True)
     barcode = Column(BigInteger)
     nick = Column(String)
+    balance = Column(Numeric)
 
     def __init__(self,barcode,nick):
         self.nick=nick
         self.barcode=barcode
+        self.balance=0
 
 class Item(Base):
     __tablename__ = 'items'
@@ -46,9 +48,8 @@ class Transaction(Base):
     @count.setter
     def count(self,count):
         self.item.voorraad+=count
+        self.member.balance+=count*self.item.price
         self._count=count
 
-    def __init__(self,count,item):
-        self.item_id=item.item_id
-        self.count=count
-
+    def __init__(self):
+        pass
