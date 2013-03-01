@@ -2,6 +2,7 @@ from ConfigParser import SafeConfigParser
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from model import Base,Member,Item,Transaction
+from decimal import Decimal
 
 class NurdBar(object):
     def __init__(self,configfile='nurdbar.cfg'):
@@ -53,6 +54,10 @@ class NurdBar(object):
 
     def getTransactions(self,member):
         return member.transactions
+
+    def payAmount(self,member,amount):
+        payment_item=self.getItemByBarcode(1010101010)
+        self.addTransaction(payment_item,member,int(amount*100))
 
     def addTransaction(self,item,member,count):
         trans=Transaction()
