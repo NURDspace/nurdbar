@@ -24,6 +24,16 @@ class NurdBar(object):
         config.readfp(open(configfile,'r'))
         return config
 
+    def giveItem(self,member_barcode,item_barcode,amount=1):
+        item=self.getItemByBarcode(item_barcode)
+        member=self.getMemberByBarcode(member_barcode)
+        return self.addTransaction(item,member,amount)
+
+    def takeItem(self,member_barcode,item_barcode,amount=1):
+        item=self.getItemByBarcode(item_barcode)
+        member=self.getMemberByBarcode(member_barcode)
+        return self.addTransaction(item,member,-amount)
+
     def fill_tables(self):
         payment_item=self.addItem(1010101010,0.01)
 
