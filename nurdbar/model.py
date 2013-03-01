@@ -23,12 +23,12 @@ class Item(Base):
     item_id = Column(Integer, primary_key=True)
     barcode = Column(BigInteger)
     price = Column(Numeric)
-    voorraad = Column(Integer)
+    stock = Column(Integer)
 
     def __init__(self,barcode,price):
         self.barcode=barcode
         self.price=price
-        self.voorraad=0
+        self.stock=0
 
 class Transaction(Base):
     __tablename__ = 'transactions'
@@ -47,7 +47,7 @@ class Transaction(Base):
 
     @count.setter
     def count(self,count):
-        self.item.voorraad+=count
+        self.item.stock+=count
         self.member.balance+=count*self.item.price
         self._count=count
 

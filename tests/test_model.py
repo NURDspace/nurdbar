@@ -1,7 +1,12 @@
 from _basetest import BaseTest
 from nurdbar import NurdBar
+from decimal import Decimal
 
 class TestModel(BaseTest):
+
+    def test_filled_tables(self):
+        payment_item=self.bar.getItemByBarcode(1010101010)
+        self.assertAlmostEqual(payment_item.price,Decimal(0.01))
 
     def test_item(self):
         self.bar.addItem(12312893712938,0.50)
