@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from twisted.internet import protocol, reactor, serialport
 from twisted.protocols import basic
 from nurdbar import NurdBar
