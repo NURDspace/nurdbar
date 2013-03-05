@@ -1,1 +1,1 @@
-from nurdbar import NurdBar
+from nurdbar import NurdBar, BarcodeTypes

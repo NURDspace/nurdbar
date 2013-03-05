@@ -1,13 +1,19 @@
 from _basetest import BaseTest
-from nurdbar import NurdBar
+from nurdbar import NurdBar, BarcodeTypes
 from decimal import Decimal
 
-class TestModel(BaseTest):
+class TestBar(BaseTest):
 
     def setUp(self):
-        super(TestModel,self).setUp()
+        super(TestBar,self).setUp()
         self.member=self.bar.addMember(133713371337,'SmokeyD')
         self.item=self.bar.addItem(12312893712938,0.50)
+
+    def test_barcodeType(self):
+        self.assertEqual(self.bar.getBarcodeType(self.item.barcode),BarcodeTypes.ITEMBARCODE)
+        self.assertEqual(self.bar.getBarcodeType(self.member.barcode),BarcodeTypes.MEMBERBARCODE)
+        self.assertNotEqual(self.bar.getBarcodeType(self.member.barcode),BarcodeTypes.ITEMBARCODE)
+        self.assertNotEqual(self.bar.getBarcodeType(self.item.barcode),BarcodeTypes.MEMBERBARCODE)
 
     def test_filled_tables(self):
         payment_item=self.bar.getItemByBarcode(1010101010)

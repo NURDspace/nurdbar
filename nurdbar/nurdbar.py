@@ -4,10 +4,16 @@ from sqlalchemy.orm import sessionmaker
 from model import Base,Member,Item,Transaction
 from decimal import Decimal
 
+class BarcodeTypes(object):
+    ITEMBARCODE = 'Item Barcode'
+    MEMBERBARCODE = 'Member Barcode'
+
 class NurdBar(object):
     def __init__(self,configfile='nurdbar.cfg'):
         self.config=NurdBar.read_config(configfile)
         self.engine,self.metadata,self.session=NurdBar.setupModel(self.config)
+        self.receivedItems=[]
+        self.receivedMember=None
 
     @staticmethod
     def setupModel(config):
@@ -23,6 +29,24 @@ class NurdBar(object):
         config=SafeConfigParser()
         config.readfp(open(configfile,'r'))
         return config
+
+    def getBarcodeType(self,barcode):
+        if not str(barcode).startswith('1337'):
+            return BarcodeTypes.ITEMBARCODE
+        if str(barcode).startswith('1337'):
+            return BarcodeTypes.MEMBERBARCODE
+
+    def handleBarcode(self,barcode):
+        #handle receiving of a barcode. Check the barcode type. Check what was previously received and if that and barcode type make sense, act upon them.
+        if self.getBarcodeType(barcode) == BarcodeTypes.MEMBERBARCODE:
+            self.receivedMember=self.getMemberByBarcode(barcode)
+        elif self.getBarcodeType(barcode) == BarcodeTypes.ITEMBARCODE:
+            self.receivedItems.append(self.getItemByBarcode(barcode))
+        if self.receivedMember is not None and len(self.receivedItems)>0:
+            for item in self.receivedItems:
+                self.takeItem(self.receivedMember.barcode,item.barcode)
+            self.receivedItems = []
+            self.receivedMember = None
 
     def giveItem(self,member_barcode,item_barcode,amount=1):
         item=self.getItemByBarcode(item_barcode)

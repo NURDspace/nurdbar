@@ -1,9 +1,13 @@
 import unittest
 from nurdbar import model, NurdBar
+import os
 
 class BaseTest(unittest.TestCase):
     def setUp(self):
-        self.bar=NurdBar('test.cfg')
+        if os.path.exists(os.path.join('..','test.cfg')):
+            self.bar=NurdBar(os.path.join('..','test.cfg'))
+        else:
+            self.bar=NurdBar('test.cfg')
         self.bar.create_tables()
         self.bar.fill_tables()
 
