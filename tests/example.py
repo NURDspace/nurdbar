@@ -20,10 +20,10 @@ bar.takeItem(133713371337,12312893712938)
 bar.takeItem(133713371337,12312893712938,5)
 item=bar.getItemByBarcode(12312893712938)
 member=bar.getMemberByBarcode(133713371337)
-print(item.stock) #+10-1-5=4
-print(member.balance) #(10-1-5)*0.50=2.00
+print("item.stock=%s. Correct? %s"%(item.stock,item.stock==4)) #+10-1-5=4
+print("member.balance=%s Correct? %s"%(member.balance,member.balance==2.00)) #(10-1-5)*0.50=2.00
 bar.payAmount(member,10.50)
-print(member.balance) #2.00+10.50=12.50
+print("member,balance=%s Correct? %s"%(member.balance,member.balance==12.50))
 
 configfile = 'test.cfg'
 #start nurdbar/barcodemonitor.py <configfile>, normally done in the shell.
@@ -43,8 +43,8 @@ member=bar.getMemberByBarcode(133713371337)
 item=bar.getItemByBarcode(12312893712938)
 
 #check new stock and balance
-print(item.stock) #4-1=3
-print(member.balance) #12.50-0.50=12.00
+print("item.stock=%s Correct? %s"%(item.stock,item.stock==3)) #4-1=3
+print("member.balance=%s Correct? %s"%(member.balance,member.balance==12.00)) #12.50-0.50=12.00
 
 #stop the barcode monitor and drop the tables
 monitor_proc.kill()

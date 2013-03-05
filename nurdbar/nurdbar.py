@@ -41,22 +41,42 @@ class NurdBar(object):
         if self.getBarcodeType(barcode) == BarcodeTypes.MEMBERBARCODE:
             self.receivedMember=self.getMemberByBarcode(barcode)
         elif self.getBarcodeType(barcode) == BarcodeTypes.ITEMBARCODE:
-            self.receivedItems.append(self.getItemByBarcode(barcode))
+            item=self.getAvailableItemByBarcode(barcode)
+            if not item:
+                raise ValueError('Item is not available (no stock present)')
+            self.receivedItems.append(item)
         if self.receivedMember is not None and len(self.receivedItems)>0:
             for item in self.receivedItems:
                 self.takeItem(self.receivedMember.barcode,item.barcode)
             self.receivedItems = []
             self.receivedMember = None
 
-    def giveItem(self,member_barcode,item_barcode,amount=1):
-        item=self.getItemByBarcode(item_barcode)
+    def giveItem(self,member_barcode,item_barcode,price,amount=1):
         member=self.getMemberByBarcode(member_barcode)
+        if member==None:
+            raise ValueError('Member with barcode %s is unkown'%(member_barcode,))
+        item=self.getItemByBarcodePrice(item_barcode,price)
+        if item==None:
+            item=self.addItem(item_barcode,price)
         return self.addTransaction(item,member,amount)
 
     def takeItem(self,member_barcode,item_barcode,amount=1):
-        item=self.getItemByBarcode(item_barcode)
+        rest_amount=0
+        item=self.getAvailableItemByBarcode(item_barcode)
+        if not item:
+            raise ValueError('Item is not available (no stock present)')
+        if amount>item.stock:
+            #check if more items are taken then we have in stock. Only add transaction up to amount stock
+            rest_amount=amount-item.stock
+            amount=item.stock
         member=self.getMemberByBarcode(member_barcode)
-        return self.addTransaction(item,member,-amount)
+        if not member:
+            raise ValueError('Member with barcode %s is unkown'%member_barcode)
+        trans=self.addTransaction(item,member,-amount)
+        if rest_amount>0:
+            return self.takeItem(member_barcode,item_barcode,rest_amount)
+        else:
+            return trans
 
     def fill_tables(self):
         payment_item=self.addItem(1010101010,0.01)
@@ -82,6 +102,12 @@ class NurdBar(object):
 
     def getItemByBarcode(self,barcode):
         return self.session.query(Item).filter_by(barcode=barcode).first()
+
+    def getItemByBarcodePrice(self,barcode,price):
+        return self.session.query(Item).filter_by(barcode=barcode,price=price).order_by(Item.creationDateTime).first()
+
+    def getAvailableItemByBarcode(self,barcode):
+        return self.session.query(Item).filter(Item.barcode==barcode,Item.stock>0).order_by(Item.creationDateTime).first()
 
     def getBalance(self,member):
         return member.balance
