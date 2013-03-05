@@ -16,4 +16,4 @@ Copy the nurdbar_sample.cfg to your configuration file (nurdbar.cfg for example)
 Any database which can be used with sqlalchemy can be used, but the database specific python library needs to be installed.
 
 Run "nurdbar/barcodemonitor.py <configfile>" to start the BarcodeMonitor, which monitors a serial port for scanned barcodes and acts upon them.
-See tests/example.py for some example code.
+See tests/example.py for some example code. To run the example.py as-is, you need socat, which can tie virtual serial ports together, so you can write data to one, which is received by another virtual serial port.
