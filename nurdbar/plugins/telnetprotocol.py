@@ -2,6 +2,7 @@ from twisted.internet import protocol
 from twisted.protocols import basic
 import logging
 import traceback
+from nurdbar.plugins.api import *
 
 log=logging.getLogger(__name__)
 
@@ -63,4 +64,7 @@ class TelnetFactory(protocol.Factory):
     def buildProtocol(self,addr):
         return TelnetProtocol(self.bar)
 
-
+@TCPInterfacePlugin(1079)
+def getFactory(bar,reactor):
+    log.info('Starting telnet protocol')
+    return TelnetFactory(bar)

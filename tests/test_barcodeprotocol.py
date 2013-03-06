@@ -2,7 +2,7 @@ from serialEmulator import SerialEmulator
 from _basetest import BaseTest
 from nurdbar import NurdBar
 from twisted.trial import unittest
-from nurdbar.barcodemonitor import BarcodeProtocol
+from nurdbar.plugins.barcodeprotocol import BarcodeProtocol
 from twisted.test import proto_helpers
 
 class TestBarcodeMonitor(unittest.TestCase,BaseTest):

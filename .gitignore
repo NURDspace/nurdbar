@@ -3,3 +3,4 @@
 *.db
 .coverage
 _trial_temp
+nurdbar.cfg
