@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from twisted.internet import reactor
 from nurdbar import NurdBar
-import sys
+import sys, os
 import logging
 import pkgutil
 from nurdbar.plugins.api import *
@@ -12,6 +12,7 @@ log=logging.getLogger(__name__)
 
 def importPlugins(plugindir):
     log.debug('importing plugins from %s'%plugindir)
+    print('contents of plugindir: %s'%os.listdir(plugindir))
     for i in pkgutil.iter_modules([plugindir]):
         log.debug('importing %s'%i[1])
         if i[1]!='api':

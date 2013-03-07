@@ -1,9 +1,25 @@
-class PortTaken(Exception):
+import copy
+
+class PortTakenException(Exception):
     pass
 
-class TCPInterfacePluginRegistry(object):
+class BasePluginRegistry(object):
+    _EMPTY_PLUGIN_CONTAINER=[]
     def __init__(self):
-        self.plugins={}
+        self.resetPlugins()
+
+    def registerPlugin(self,function):
+        raise NotImplementedError('registerPlugin not implemented on %s'%self.__class__.__name__)
+
+    def getPlugins(self):
+        raise NotImplementedError('getPlugins not implemented on %s'%self.__class__.__name__)
+
+    def resetPlugins(self):
+        self.plugins=copy.deepcopy(self.__class__._EMPTY_PLUGIN_CONTAINER)
+
+
+class TCPInterfacePluginRegistry(BasePluginRegistry):
+    _EMPTY_PLUGIN_CONTAINER={}
 
     def registerPlugin(self,function,portnum):
         if portnum not in self.plugins.keys():
@@ -14,9 +30,8 @@ class TCPInterfacePluginRegistry(object):
     def getPlugins(self):
         return [(k,v) for k,v in self.plugins.items()]
 
-class LocalInterfacePluginRegistry(object):
-    def __init__(self):
-        self.plugins=[]
+class LocalInterfacePluginRegistry(BasePluginRegistry):
+    _EMPTY_PLUGIN_CONTAINER=[]
 
     def registerPlugin(self,function):
         self.plugins.append(function)
