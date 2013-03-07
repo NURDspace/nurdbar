@@ -150,6 +150,15 @@ class NurdBar(object):
         return self.session.query(Member).filter_by(nick=nick).first()
 
     def addMember(self,barcode,nick):
+        """
+        Add a member to the bar.
+
+        :param barcode: The barcode of the new member
+        :type barcode: str
+        :param nick: The Nick of the member
+        :type nick: str
+        :returns: model.Member
+        """
         member=Member(barcode,nick)
         self.session.add(member)
         self.session.commit()
@@ -172,6 +181,14 @@ class NurdBar(object):
         return member.transactions
 
     def payAmount(self,member,amount):
+        """
+        Pay an amount to the bar.
+
+        :param member: The member for which a payment is being done
+        :type member: model.Member
+        :param amount: The amount being paid
+        :type amount: float
+        """
         payment_item=self.getItemByBarcode(1010101010)
         self.addTransaction(payment_item,member,int(amount*100))
 
@@ -188,6 +205,15 @@ class NurdBar(object):
         return trans
 
     def addItem(self,barcode,price):
+        """
+        Add an Item to the bar.
+
+        :param barcode: The barcode of the new Item
+        :type barcode: str
+        :param price: The price of the Item
+        :type price: float
+        :returns: model.Member
+        """
         item=Item(barcode,price)
         self.session.add(item)
         self.session.commit()
