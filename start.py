@@ -27,9 +27,9 @@ def main(configfile):
         importPlugins(plugindir)
 
     for portnum,factory in pluginregistry['tcpinterfaceplugin'].getPlugins():
-        reactor.listenTCP(portnum, factory(bar,reactor))
+        reactor.listenTCP(portnum, factory(bar))
 
-    for factory in pluginregistry['localinterfaceplugin'].getPlugins():
+    for factory in pluginregistry['transportinterfaceplugin'].getPlugins():
         factory(bar,reactor)
     reactor.run()
 

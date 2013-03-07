@@ -15,15 +15,7 @@ class BarcodeProtocol(basic.LineReceiver):
         self.bar.handleBarcode(barcode)
 
 
-class BarcodeProtocolFactory(protocol.Factory):
-
-    def __init__(self,bar):
-        self.bar = bar
-
-    def buildProtocol(self,addr):
-        return BarcodeProtocol(self.bar)
-
-@LocalInterfacePlugin
+@TransportInterfacePlugin
 def getLocalInterfacePlugin(bar,reactor):
     log.info('Starting barcode monitor')
     port=bar.config.get('scanner','port')

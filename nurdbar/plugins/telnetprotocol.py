@@ -65,6 +65,6 @@ class TelnetFactory(protocol.Factory):
         return TelnetProtocol(self.bar)
 
 @TCPInterfacePlugin(1079)
-def getFactory(bar,reactor):
+def getFactory(bar):
     log.info('Starting telnet protocol')
     return TelnetFactory(bar)

@@ -30,7 +30,7 @@ class TCPInterfacePluginRegistry(BasePluginRegistry):
     def getPlugins(self):
         return [(k,v) for k,v in self.plugins.items()]
 
-class LocalInterfacePluginRegistry(BasePluginRegistry):
+class TransportInterfacePluginRegistry(BasePluginRegistry):
     _EMPTY_PLUGIN_CONTAINER=[]
 
     def registerPlugin(self,function):
@@ -41,26 +41,32 @@ class LocalInterfacePluginRegistry(BasePluginRegistry):
 
 pluginregistry={
     'tcpinterfaceplugin':TCPInterfacePluginRegistry(),
-    'localinterfaceplugin':LocalInterfacePluginRegistry()
+    'transportinterfaceplugin':TransportInterfacePluginRegistry()
 }
 
 def TCPInterfacePlugin(portnum):
     '''Decorator to register an TCPInterfacePlugin.
-    @param portnum the portnumber to listen on for connections
+    Methods using this plugin need to return a twisted.internet.protocol.Factory instance, which handles a corresponding twisted.internet.protocol.Protocol class.
+    The method should accept an argument for a nurdbar.NurdBar instance, providing access to the nurdbar API.
+    See http://twistedmatrix.com/documents/12.2.0/core/howto/servers.html#auto6 for more info
+
+    :param portnum: the portnumber to listen on for connections
+    :type portnum: int
     '''
     def superwrapped(function):
         pluginregistry['tcpinterfaceplugin'].registerPlugin(function,portnum)
-        def wrapped(bar,reactor):
-            return function(bar,reactor)
+        def wrapped(bar):
+            return function(bar)
         return wrapped
     return superwrapped
 
 
-def LocalInterfacePlugin(function):
-    '''Decorator for LocalInterfacePlugin. They don't listen for internet connections but get their data on the local machine,
-    like a serialPort or other places
+def TransportInterfacePlugin(function):
+    '''Decorator for TransportInterfacePlugin. Transport interfaces get their input through local sockets/files/ports. An example is the twisted.internet.serialport.SerialPort
+    transport which monitors a local serial port for information. Methods using this decorator should instantiate their own transport (using the supplied reactor, and don't need to
+    return anything. They method should accept an argument for a nurdbar.NurdBar instance, providing access to the nurdbar API, and a reactor argument, needed for the transport.
     '''
-    pluginregistry['localinterfaceplugin'].registerPlugin(function)
+    pluginregistry['transportinterfaceplugin'].registerPlugin(function)
     def wrapped(bar,reactor):
         return function(bar,reactor)
     return wrapped
