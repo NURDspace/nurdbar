@@ -1,0 +1,244 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Welcome to NurdBar’s documentation! &mdash; NurdBar 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="NurdBar 0.1 documentation" href="#" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="#">NurdBar 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="welcome-to-nurdbar-s-documentation">
+<h1>Welcome to NurdBar&#8217;s documentation!<a class="headerlink" href="#welcome-to-nurdbar-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Contents:</p>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+<div class="section" id="module-nurdbar">
+<span id="nurdbar"></span><h2>NurdBar<a class="headerlink" href="#module-nurdbar" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="nurdbar.NurdBar">
+<em class="property">class </em><tt class="descclassname">nurdbar.</tt><tt class="descname">NurdBar</tt><big>(</big><em>configfile='nurdbar.cfg'</em><big>)</big><a class="headerlink" href="#nurdbar.NurdBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>The main NurdBar API. Use this API to interact with the bar. Plugins receive an instance of this class, so they can interact with the bar.</p>
+<dl class="method">
+<dt id="nurdbar.NurdBar.getBarcodeType">
+<tt class="descname">getBarcodeType</tt><big>(</big><em>barcode</em><big>)</big><a class="headerlink" href="#nurdbar.NurdBar.getBarcodeType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the type of barcode.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>barcode</strong> (<em>str</em>) &#8211; The barcode to check</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">BarcodeTypes &#8211; Constant for the type of barcode.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurdbar.NurdBar.giveItem">
+<tt class="descname">giveItem</tt><big>(</big><em>member_barcode</em>, <em>item_barcode</em>, <em>price</em>, <em>amount=1</em><big>)</big><a class="headerlink" href="#nurdbar.NurdBar.giveItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Give an item, or on other words, sell something to the bar/add stock. This both changes the stock of the item being given, and changes the balance for the Member giving the item.
+If the Item already exists (with the same price), this item is used. If the Item is new, a new Item is stored in the database.
+If the Member is unkown, ValueError is raised.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>member_barcode</strong> (<em>str</em>) &#8211; The barcode of the Member giving the Item.</li>
+<li><strong>item_barcode</strong> (<em>str</em>) &#8211; The barcode fo the Item being given.</li>
+<li><strong>price</strong> (<em>float</em>) &#8211; The price of the item being given</li>
+<li><strong>amount</strong> (<em>int</em>) &#8211; The amount of Items being given</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">nurdbar.model.Transaction</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last">ValueError</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurdbar.NurdBar.handleBarcode">
+<tt class="descname">handleBarcode</tt><big>(</big><em>barcode</em><big>)</big><a class="headerlink" href="#nurdbar.NurdBar.handleBarcode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle the reception of a barcode. The barcode type is checked, and the state of previously received barcodes is checked. If a sane combination of barcodes is
+received, act upon them.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>barcode</strong> (<em>str</em>) &#8211; the received barcode.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurdbar.NurdBar.takeItem">
+<tt class="descname">takeItem</tt><big>(</big><em>member_barcode</em>, <em>item_barcode</em>, <em>amount=1</em><big>)</big><a class="headerlink" href="#nurdbar.NurdBar.takeItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Take an Item from the bar. In other words: buy something. This both changes the stock of the Item, and the balance of the Member taking the Item.
+If multiple Items with the same barcode but different price exist, the oldest Item is sold first untill it stock runs out, then the next-oldest Item will be sold, etc.
+If no stock is present, or the Member is unkown, a ValueError will be raised.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>member_barcode</strong> (<em>str</em>) &#8211; The barcode of the Member giving the Item.</li>
+<li><strong>item_barcode</strong> (<em>str</em>) &#8211; The barcode fo the Item being given.</li>
+<li><strong>amount</strong> (<em>int</em>) &#8211; The amount of Items being given</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">nurdbar.model.Transaction</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last">ValueError</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-nurdbar.plugins.api">
+<span id="nurdbar-plugins-api"></span><h2>nurdbar.plugins.api<a class="headerlink" href="#module-nurdbar.plugins.api" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="nurdbar.plugins.api.TCPInterfacePlugin">
+<tt class="descclassname">nurdbar.plugins.api.</tt><tt class="descname">TCPInterfacePlugin</tt><big>(</big><em>portnum</em><big>)</big><a class="headerlink" href="#nurdbar.plugins.api.TCPInterfacePlugin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decorator to register an TCPInterfacePlugin.
+Methods using this plugin need to return a twisted.internet.protocol.Factory instance, which handles a corresponding twisted.internet.protocol.Protocol class.
+The method should accept an argument for a nurdbar.NurdBar instance, providing access to the nurdbar API.
+See <a class="reference external" href="http://twistedmatrix.com/documents/12.2.0/core/howto/servers.html#auto6">http://twistedmatrix.com/documents/12.2.0/core/howto/servers.html#auto6</a> for more info</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>portnum</strong> (<em>int</em>) &#8211; the portnumber to listen on for connections</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="nurdbar.plugins.api.TransportInterfacePlugin">
+<tt class="descclassname">nurdbar.plugins.api.</tt><tt class="descname">TransportInterfacePlugin</tt><big>(</big><em>function</em><big>)</big><a class="headerlink" href="#nurdbar.plugins.api.TransportInterfacePlugin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decorator for TransportInterfacePlugin. Transport interfaces get their input through local sockets/files/ports. An example is the twisted.internet.serialport.SerialPort
+transport which monitors a local serial port for information. Methods using this decorator should instantiate their own transport (using the supplied reactor, and don&#8217;t need to
+return anything. They method should accept an argument for a nurdbar.NurdBar instance, providing access to the nurdbar API, and a reactor argument, needed for the transport.</p>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Welcome to NurdBar&#8217;s documentation!</a><ul>
+<li><a class="reference internal" href="#module-nurdbar">NurdBar</a></li>
+<li><a class="reference internal" href="#module-nurdbar.plugins.api">nurdbar.plugins.api</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="#">NurdBar 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Dolf Andringa.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
