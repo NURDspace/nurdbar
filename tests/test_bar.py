@@ -7,6 +7,7 @@ class TestBar(BaseTest):
     def setUp(self):
         super(TestBar,self).setUp()
         self.member=self.bar.addMember(133713371337,'SmokeyD')
+        self.member2=self.bar.addMember(133713371339,'SmokeyD2')
         self.item=self.bar.addItem(12312893712938,0.50)
 
     def test_barcodeType(self):
@@ -78,8 +79,26 @@ class TestBar(BaseTest):
         self.assertEqual(self.member.balance,2.00)
 
     def test_payment(self):
-        self.bar.addTransaction(self.item,self.member,-10) #take 10 beer
+        self.bar.giveItem(self.member2.barcode,self.item.barcode,0.50,20) #give 20 beer
+        trans1=self.bar.takeItem(self.member.barcode,self.item.barcode,10) #take 10 beer
         self.assertEqual(self.member.balance,-5)
-        self.bar.payAmount(self.member,6.50) #pay 6.50 euro
+        trans2=self.bar.payAmount(self.member,6.50) #pay 6.50 euro
         self.assertEqual(self.member.balance,1.5)
-        self.fail("Test correct items are paid and archive transactions")
+        self.assertEqual(trans1.archived,True)
+        self.assertEqual(trans2.archived,False)
+        self.assertEqual(len(self.member.transactions),1)
+        print(self.member.allTransactions)
+        self.assertEqual(len(self.member.allTransactions),3)#three transactions, since the payment transaction was split in 2 transactions (1 to get to 0 and 1 transaction to get a positive balance of 1.50)
+        trans3=self.bar.takeItem(self.member.barcode,self.item.barcode,3) #take 3 beer
+        self.assertEqual(self.member.balance,0)
+        self.assertEqual(trans2.archived,True)
+        self.assertEqual(trans3.archived,True)
+        self.assertEqual(len(self.member.transactions),0)#everything should be archived. Balance=0
+        self.assertEqual(len(self.member.allTransactions),4)
+        trans2=self.bar.giveItem(self.member.barcode,self.item.barcode,0.50,13) #add 13 beer
+        #trans2=self.bar.payAmount(self.member,6.50) #pay 6.50 euro
+        self.bar.takeItem(self.member.barcode,self.item.barcode,4)#take 4 beer
+        self.assertEqual(self.member.balance,4.50)
+        self.assertEqual(len(self.member.transactions),1)#we should still have one transaction left, because of positive balance
+        self.assertEqual(len(self.member.allTransactions),7)
+

@@ -41,10 +41,14 @@ class TestModel(BaseTest):
         self._commit()
         self.assertEqual(member.transactions,[trans])
         self.assertEqual(member.allTransactions,[trans])
+        self.assertEqual(member.negativeTransactions,[trans])
+        self.assertEqual(member.positiveTransactions,[])
         trans.archived=True
         self._commit()
         self.assertEqual(member.transactions,[])
         self.assertEqual(member.allTransactions,[trans])
+        self.assertEqual(member.negativeTransactions,[])
+        self.assertEqual(member.positiveTransactions,[])
 
     def test_creationDateTime(self):
         item=self._addObject(model.Item('123456789',0.50))
