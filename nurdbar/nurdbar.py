@@ -1,3 +1,6 @@
+"""
+This file contains the main API to manipulate the bar and database. All plugins should use the instance methods of the NurdBar object.
+"""
 from ConfigParser import SafeConfigParser
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker

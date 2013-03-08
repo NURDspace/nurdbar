@@ -1,3 +1,11 @@
+"""
+The Nurdbar application uses plugins to register interfaces to the bar. This way, multiple interfaces can be used for the same bar application.
+By default a Telnet interface is available, allowing the manipulation of the bar through telnet, and a barcode monitor interface, which monitors
+a serial port on the local machine for scanned barcodes.
+
+To register a new plugin, write your code, put it in the plugindir as configured in the config file. To register the plugin, all you need to do
+is decorate a method in your code with one of the following decorators.
+"""
 import copy
 
 class PortTakenException(Exception):

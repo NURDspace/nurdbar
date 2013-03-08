@@ -48,10 +48,14 @@
             
   <div class="section" id="welcome-to-nurdbar-s-documentation">
 <h1>Welcome to NurdBar&#8217;s documentation!<a class="headerlink" href="#welcome-to-nurdbar-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Contents:</p>
-<div class="toctree-wrapper compound">
-<ul class="simple">
-</ul>
+<div class="section" id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>Copy the nurdbar_sample.cfg to your configuration file (nurdbar.cfg for example). Adjust the serial port and db uri configuration parameters.
+Any database which can be used with sqlalchemy can be used, but the database specific python library needs to be installed.</p>
+<p>Run &#8220;start.py &lt;configfile&gt;&#8221; to start the daemon with all interfaceplugins. By default the Telnet interface and Barcode interface are available,
+which monitor telnet commands and a serial port for scanned barcodes respectively and act upon them.
+See tests/example.py for some example code. To run the example.py as-is, you need socat, which can tie virtual serial ports together,
+so you can write data to one, which is received by another virtual serial port.</p>
 </div>
 <div class="section" id="module-nurdbar">
 <span id="nurdbar"></span><h2>NurdBar<a class="headerlink" href="#module-nurdbar" title="Permalink to this headline">¶</a></h2>
@@ -210,6 +214,11 @@ If no stock is present, or the Member is unkown, a ValueError will be raised.</p
 </div>
 <div class="section" id="module-nurdbar.plugins.api">
 <span id="nurdbar-plugins-api"></span><h2>nurdbar.plugins.api<a class="headerlink" href="#module-nurdbar.plugins.api" title="Permalink to this headline">¶</a></h2>
+<p>The Nurdbar application uses plugins to register interfaces to the bar. This way, multiple interfaces can be used for the same bar application.
+By default a Telnet interface is available, allowing the manipulation of the bar through telnet, and a barcode monitor interface, which monitors
+a serial port on the local machine for scanned barcodes.</p>
+<p>To register a new plugin, write your code, put it in the plugindir as configured in the config file. To register the plugin, all you need to do
+is decorate a method in your code with one of the following decorators.</p>
 <dl class="function">
 <dt id="nurdbar.plugins.api.TCPInterfacePlugin">
 <tt class="descclassname">nurdbar.plugins.api.</tt><tt class="descname">TCPInterfacePlugin</tt><big>(</big><em>portnum</em><big>)</big><a class="headerlink" href="#nurdbar.plugins.api.TCPInterfacePlugin" title="Permalink to this definition">¶</a></dt>
@@ -374,6 +383,7 @@ For a first intro on SQLAlchemy see <a class="reference external" href="http://d
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Welcome to NurdBar&#8217;s documentation!</a><ul>
+<li><a class="reference internal" href="#getting-started">Getting started</a></li>
 <li><a class="reference internal" href="#module-nurdbar">NurdBar</a></li>
 <li><a class="reference internal" href="#module-nurdbar.plugins.api">nurdbar.plugins.api</a></li>
 <li><a class="reference internal" href="#module-nurdbar.model">nurdbar.model</a></li>
