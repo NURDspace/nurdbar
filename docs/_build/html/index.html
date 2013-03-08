@@ -236,6 +236,125 @@ return anything. They method should accept an argument for a nurdbar.NurdBar ins
 </dd></dl>
 
 </div>
+<div class="section" id="module-nurdbar.model">
+<span id="nurdbar-model"></span><h2>nurdbar.model<a class="headerlink" href="#module-nurdbar.model" title="Permalink to this headline">¶</a></h2>
+<p>The datamodel for the NurdBar. The datamodel is created using SQLAlchemy. Instances of each datamodel object represent a row.
+Manipulation of the database can be done by instantiating and manipulating these objects.
+For a first intro on SQLAlchemy see <a class="reference external" href="http://docs.sqlalchemy.org/en/rel_0_7/orm/tutorial.html#querying">http://docs.sqlalchemy.org/en/rel_0_7/orm/tutorial.html#querying</a></p>
+<dl class="class">
+<dt id="nurdbar.model.Member">
+<em class="property">class </em><tt class="descclassname">nurdbar.model.</tt><tt class="descname">Member</tt><big>(</big><em>barcode</em>, <em>nick</em><big>)</big><a class="headerlink" href="#nurdbar.model.Member" title="Permalink to this definition">¶</a></dt>
+<dd><p>Members represent the &#8220;customers&#8221; of the bar.</p>
+<dl class="attribute">
+<dt id="nurdbar.model.Member.allTransactions">
+<tt class="descname">allTransactions</tt><a class="headerlink" href="#nurdbar.model.Member.allTransactions" title="Permalink to this definition">¶</a></dt>
+<dd><p>All transactions of the member.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nurdbar.model.Member.balance">
+<tt class="descname">balance</tt><a class="headerlink" href="#nurdbar.model.Member.balance" title="Permalink to this definition">¶</a></dt>
+<dd><p>The (financial) balance for the Member. It is dynamically calculated from the member&#8217;s (non-archived) transactions.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nurdbar.model.Member.barcode">
+<tt class="descname">barcode</tt><a class="headerlink" href="#nurdbar.model.Member.barcode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Barcode of the Member.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nurdbar.model.Member.creationDateTime">
+<tt class="descname">creationDateTime</tt><a class="headerlink" href="#nurdbar.model.Member.creationDateTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Date the Member was created</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nurdbar.model.Member.lastModifiedDateTime">
+<tt class="descname">lastModifiedDateTime</tt><a class="headerlink" href="#nurdbar.model.Member.lastModifiedDateTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>DateTime on which the Member was last modified</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nurdbar.model.Member.member_id">
+<tt class="descname">member_id</tt><a class="headerlink" href="#nurdbar.model.Member.member_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Id of the member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nurdbar.model.Member.negativeTransactions">
+<tt class="descname">negativeTransactions</tt><a class="headerlink" href="#nurdbar.model.Member.negativeTransactions" title="Permalink to this definition">¶</a></dt>
+<dd><p>The members (non-archived) negative transactions (items bought).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nurdbar.model.Member.nick">
+<tt class="descname">nick</tt><a class="headerlink" href="#nurdbar.model.Member.nick" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nick of the Member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nurdbar.model.Member.positiveTransactions">
+<tt class="descname">positiveTransactions</tt><a class="headerlink" href="#nurdbar.model.Member.positiveTransactions" title="Permalink to this definition">¶</a></dt>
+<dd><p>The members (non-archived) positive transactions (items sold and payments).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nurdbar.model.Member.transactions">
+<tt class="descname">transactions</tt><a class="headerlink" href="#nurdbar.model.Member.transactions" title="Permalink to this definition">¶</a></dt>
+<dd><p>The members (non-archived) transactions.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nurdbar.model.Item">
+<em class="property">class </em><tt class="descclassname">nurdbar.model.</tt><tt class="descname">Item</tt><big>(</big><em>barcode</em>, <em>price</em><big>)</big><a class="headerlink" href="#nurdbar.model.Item" title="Permalink to this definition">¶</a></dt>
+<dd><p>All items that can be sold. When the NurdBar is initialized with fill_tables(), also an Item is instantiated for payments.</p>
+<dl class="attribute">
+<dt id="nurdbar.model.Item.barcode">
+<tt class="descname">barcode</tt><a class="headerlink" href="#nurdbar.model.Item.barcode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Barcode of the item. The combination of barcode and price should be unique (but the barcode itself does not have to be).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nurdbar.model.Item.creationDateTime">
+<tt class="descname">creationDateTime</tt><a class="headerlink" href="#nurdbar.model.Item.creationDateTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creation DateTime of the Item.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nurdbar.model.Item.item_id">
+<tt class="descname">item_id</tt><a class="headerlink" href="#nurdbar.model.Item.item_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Id of the item (primary key)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nurdbar.model.Item.lastModifiedDateTime">
+<tt class="descname">lastModifiedDateTime</tt><a class="headerlink" href="#nurdbar.model.Item.lastModifiedDateTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Last modification DateTime of the Item.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nurdbar.model.Item.price">
+<tt class="descname">price</tt><a class="headerlink" href="#nurdbar.model.Item.price" title="Permalink to this definition">¶</a></dt>
+<dd><p>Price of the Item</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nurdbar.model.Item.stock">
+<tt class="descname">stock</tt><a class="headerlink" href="#nurdbar.model.Item.stock" title="Permalink to this definition">¶</a></dt>
+<dd><p>The amount of the Item in stock (modified by creating transactions).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nurdbar.model.Transaction">
+<em class="property">class </em><tt class="descclassname">nurdbar.model.</tt><tt class="descname">Transaction</tt><a class="headerlink" href="#nurdbar.model.Transaction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
 </div>
 <div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
@@ -257,6 +376,7 @@ return anything. They method should accept an argument for a nurdbar.NurdBar ins
 <li><a class="reference internal" href="#">Welcome to NurdBar&#8217;s documentation!</a><ul>
 <li><a class="reference internal" href="#module-nurdbar">NurdBar</a></li>
 <li><a class="reference internal" href="#module-nurdbar.plugins.api">nurdbar.plugins.api</a></li>
+<li><a class="reference internal" href="#module-nurdbar.model">nurdbar.model</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>

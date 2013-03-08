@@ -23,6 +23,18 @@ nurdbar.plugins.api
 .. automodule:: nurdbar.plugins.api
     :members:
 
+nurdbar.model
+-------------------
+.. automodule:: nurdbar.model
+
+.. autoclass:: Member
+    :members:
+
+.. autoclass:: Item
+    :members:
+
+.. autoclass:: Transaction
+    :members:
 
 Indices and tables
 ==================
