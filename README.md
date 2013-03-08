@@ -12,4 +12,4 @@ From the root dir, run "trial tests" or "nosetests" to run all unittests.
 
 Documentation
 -------------
-Documentation can be found in docs/_build/html/index.html
+Documentation can be found in [docs/_build/html/index.html]
