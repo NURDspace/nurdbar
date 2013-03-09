@@ -36,7 +36,7 @@ class Member(Base):
         """
         The (financial) balance for the Member. It is dynamically calculated from the member's (non-archived) transactions.
         """
-        return sum([t.count*t.item.price for t in self.transactions])
+        return sum([t.count*t.transaction_price for t in self.transactions])
 
     @property
     def transactions(self):
@@ -75,23 +75,30 @@ class Item(Base):
     All items that can be sold. When the NurdBar is initialized with fill_tables(), also an Item is instantiated for payments.
     """
     __tablename__ = 'items'
-    __table_args__ = (UniqueConstraint('price','barcode'),)
+    __table_args__ = (UniqueConstraint('buy_price','barcode'),)
     #: Id of the item (primary key)
     item_id = Column(Integer, primary_key=True)
-    #: Barcode of the item. The combination of barcode and price should be unique (but the barcode itself does not have to be).
+    #: Barcode of the item. The combination of barcode and buy_price should be unique (but the barcode itself does not have to be).
     barcode = Column(BigInteger,nullable=False)
     #: Creation DateTime of the Item.
     creationDateTime = Column(DateTime,default=datetime.datetime.now)
     #: Last modification DateTime of the Item.
     lastModifiedDateTime = Column(DateTime,onupdate=datetime.datetime.now,default=datetime.datetime.now)
-    #: Price of the Item
-    price = Column(Numeric)
+    #: Buy price of the Item (for which the Item was bought)
+    buy_price = Column(Numeric)
+    #: Sell price of the Item (for which the Item will be sold). Defaults to buy_price
+    sell_price = Column(Numeric)
     #: The amount of the Item in stock (modified by creating transactions).
     stock = Column(Integer)
 
-    def __init__(self,barcode,price):
+    def __init__(self,barcode,buy_price,sell_price=None):
+        log.debug('Adding Item with bacode %s, buy_price %s, sell_price %s'%(barcode,buy_price,sell_price))
+        if sell_price == None:
+            sell_price = buy_price
+            log.debug('Setting sell price to %s'%sell_price)
         self.barcode=barcode
-        self.price=price
+        self.buy_price=buy_price
+        self.sell_price=sell_price
         self.stock=0
 
 class Transaction(Base):
@@ -102,9 +109,19 @@ class Transaction(Base):
     _count = Column("count",Integer)
     transactionDateTime = Column(DateTime)
     archived = Column(Boolean,default=False)
+    transaction_price = Column(Numeric)
 
-    item = relationship("Item",backref=backref('_transactions',lazy='dynamic'))
+    _item = relationship("Item",backref=backref('_transactions',lazy='dynamic'))
     member = relationship("Member",backref=backref('_transactions',lazy='dynamic'))
+
+    @property
+    def item(self):
+        return self._item
+
+    @item.setter
+    def item(self,item):
+        self.transaction_price=item.sell_price
+        self._item=item
 
     @property
     def count(self):
@@ -121,4 +138,4 @@ class Transaction(Base):
         pass
 
     def __repr__(self):
-        return "<Transaction count:%s price:%s item:%s member:%s archived:%s>"%(self._count,self.item.price,self.item.item_id,self.member.member_id,self.archived)
+        return "<Transaction count:%s transactopm_price:%s item:%s member:%s archived:%s>"%(self._count,self.transaction_price,self.item.item_id,self.member.member_id,self.archived)

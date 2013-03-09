@@ -82,35 +82,39 @@ class NurdBar(object):
             self.receivedItems = []
             self.receivedMember = None
 
-    def giveItem(self,member_barcode,item_barcode,price,amount=1):
+    def giveItem(self,member_barcode,item_barcode,buy_price=None,amount=1,sell_price=None):
         """
         Give an item, or on other words, sell something to the bar/add stock. This both changes the stock of the item being given, and changes the balance for the Member giving the item.
-        If the Item already exists (with the same price), this item is used. If the Item is new, a new Item is stored in the database.
+        If the Item already exists (with the same buy_price), this item is used. If the Item is new, a new Item is stored in the database.
         If the Member is unkown, ValueError is raised.
 
         :param member_barcode: The barcode of the Member giving the Item.
         :type member_barcode: str
         :param item_barcode: The barcode fo the Item being given.
         :type item_barcode: str
-        :param price: The price of the item being given
-        :type price: float
+        :param buy_price: The buy price (for which the bar buys it) of the item being given
+        :type buy_price: float
         :param amount: The amount of Items being given
         :type amount: int
+        :param sell_price: The sell price (for which the bar buys it) of the item being given. It defaults to the buy_price
+        :type sell_price: float
         :returns: nurdbar.model.Transaction
         :raises: ValueError
         """
         member=self.getMemberByBarcode(member_barcode)
         if member==None:
             raise ValueError('Member with barcode %s is unkown'%(member_barcode,))
-        item=self.getItemByBarcodePrice(item_barcode,price)
+        if sell_price==None:
+            sell_price=buy_price
+        item=self.getItemByBarcodePrice(item_barcode,buy_price)
         if item==None:
-            item=self.addItem(item_barcode,price)
-        return self.addTransaction(item,member,amount)
+            item=self.addItem(item_barcode,buy_price,sell_price)
+        return self.addTransaction(item,member,amount,transaction_price=buy_price)
 
     def takeItem(self,member_barcode,item_barcode,amount=1):
         """
         Take an Item from the bar. In other words: buy something. This both changes the stock of the Item, and the balance of the Member taking the Item.
-        If multiple Items with the same barcode but different price exist, the oldest Item is sold first untill it stock runs out, then the next-oldest Item will be sold, etc.
+        If multiple Items with the same barcode but different buy_price exist, the oldest Item is sold first untill it stock runs out, then the next-oldest Item will be sold, etc.
         If no stock is present, or the Member is unkown, a ValueError will be raised.
 
         :param member_barcode: The barcode of the Member giving the Item.
@@ -134,16 +138,16 @@ class NurdBar(object):
             #check if more items are taken then we have in stock. Only add transaction up to amount stock
             rest_amount=amount-item.stock
             amount=item.stock
-        taken_price=amount*item.price
+        taken_price=amount*item.sell_price
         if len(member.positiveTransactions)>0:
             #check if there are still postive transactions, if so, substract the current taken items from them
             processed_payment_price=0
             for t in member.positiveTransactions:
                 log.debug('found positive transaction: %s'%t)
-                payment_price=t.count*t.item.price
+                payment_price=t.count*t.item.sell_price
                 if payment_price>taken_price-processed_payment_price:
                     #we found a payment, worth more that what we are taking. Split it in 2 and mark one as archived
-                    paid_count=int((taken_price-processed_payment_price)/t.item.price)
+                    paid_count=int((taken_price-processed_payment_price)/t.item.sell_price)
                     t._count=t.count-paid_count #change the count of the transaction without chaning the stock of the item.
                     trans=self.addTransaction(payment_item,member,paid_count)
                     trans.archived=True
@@ -153,10 +157,10 @@ class NurdBar(object):
                     t.archived=True
                 if processed_payment_price==taken_price:
                     break
-            trans=self.addTransaction(item,member,-int(processed_payment_price/item.price)) #add an archived transaction for all the taken items that were compensated with pre-existing payments
+            trans=self.addTransaction(item,member,-int(processed_payment_price/item.sell_price)) #add an archived transaction for all the taken items that were compensated with pre-existing payments
             trans.archived=True
             self.session.commit()
-            amount=int(amount-processed_payment_price/item.price) #only process the remaining amount
+            amount=int(amount-processed_payment_price/item.sell_price) #only process the remaining amount
         if amount>0:
             trans=self.addTransaction(item,member,-amount)
         if rest_amount>0:
@@ -198,8 +202,8 @@ class NurdBar(object):
     def getItemByBarcode(self,barcode):
         return self.session.query(Item).filter_by(barcode=barcode).first()
 
-    def getItemByBarcodePrice(self,barcode,price):
-        return self.session.query(Item).filter_by(barcode=barcode,price=price).order_by(Item.creationDateTime).first()
+    def getItemByBarcodePrice(self,barcode,sell_price):
+        return self.session.query(Item).filter_by(barcode=barcode,sell_price=sell_price).order_by(Item.creationDateTime).first()
 
     def getAvailableItemByBarcode(self,barcode):
         return self.session.query(Item).filter(Item.barcode==barcode,Item.stock>0).order_by(Item.creationDateTime).first()
@@ -223,9 +227,9 @@ class NurdBar(object):
         amount=Decimal(amount)
         processed_amount=0
         for t in member.negativeTransactions:
-            if processed_amount+t.item.price*-t.count<=amount:
+            if processed_amount+t.item.sell_price*-t.count<=amount:
                 t.archived=True
-                processed_amount+=t.item.price*-t.count
+                processed_amount+=t.item.sell_price*-t.count
             if processed_amount>=amount:
                 break
         self.session.commit()
@@ -238,8 +242,8 @@ class NurdBar(object):
             trans=self.addTransaction(payment_item,member,int((amount-processed_amount)*100))
         return trans
 
-    def addTransaction(self,item,member,count):
-        log.debug('Adding transaction with item %s, count %s and price %s for member %s'%(item.item_id,count,item.price,member.member_id))
+    def addTransaction(self,item,member,count,transaction_price=None):
+        log.debug('Adding transaction with item %s, count %s and sell_price %s for member %s'%(item.item_id,count,item.sell_price,member.member_id))
         trans=Transaction()
         self.session.add(trans)
         trans.item=item
@@ -247,21 +251,27 @@ class NurdBar(object):
         self.session.commit()
         self.session.flush()
         trans.count=count
+        if transaction_price!=None:
+            trans.transaction_price=transaction_price
         self.session.commit()
         self.session.flush()
         return trans
 
-    def addItem(self,barcode,price):
+    def addItem(self,barcode,buy_price,sell_price=None):
         """
         Add an Item to the bar.
 
         :param barcode: The barcode of the new Item
         :type barcode: str
-        :param price: The price of the Item
-        :type price: float
+        :param buy_price: The price for which the Item is bought by the bar
+        :type buy_price: float
+        :param sell_price: The price by which the Item is sold by the bar
+        :type sell_price: float
         :returns: model.Member
         """
-        item=Item(barcode,price)
+        if sell_price==None:
+            sell_price=buy_price
+        item=Item(barcode,buy_price,sell_price)
         self.session.add(item)
         self.session.commit()
         self.session.flush()

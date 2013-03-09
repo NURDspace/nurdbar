@@ -18,11 +18,12 @@ class TestBar(BaseTest):
 
     def test_filled_tables(self):
         payment_item=self.bar.getItemByBarcode(1010101010)
-        self.assertAlmostEqual(payment_item.price,Decimal(0.01))
+        self.assertAlmostEqual(payment_item.sell_price,Decimal(0.01))
 
     def test_item(self):
         item=self.bar.getItemByBarcode(12312893712938)
-        self.assertEqual(item.price,0.50)
+        self.assertEqual(item.buy_price,0.50)
+        self.assertEqual(item.sell_price,0.50)
 
     def test_member(self):
         member=self.bar.getMemberByNick('SmokeyD')
@@ -31,7 +32,13 @@ class TestBar(BaseTest):
     def test_duplicateItemBarcode(self):
         item2=self.bar.addItem(12312893712938,0.25)
         item=self.bar.getItemByBarcode(12312893712938)
-        self.assertEqual(item.price,0.50)
+        self.assertEqual(item.sell_price,0.50)
+
+    def test_differentPrices(self):
+        self.bar.giveItem(self.member.barcode,12312893712945,buy_price=0.10,amount=10,sell_price=0.75)
+        self.assertEqual(self.member.balance,1.0)
+        self.bar.takeItem('133713371337',12312893712945,amount=5) #take a 5 beer
+        self.assertEqual(self.member.balance,-2.75)
 
     def test_transaction(self):
         self.bar.addTransaction(self.item,self.member,10) #add beer
