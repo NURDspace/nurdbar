@@ -109,7 +109,9 @@ class NurdBar(object):
         item=self.getItemByBarcodePrice(item_barcode,buy_price)
         if item==None:
             item=self.addItem(item_barcode,buy_price,sell_price)
-        return self.addTransaction(item,member,amount,transaction_price=buy_price)
+        log.info('Changing stock of item %s from %s to %s'%(item.item_id,item.stock,item.stock+amount))
+        item.stock+=amount
+        return self.addTransaction(item,member,transaction_price=buy_price*amount)
 
     def takeItem(self,member_barcode,item_barcode,amount=1):
         """
@@ -134,35 +136,41 @@ class NurdBar(object):
         payment_item=self.getItemByBarcode(1010101010)
         if not item:
             raise ValueError('Item is not available (no stock present)')
+        log.info('Member %s has taken %s item(s) %s with barcode %s and sell_price %s'%(member.member_id,amount,item.item_id,item.barcode,item.sell_price))
         if amount>item.stock:
             #check if more items are taken then we have in stock. Only add transaction up to amount stock
             rest_amount=amount-item.stock
             amount=item.stock
+        log.info('Changing stock of item %s from %s to %s'%(item.item_id,item.stock,item.stock-amount))
+        item.stock-=amount
         taken_price=amount*item.sell_price
+        log.debug('total taken_price: %s'%taken_price)
         if len(member.positiveTransactions)>0:
             #check if there are still postive transactions, if so, substract the current taken items from them
             processed_payment_price=0
             for t in member.positiveTransactions:
-                log.debug('found positive transaction: %s'%t)
-                payment_price=t.count*t.item.sell_price
+                payment_price=t.transaction_price
+                log.debug('Found positive transaction: %s with payment_price: %s'%(t,payment_price))
                 if payment_price>taken_price-processed_payment_price:
                     #we found a payment, worth more that what we are taking. Split it in 2 and mark one as archived
-                    paid_count=int((taken_price-processed_payment_price)/t.item.sell_price)
-                    t._count=t.count-paid_count #change the count of the transaction without chaning the stock of the item.
-                    trans=self.addTransaction(payment_item,member,paid_count)
+                    paid_price=taken_price-processed_payment_price
+                    log.debug('Changing transaction %s transaction_price to %s'%(t,t.transaction_price-paid_price))
+                    t.transaction_price=t.transaction_price-paid_price
+                    trans=self.addTransaction(payment_item,member,paid_price)
                     trans.archived=True
                     processed_payment_price=taken_price
                 elif payment_price<=taken_price-processed_payment_price:
+                    log.debug('Setting transaction %s to archived=True'%t)
                     processed_payment_price+=payment_price
                     t.archived=True
                 if processed_payment_price==taken_price:
                     break
-            trans=self.addTransaction(item,member,-int(processed_payment_price/item.sell_price)) #add an archived transaction for all the taken items that were compensated with pre-existing payments
+            trans=self.addTransaction(item,member,-processed_payment_price) #add an archived transaction for all the taken items that were compensated with pre-existing payments
             trans.archived=True
             self.session.commit()
-            amount=int(amount-processed_payment_price/item.sell_price) #only process the remaining amount
-        if amount>0:
-            trans=self.addTransaction(item,member,-amount)
+            taken_price=taken_price-processed_payment_price #only process the remaining price
+        if taken_price>0:
+            trans=self.addTransaction(item,member,-taken_price)
         if rest_amount>0:
             return self.takeItem(member_barcode,item_barcode,rest_amount)
         else:
@@ -200,18 +208,55 @@ class NurdBar(object):
         return member
 
     def getItemByBarcode(self,barcode):
-        return self.session.query(Item).filter_by(barcode=barcode).first()
+        """
+        Get an Item by it's barcode. Whether or not it is in stock, is not taken into account. The oldest item is returned.
 
-    def getItemByBarcodePrice(self,barcode,sell_price):
-        return self.session.query(Item).filter_by(barcode=barcode,sell_price=sell_price).order_by(Item.creationDateTime).first()
+        :param barcode: The barcode of the Item to get.
+        :type barcode: str
+        :returns: nurdbar.model.Item
+        """
+        return self.session.query(Item).filter_by(barcode=barcode).order_by(Item.creationDateTime).first()
+
+    def getItemByBarcodePrice(self,barcode,buy_price):
+        """
+        Get an Item by it's barcode and buy_price. Whether or not it is in stock, is not taken into account.
+
+        :param barcode: The barcode of the Item to get.
+        :type barcode: str
+        :param buy_price: The buy_price of the Item to get.
+        :type buy_price: float
+        :returns: nurdbar.model.Item
+        """
+        return self.session.query(Item).filter_by(barcode=barcode,buy_price=buy_price).order_by(Item.creationDateTime).first()
 
     def getAvailableItemByBarcode(self,barcode):
+        """
+        Get the first available (stock>0) Item by barcode. If several items with the same barcode are available, the oldest available Item is returned.
+
+        :param barcode: The barcode for which to get the Item.
+        :type barcode: str
+        :returns: nurdbar.model.Item
+        """
         return self.session.query(Item).filter(Item.barcode==barcode,Item.stock>0).order_by(Item.creationDateTime).first()
 
     def getBalance(self,member):
+        """
+        Get the balance for the member
+
+        :param member: The member for which to get the balance
+        :type member: nurdbar.model.Member
+        :returns: float
+        """
         return member.balance
 
     def getTransactions(self,member):
+        """
+        Get all transactions for Member
+
+        :param member: The model.Member object for which to get the transactions
+        :type member: nurdbar.model.Member
+        :returns: [nurdbar.model.Member]
+        """
         return member.transactions
 
     def payAmount(self,member,amount):
@@ -225,34 +270,32 @@ class NurdBar(object):
         """
         trans=None
         amount=Decimal(amount)
-        processed_amount=0
+        processed_price=0
         for t in member.negativeTransactions:
-            if processed_amount+t.item.sell_price*-t.count<=amount:
+            if processed_price-t.transaction_price<=amount:
                 t.archived=True
-                processed_amount+=t.item.sell_price*-t.count
-            if processed_amount>=amount:
+                processed_price-=t.transaction_price
+            if processed_price>=amount:
                 break
         self.session.commit()
         payment_item=self.getItemByBarcode(1010101010)
-        if processed_amount>0:
-            trans=self.addTransaction(payment_item,member,int(processed_amount*100))
+        if processed_price>0:
+            trans=self.addTransaction(payment_item,member,processed_price)
             trans.archived=True
             self.session.commit()
-        if amount-processed_amount>0:
-            trans=self.addTransaction(payment_item,member,int((amount-processed_amount)*100))
+        if amount-processed_price>0:
+            trans=self.addTransaction(payment_item,member,amount-processed_price)
         return trans
 
-    def addTransaction(self,item,member,count,transaction_price=None):
-        log.debug('Adding transaction with item %s, count %s and sell_price %s for member %s'%(item.item_id,count,item.sell_price,member.member_id))
+    def addTransaction(self,item,member,transaction_price):
+        log.debug('Adding transaction with item %s, transaction_price %s for member %s'%(item.item_id,transaction_price,member.member_id))
         trans=Transaction()
         self.session.add(trans)
         trans.item=item
         trans.member=member
         self.session.commit()
         self.session.flush()
-        trans.count=count
-        if transaction_price!=None:
-            trans.transaction_price=transaction_price
+        trans.transaction_price=transaction_price
         self.session.commit()
         self.session.flush()
         return trans
@@ -265,7 +308,7 @@ class NurdBar(object):
         :type barcode: str
         :param buy_price: The price for which the Item is bought by the bar
         :type buy_price: float
-        :param sell_price: The price by which the Item is sold by the bar
+        :param sell_price: The price by which the Item is sold by the bar (defaults to buy_price)
         :type sell_price: float
         :returns: model.Member
         """

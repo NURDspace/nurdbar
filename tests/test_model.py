@@ -37,7 +37,7 @@ class TestModel(BaseTest):
         trans = self._addObject(model.Transaction())
         trans.member=member
         trans.item=item
-        trans.count=-10
+        trans.transaction_price=-10*item.sell_price
         self._commit()
         self.assertEqual(member.transactions,[trans])
         self.assertEqual(member.allTransactions,[trans])

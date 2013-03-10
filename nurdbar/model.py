@@ -36,7 +36,7 @@ class Member(Base):
         """
         The (financial) balance for the Member. It is dynamically calculated from the member's (non-archived) transactions.
         """
-        return sum([t.count*t.transaction_price for t in self.transactions])
+        return sum([t.transaction_price for t in self.transactions])
 
     @property
     def transactions(self):
@@ -50,14 +50,14 @@ class Member(Base):
         """
         The members (non-archived) negative transactions (items bought).
         """
-        return self._transactions.filter(Transaction.archived==False,Transaction._count<0).order_by(Transaction.transactionDateTime).all()
+        return self._transactions.filter(Transaction.archived==False,Transaction.transaction_price<0).order_by(Transaction.transactionDateTime).all()
 
     @property
     def positiveTransactions(self):
         """
         The members (non-archived) positive transactions (items sold and payments).
         """
-        return self._transactions.filter(Transaction.archived==False,Transaction._count>0).order_by(Transaction.transactionDateTime).all()
+        return self._transactions.filter(Transaction.archived==False,Transaction.transaction_price>0).order_by(Transaction.transactionDateTime).all()
 
     @property
     def allTransactions(self):
@@ -106,7 +106,6 @@ class Transaction(Base):
     transaction_id = Column(Integer, primary_key=True)
     item_id = Column(Integer, ForeignKey('items.item_id'))
     member_id = Column(Integer, ForeignKey('members.member_id'))
-    _count = Column("count",Integer)
     transactionDateTime = Column(DateTime)
     archived = Column(Boolean,default=False)
     transaction_price = Column(Numeric)
@@ -120,22 +119,13 @@ class Transaction(Base):
 
     @item.setter
     def item(self,item):
-        self.transaction_price=item.sell_price
+        if self.transaction_price==None:
+            self.transaction_price=item.sell_price
         self._item=item
-
-    @property
-    def count(self):
-        return self._count
-
-    @count.setter
-    def count(self,count):
-        log.debug('changing item %s stock from %s to %s'%(self.item.item_id,self.item.stock,self.item.stock+count))
-        self.item.stock+=count
-        self._count=count
 
     def __init__(self):
         log.debug('Starting new transaction')
         pass
 
     def __repr__(self):
-        return "<Transaction count:%s transactopm_price:%s item:%s member:%s archived:%s>"%(self._count,self.transaction_price,self.item.item_id,self.member.member_id,self.archived)
+        return "<Transaction transaction_price:%s item:%s member:%s archived:%s>"%(self.transaction_price,self.item.item_id,self.member.member_id,self.archived)

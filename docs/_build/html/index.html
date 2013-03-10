@@ -65,7 +65,7 @@ so you can write data to one, which is received by another virtual serial port.<
 <dd><p>The main NurdBar API. Use this API to interact with the bar. Plugins receive an instance of this class, so they can interact with the bar.</p>
 <dl class="method">
 <dt id="nurdbar.NurdBar.addItem">
-<tt class="descname">addItem</tt><big>(</big><em>barcode</em>, <em>price</em><big>)</big><a class="headerlink" href="#nurdbar.NurdBar.addItem" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">addItem</tt><big>(</big><em>barcode</em>, <em>buy_price</em>, <em>sell_price=None</em><big>)</big><a class="headerlink" href="#nurdbar.NurdBar.addItem" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add an Item to the bar.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -73,7 +73,8 @@ so you can write data to one, which is received by another virtual serial port.<
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>barcode</strong> (<em>str</em>) &#8211; The barcode of the new Item</li>
-<li><strong>price</strong> (<em>float</em>) &#8211; The price of the Item</li>
+<li><strong>buy_price</strong> (<em>float</em>) &#8211; The price for which the Item is bought by the bar</li>
+<li><strong>sell_price</strong> (<em>float</em>) &#8211; The price by which the Item is sold by the bar (defaults to buy_price)</li>
 </ul>
 </td>
 </tr>
@@ -106,6 +107,38 @@ so you can write data to one, which is received by another virtual serial port.<
 </dd></dl>
 
 <dl class="method">
+<dt id="nurdbar.NurdBar.getAvailableItemByBarcode">
+<tt class="descname">getAvailableItemByBarcode</tt><big>(</big><em>barcode</em><big>)</big><a class="headerlink" href="#nurdbar.NurdBar.getAvailableItemByBarcode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the first available (stock&gt;0) Item by barcode. If several items with the same barcode are available, the oldest available Item is returned.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>barcode</strong> (<em>str</em>) &#8211; The barcode for which to get the Item.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">nurdbar.model.Item</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurdbar.NurdBar.getBalance">
+<tt class="descname">getBalance</tt><big>(</big><em>member</em><big>)</big><a class="headerlink" href="#nurdbar.NurdBar.getBalance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the balance for the member</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>member</strong> (<a class="reference internal" href="#nurdbar.model.Member" title="nurdbar.model.Member"><em>nurdbar.model.Member</em></a>) &#8211; The member for which to get the balance</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="nurdbar.NurdBar.getBarcodeType">
 <tt class="descname">getBarcodeType</tt><big>(</big><em>barcode</em><big>)</big><a class="headerlink" href="#nurdbar.NurdBar.getBarcodeType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the type of barcode.</p>
@@ -122,10 +155,63 @@ so you can write data to one, which is received by another virtual serial port.<
 </dd></dl>
 
 <dl class="method">
+<dt id="nurdbar.NurdBar.getItemByBarcode">
+<tt class="descname">getItemByBarcode</tt><big>(</big><em>barcode</em><big>)</big><a class="headerlink" href="#nurdbar.NurdBar.getItemByBarcode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get an Item by it&#8217;s barcode. Whether or not it is in stock, is not taken into account. The oldest item is returned.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>barcode</strong> (<em>str</em>) &#8211; The barcode of the Item to get.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">nurdbar.model.Item</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurdbar.NurdBar.getItemByBarcodePrice">
+<tt class="descname">getItemByBarcodePrice</tt><big>(</big><em>barcode</em>, <em>buy_price</em><big>)</big><a class="headerlink" href="#nurdbar.NurdBar.getItemByBarcodePrice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get an Item by it&#8217;s barcode and buy_price. Whether or not it is in stock, is not taken into account.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>barcode</strong> (<em>str</em>) &#8211; The barcode of the Item to get.</li>
+<li><strong>buy_price</strong> (<em>float</em>) &#8211; The buy_price of the Item to get.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">nurdbar.model.Item</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurdbar.NurdBar.getTransactions">
+<tt class="descname">getTransactions</tt><big>(</big><em>member</em><big>)</big><a class="headerlink" href="#nurdbar.NurdBar.getTransactions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all transactions for Member</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>member</strong> (<a class="reference internal" href="#nurdbar.model.Member" title="nurdbar.model.Member"><em>nurdbar.model.Member</em></a>) &#8211; The model.Member object for which to get the transactions</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">[nurdbar.model.Member]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="nurdbar.NurdBar.giveItem">
-<tt class="descname">giveItem</tt><big>(</big><em>member_barcode</em>, <em>item_barcode</em>, <em>price</em>, <em>amount=1</em><big>)</big><a class="headerlink" href="#nurdbar.NurdBar.giveItem" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">giveItem</tt><big>(</big><em>member_barcode</em>, <em>item_barcode</em>, <em>buy_price=None</em>, <em>amount=1</em>, <em>sell_price=None</em><big>)</big><a class="headerlink" href="#nurdbar.NurdBar.giveItem" title="Permalink to this definition">¶</a></dt>
 <dd><p>Give an item, or on other words, sell something to the bar/add stock. This both changes the stock of the item being given, and changes the balance for the Member giving the item.
-If the Item already exists (with the same price), this item is used. If the Item is new, a new Item is stored in the database.
+If the Item already exists (with the same buy_price), this item is used. If the Item is new, a new Item is stored in the database.
 If the Member is unkown, ValueError is raised.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -134,8 +220,9 @@ If the Member is unkown, ValueError is raised.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>member_barcode</strong> (<em>str</em>) &#8211; The barcode of the Member giving the Item.</li>
 <li><strong>item_barcode</strong> (<em>str</em>) &#8211; The barcode fo the Item being given.</li>
-<li><strong>price</strong> (<em>float</em>) &#8211; The price of the item being given</li>
+<li><strong>buy_price</strong> (<em>float</em>) &#8211; The buy price (for which the bar buys it) of the item being given</li>
 <li><strong>amount</strong> (<em>int</em>) &#8211; The amount of Items being given</li>
+<li><strong>sell_price</strong> (<em>float</em>) &#8211; The sell price (for which the bar buys it) of the item being given. It defaults to the buy_price</li>
 </ul>
 </td>
 </tr>
@@ -186,7 +273,7 @@ received, act upon them.</p>
 <dt id="nurdbar.NurdBar.takeItem">
 <tt class="descname">takeItem</tt><big>(</big><em>member_barcode</em>, <em>item_barcode</em>, <em>amount=1</em><big>)</big><a class="headerlink" href="#nurdbar.NurdBar.takeItem" title="Permalink to this definition">¶</a></dt>
 <dd><p>Take an Item from the bar. In other words: buy something. This both changes the stock of the Item, and the balance of the Member taking the Item.
-If multiple Items with the same barcode but different price exist, the oldest Item is sold first untill it stock runs out, then the next-oldest Item will be sold, etc.
+If multiple Items with the same barcode but different buy_price exist, the oldest Item is sold first untill it stock runs out, then the next-oldest Item will be sold, etc.
 If no stock is present, or the Member is unkown, a ValueError will be raised.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -318,12 +405,18 @@ For a first intro on SQLAlchemy see <a class="reference external" href="http://d
 
 <dl class="class">
 <dt id="nurdbar.model.Item">
-<em class="property">class </em><tt class="descclassname">nurdbar.model.</tt><tt class="descname">Item</tt><big>(</big><em>barcode</em>, <em>price</em><big>)</big><a class="headerlink" href="#nurdbar.model.Item" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">nurdbar.model.</tt><tt class="descname">Item</tt><big>(</big><em>barcode</em>, <em>buy_price</em>, <em>sell_price=None</em><big>)</big><a class="headerlink" href="#nurdbar.model.Item" title="Permalink to this definition">¶</a></dt>
 <dd><p>All items that can be sold. When the NurdBar is initialized with fill_tables(), also an Item is instantiated for payments.</p>
 <dl class="attribute">
 <dt id="nurdbar.model.Item.barcode">
 <tt class="descname">barcode</tt><a class="headerlink" href="#nurdbar.model.Item.barcode" title="Permalink to this definition">¶</a></dt>
-<dd><p>Barcode of the item. The combination of barcode and price should be unique (but the barcode itself does not have to be).</p>
+<dd><p>Barcode of the item. The combination of barcode and buy_price should be unique (but the barcode itself does not have to be).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nurdbar.model.Item.buy_price">
+<tt class="descname">buy_price</tt><a class="headerlink" href="#nurdbar.model.Item.buy_price" title="Permalink to this definition">¶</a></dt>
+<dd><p>Buy price of the Item (for which the Item was bought)</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -345,9 +438,9 @@ For a first intro on SQLAlchemy see <a class="reference external" href="http://d
 </dd></dl>
 
 <dl class="attribute">
-<dt id="nurdbar.model.Item.price">
-<tt class="descname">price</tt><a class="headerlink" href="#nurdbar.model.Item.price" title="Permalink to this definition">¶</a></dt>
-<dd><p>Price of the Item</p>
+<dt id="nurdbar.model.Item.sell_price">
+<tt class="descname">sell_price</tt><a class="headerlink" href="#nurdbar.model.Item.sell_price" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sell price of the Item (for which the Item will be sold). Defaults to buy_price</p>
 </dd></dl>
 
 <dl class="attribute">

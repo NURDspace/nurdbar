@@ -1,6 +1,8 @@
 from _basetest import BaseTest
 from nurdbar import NurdBar, BarcodeTypes, model
 from decimal import Decimal
+import logging
+log=logging.getLogger(__name__)
 
 class TestBar(BaseTest):
 
@@ -9,6 +11,7 @@ class TestBar(BaseTest):
         self.member=self.bar.addMember(133713371337,'SmokeyD')
         self.member2=self.bar.addMember(133713371339,'SmokeyD2')
         self.item=self.bar.addItem(12312893712938,0.50)
+        log.debug('Finished setUp')
 
     def test_barcodeType(self):
         self.assertEqual(self.bar.getBarcodeType(self.item.barcode),BarcodeTypes.ITEMBARCODE)
@@ -34,27 +37,34 @@ class TestBar(BaseTest):
         item=self.bar.getItemByBarcode(12312893712938)
         self.assertEqual(item.sell_price,0.50)
 
-    def test_differentPrices(self):
+    def test_differentPrices_smallerPayment(self):
+        log.debug('giving item')
         self.bar.giveItem(self.member.barcode,12312893712945,buy_price=0.10,amount=10,sell_price=0.75)
         self.assertEqual(self.member.balance,1.0)
+        log.debug('taking item')
         self.bar.takeItem('133713371337',12312893712945,amount=5) #take a 5 beer
         self.assertEqual(self.member.balance,-2.75)
 
+    def test_differentPrices_largerPayment(self):
+        log.debug('giving item')
+        item2=self.bar.addItem(12312893712945,buy_price=0.10,sell_price=0.75)
+        item2.stock=10
+        self.bar.payAmount(self.member,10) #pay 10 euro
+        self.assertEqual(self.member.balance,10)
+        log.debug('taking item')
+        self.bar.takeItem('133713371337',12312893712945,amount=5) #take a 5 beer
+        self.assertEqual(self.member.balance,6.25) #10-5*0.75=6.25
+
     def test_transaction(self):
-        self.bar.addTransaction(self.item,self.member,10) #add beer
-        self.assertEqual(self.member.balance,5)
-        self.assertEqual(self.item.stock,10)
-        self.bar.addTransaction(self.item,self.member,-1) #take a beer
-        self.assertEqual(self.item.stock,9)
+        self.bar.addTransaction(self.item,self.member,self.item.sell_price*10) #add beer
+        self.assertEqual(self.bar.getBalance(self.member),5)
+        self.bar.addTransaction(self.item,self.member,-1*self.item.sell_price) #take a beer
         self.assertEqual(self.member.balance,4.50)
-        self.bar.addTransaction(self.item,self.member,-1) #take a beer
-        self.assertEqual(self.item.stock,8)
+        self.bar.addTransaction(self.item,self.member,-1*self.item.sell_price) #take a beer
         self.assertEqual(self.member.balance,4)
-        self.bar.addTransaction(self.item,self.member,-1) #take a beer
-        self.assertEqual(self.item.stock,7)
+        self.bar.addTransaction(self.item,self.member,-1*self.item.sell_price) #take a beer
         self.assertEqual(self.member.balance,3.50)
-        self.bar.addTransaction(self.item,self.member,-8) #take 7 beer
-        self.assertEqual(self.item.stock,-1)
+        self.bar.addTransaction(self.item,self.member,-8*self.item.sell_price) #take 8 beer
         self.assertEqual(self.member.balance,-0.50)
 
     def test_giveItem(self):
@@ -93,7 +103,7 @@ class TestBar(BaseTest):
         self.assertEqual(self.member.balance,1.5)
         self.assertEqual(trans1.archived,True)
         self.assertEqual(trans2.archived,False)
-        self.assertEqual(len(self.member.transactions),1)
+        self.assertEqual(len(self.bar.getTransactions(self.member)),1)
         print(self.member.allTransactions)
         self.assertEqual(len(self.member.allTransactions),3)#three transactions, since the payment transaction was split in 2 transactions (1 to get to 0 and 1 transaction to get a positive balance of 1.50)
         trans3=self.bar.takeItem(self.member.barcode,self.item.barcode,3) #take 3 beer
@@ -103,9 +113,14 @@ class TestBar(BaseTest):
         self.assertEqual(len(self.member.transactions),0)#everything should be archived. Balance=0
         self.assertEqual(len(self.member.allTransactions),4)
         trans2=self.bar.giveItem(self.member.barcode,self.item.barcode,0.50,13) #add 13 beer
-        #trans2=self.bar.payAmount(self.member,6.50) #pay 6.50 euro
         self.bar.takeItem(self.member.barcode,self.item.barcode,4)#take 4 beer
         self.assertEqual(self.member.balance,4.50)
         self.assertEqual(len(self.member.transactions),1)#we should still have one transaction left, because of positive balance
         self.assertEqual(len(self.member.allTransactions),7)
+        self.item.stock=40
+        trans1=self.bar.takeItem(self.member.barcode,self.item.barcode,40) #take 10 beer
+        self.assertEqual(self.member.balance,-15.50)
+        self.bar.payAmount(self.member,10)
+        self.assertEqual(self.member.balance,-5.50)
+        self.fail("Line 242 in nurdbar.NurdBar.payAmount (line with if followed by break) not tested!")
 
