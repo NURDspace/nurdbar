@@ -2,16 +2,16 @@ from _basetest import BaseTest
 from nurdbar import NurdBar, BarcodeTypes, model
 from decimal import Decimal
 import logging
-log=logging.getLogger(__name__)
 
 class TestBar(BaseTest):
 
     def setUp(self):
         super(TestBar,self).setUp()
+        self.log=logging.getLogger(__name__)
         self.member=self.bar.addMember(133713371337,'SmokeyD')
         self.member2=self.bar.addMember(133713371339,'SmokeyD2')
         self.item=self.bar.addItem(12312893712938,0.50)
-        log.debug('Finished setUp')
+        self.log.debug('Finished setUp')
 
     def test_barcodeType(self):
         self.assertEqual(self.bar.getBarcodeType(self.item.barcode),BarcodeTypes.ITEMBARCODE)
@@ -38,20 +38,20 @@ class TestBar(BaseTest):
         self.assertEqual(item.sell_price,0.50)
 
     def test_differentPrices_smallerPayment(self):
-        log.debug('giving item')
+        self.log.debug('giving item')
         self.bar.giveItem(self.member.barcode,12312893712945,buy_price=0.10,amount=10,sell_price=0.75)
         self.assertEqual(self.member.balance,1.0)
-        log.debug('taking item')
+        self.log.debug('taking item')
         self.bar.takeItem('133713371337',12312893712945,amount=5) #take a 5 beer
         self.assertEqual(self.member.balance,-2.75)
 
     def test_differentPrices_largerPayment(self):
-        log.debug('giving item')
+        self.log.debug('giving item')
         item2=self.bar.addItem(12312893712945,buy_price=0.10,sell_price=0.75)
         item2.stock=10
         self.bar.payAmount(self.member,10) #pay 10 euro
         self.assertEqual(self.member.balance,10)
-        log.debug('taking item')
+        self.log.debug('taking item')
         self.bar.takeItem('133713371337',12312893712945,amount=5) #take a 5 beer
         self.assertEqual(self.member.balance,6.25) #10-5*0.75=6.25
 

@@ -7,8 +7,9 @@ from sqlalchemy.orm import sessionmaker
 from model import Base,Member,Item,Transaction
 from decimal import Decimal
 import logging
+import logging.config
+import traceback
 
-log=logging.getLogger(__name__)
 
 class BarcodeTypes(object):
     ITEMBARCODE = 'Item Barcode'
@@ -25,19 +26,23 @@ class NurdBar(object):
         :param configfile: The filename of the configuration file to read.
         :type configfile: str
         """
+        logging.config.fileConfig(configfile)
+        self.log=logging.getLogger(__name__)
         self.config=NurdBar.read_config(configfile)
-        self.engine,self.metadata,self.session=NurdBar.setupModel(self.config)
+        self.log.debug('Read config')
+        print('setup nurdbar')
+        self.engine,self.metadata,self.session=self.setupModel()
         self.receivedItems=[]
         self.receivedMember=None
 
-    @staticmethod
-    def setupModel(config):
+    def setupModel(self):
         #setup the model
-        engine=create_engine(config.get('db','uri'))
+        engine=create_engine(self.config.get('db','uri'))
         Session = sessionmaker(bind=engine)
         metadata=Base.metadata
         metadata.bind=engine
         session = Session()
+        self.log.debug('Session setup')
         return (engine,metadata,session)
 
     @staticmethod
@@ -109,7 +114,7 @@ class NurdBar(object):
         item=self.getItemByBarcodePrice(item_barcode,buy_price)
         if item==None:
             item=self.addItem(item_barcode,buy_price,sell_price)
-        log.info('Changing stock of item %s from %s to %s'%(item.item_id,item.stock,item.stock+amount))
+        self.log.info('Changing stock of item %s from %s to %s'%(item.item_id,item.stock,item.stock+amount))
         item.stock+=amount
         return self.addTransaction(item,member,transaction_price=buy_price*amount)
 
@@ -136,38 +141,44 @@ class NurdBar(object):
         payment_item=self.getItemByBarcode(1010101010)
         if not item:
             raise ValueError('Item is not available (no stock present)')
-        log.info('Member %s has taken %s item(s) %s with barcode %s and sell_price %s'%(member.member_id,amount,item.item_id,item.barcode,item.sell_price))
+        self.log.info('Member %s has taken %s item(s) %s with barcode %s and sell_price %s'%(member.member_id,amount,item.item_id,item.barcode,item.sell_price))
         if amount>item.stock:
             #check if more items are taken then we have in stock. Only add transaction up to amount stock
             rest_amount=amount-item.stock
             amount=item.stock
-        log.info('Changing stock of item %s from %s to %s'%(item.item_id,item.stock,item.stock-amount))
+        self.log.info('Changing stock of item %s from %s to %s'%(item.item_id,item.stock,item.stock-amount))
         item.stock-=amount
         taken_price=amount*item.sell_price
-        log.debug('total taken_price: %s'%taken_price)
+        self.log.debug('total taken_price: %s'%taken_price)
         if len(member.positiveTransactions)>0:
             #check if there are still postive transactions, if so, substract the current taken items from them
             processed_payment_price=0
             for t in member.positiveTransactions:
                 payment_price=t.transaction_price
-                log.debug('Found positive transaction: %s with payment_price: %s'%(t,payment_price))
+                self.log.debug('Found positive transaction: %s with payment_price: %s'%(t,payment_price))
                 if payment_price>taken_price-processed_payment_price:
                     #we found a payment, worth more that what we are taking. Split it in 2 and mark one as archived
                     paid_price=taken_price-processed_payment_price
-                    log.debug('Changing transaction %s transaction_price to %s'%(t,t.transaction_price-paid_price))
+                    self.log.debug('Changing transaction %s transaction_price to %s'%(t,t.transaction_price-paid_price))
                     t.transaction_price=t.transaction_price-paid_price
                     trans=self.addTransaction(payment_item,member,paid_price)
                     trans.archived=True
                     processed_payment_price=taken_price
                 elif payment_price<=taken_price-processed_payment_price:
-                    log.debug('Setting transaction %s to archived=True'%t)
+                    self.log.debug('Setting transaction %s to archived=True'%t)
                     processed_payment_price+=payment_price
                     t.archived=True
                 if processed_payment_price==taken_price:
                     break
             trans=self.addTransaction(item,member,-processed_payment_price) #add an archived transaction for all the taken items that were compensated with pre-existing payments
             trans.archived=True
-            self.session.commit()
+            try:
+                self.session.commit()
+                self.session.flush()
+            except Exception:
+                self.log.error("Exception occured during commit:\n%s"%traceback.format_exc())
+                self.session.rollback()
+                raise
             taken_price=taken_price-processed_payment_price #only process the remaining price
         if taken_price>0:
             trans=self.addTransaction(item,member,-taken_price)
@@ -181,9 +192,23 @@ class NurdBar(object):
 
     def create_tables(self):
         self.metadata.create_all()
+        try:
+            self.session.commit()
+            self.session.flush()
+        except Exception:
+            self.log.error("Exception occured during commit:\n%s"%traceback.format_exc())
+            self.session.rollback()
+            raise
 
     def drop_tables(self):
         self.metadata.drop_all()
+        try:
+            self.session.commit()
+            self.session.flush()
+        except Exception:
+            self.log.error("Exception occured during commit:\n%s"%traceback.format_exc())
+            self.session.rollback()
+            raise
 
     def getMemberByBarcode(self,barcode):
         return self.session.query(Member).filter_by(barcode=barcode).first()
@@ -203,8 +228,13 @@ class NurdBar(object):
         """
         member=Member(barcode,nick)
         self.session.add(member)
-        self.session.commit()
-        self.session.flush()
+        try:
+            self.session.commit()
+            self.session.flush()
+        except Exception:
+            self.log.error("Exception occured during commit:\n%s"%traceback.format_exc())
+            self.session.rollback()
+            raise
         return member
 
     def getItemByBarcode(self,barcode):
@@ -277,27 +307,49 @@ class NurdBar(object):
                 processed_price-=t.transaction_price
             if processed_price>=amount:
                 break
-        self.session.commit()
+        try:
+            self.session.commit()
+            self.session.flush()
+        except Exception:
+            self.log.error("Exception occured during commit:\n%s"%traceback.format_exc())
+            self.session.rollback()
+            raise
         payment_item=self.getItemByBarcode(1010101010)
         if processed_price>0:
             trans=self.addTransaction(payment_item,member,processed_price)
             trans.archived=True
-            self.session.commit()
+            try:
+                self.session.commit()
+                self.session.flush()
+            except Exception:
+                self.log.error("Exception occured during commit:\n%s"%traceback.format_exc())
+                self.session.rollback()
+                raise
         if amount-processed_price>0:
             trans=self.addTransaction(payment_item,member,amount-processed_price)
         return trans
 
     def addTransaction(self,item,member,transaction_price):
-        log.debug('Adding transaction with item %s, transaction_price %s for member %s'%(item.item_id,transaction_price,member.member_id))
+        self.log.debug('Adding transaction with item %s, transaction_price %s for member %s'%(item.item_id,transaction_price,member.member_id))
         trans=Transaction()
         self.session.add(trans)
         trans.item=item
         trans.member=member
-        self.session.commit()
-        self.session.flush()
+        try:
+            self.session.commit()
+            self.session.flush()
+        except Exception:
+            self.log.error("Exception occured during commit:\n%s"%traceback.format_exc())
+            self.session.rollback()
+            raise
         trans.transaction_price=transaction_price
-        self.session.commit()
-        self.session.flush()
+        try:
+            self.session.commit()
+            self.session.flush()
+        except Exception:
+            self.log.error("Exception occured during commit:\n%s"%traceback.format_exc())
+            self.session.rollback()
+            raise
         return trans
 
     def addItem(self,barcode,buy_price,sell_price=None):
@@ -316,6 +368,11 @@ class NurdBar(object):
             sell_price=buy_price
         item=Item(barcode,buy_price,sell_price)
         self.session.add(item)
-        self.session.commit()
-        self.session.flush()
+        try:
+            self.session.commit()
+            self.session.flush()
+        except Exception:
+            self.log.error("Exception occured during commit:\n%s"%traceback.format_exc())
+            self.session.rollback()
+            raise
         return item

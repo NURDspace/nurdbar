@@ -37,8 +37,8 @@ em.writeLine('12312893712938\r\n')
 time.sleep(1) #give the serial monitor to commit stuff to the db
 
 #re-fetch the item and member from the database
-bar.session.flush()
 bar.session.commit()
+bar.session.flush()
 member=bar.getMemberByBarcode(133713371337)
 item=bar.getItemByBarcode(12312893712938)
 

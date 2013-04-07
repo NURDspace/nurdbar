@@ -3,16 +3,24 @@ from nurdbar import NurdBar, model
 from decimal import Decimal
 import datetime
 import sqlalchemy.exc
+import traceback
+import logging
 
 class TestModel(BaseTest):
 
     def setUp(self):
         super(TestModel,self).setUp()
         self.session=self.bar.session
+        self.log=logging.getLogger(__name__)
 
     def _commit(self):
-        self.session.commit()
-        self.session.flush()
+        try:
+            self.session.commit()
+            self.session.flush()
+        except Exception:
+            self.log.error("Error occured during commit:\n%s"%traceback.format_exc())
+            self.session.rollback()
+            raise
 
     def _addObject(self,obj):
         self.session.add(obj)
