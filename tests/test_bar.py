@@ -1,6 +1,7 @@
 from _basetest import BaseTest
 from nurdbar import NurdBar, BarcodeTypes, model
 from decimal import Decimal
+from nurdbar import exceptions
 import logging
 
 class TestBar(BaseTest):
@@ -18,6 +19,31 @@ class TestBar(BaseTest):
         self.assertEqual(self.bar.getBarcodeType(self.member.barcode),BarcodeTypes.MEMBERBARCODE)
         self.assertNotEqual(self.bar.getBarcodeType(self.member.barcode),BarcodeTypes.ITEMBARCODE)
         self.assertNotEqual(self.bar.getBarcodeType(self.item.barcode),BarcodeTypes.MEMBERBARCODE)
+
+    def test_handleBarcode(self):
+        self.assertEqual(self.bar.receivedMember,None)
+        self.assertEqual(self.bar.receivedItems,[])
+        self.bar.handleBarcode(133713371337)
+        self.assertEqual(self.bar.receivedMember,self.member)
+        self.assertEqual(self.bar.receivedItems,[])
+        with self.assertRaises(exceptions.ItemOutOfStockError):
+            self.bar.handleBarcode(12312893712938)
+        self.item.stock=10
+        self.bar.handleBarcode(12312893712938)
+        self.assertEqual(self.bar.receivedMember,None)
+        self.assertEqual(self.bar.receivedItems,[])
+
+    def test_resetHandleState(self):
+        self.assertEqual(self.bar.receivedMember,None)
+        self.assertEqual(self.bar.receivedItems,[])
+        self.bar.handleBarcode(133713371337)
+        self.assertEqual(self.bar.receivedMember,self.member)
+        self.assertEqual(self.bar.receivedItems,[])
+        self.item.stock=10
+        self.bar.handleBarcode(12312893712938)
+        self.bar.resetHandleState()
+        self.assertEqual(self.bar.receivedMember,None)
+        self.assertEqual(self.bar.receivedItems,[])
 
     def test_filled_tables(self):
         payment_item=self.bar.getItemByBarcode(1010101010)

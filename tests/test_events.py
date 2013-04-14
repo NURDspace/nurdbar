@@ -1,11 +1,12 @@
 from nurdbar import events
+from _basetest import BaseTest
 import unittest
 import os
 
 def _scannedBarcode2(barcode):
     print(barcode)
 
-class TestEvents(unittest.TestCase):
+class TestEvents(BaseTest):
 
     def test_events_register(self):
         events.BarcodeScannedEvent.register(self._scannedBarcode)

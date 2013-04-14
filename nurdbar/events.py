@@ -11,6 +11,10 @@ class _BaseEvent(object):
         for handler in self.handlers:
             handler(**kwargs)
 
+    def clearHandlers(self):
+        for h in self.handlers:
+            self.unregister(h)
+
     def unregister(self,func):
         self.handlers.remove(func)
 
@@ -18,6 +22,11 @@ class _BarcodeScannedEvent(_BaseEvent):
     def fire(self,barcode):
         super(_BarcodeScannedEvent,self).fire(barcode=barcode)
 
-BarcodeScannedEvent=_BarcodeScannedEvent()
+class _OutOfStockEvent(_BaseEvent):
+    def fire(self,item):
+        super(_OutOfStockEvent,self).fire(item=item)
 
-__all__=[BarcodeScannedEvent]
+BarcodeScannedEvent=_BarcodeScannedEvent()
+OutOfStockEvent=_OutOfStockEvent()
+
+__all__=[BarcodeScannedEvent,OutOfStockEvent]

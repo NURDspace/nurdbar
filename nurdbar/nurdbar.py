@@ -5,6 +5,8 @@ from ConfigParser import SafeConfigParser
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from model import Base,Member,Item,Transaction
+import events
+import exceptions
 from decimal import Decimal
 import logging
 import logging.config
@@ -66,6 +68,13 @@ class NurdBar(object):
         if str(barcode).startswith('1337'):
             return BarcodeTypes.MEMBERBARCODE
 
+    def resetHandleState(self):
+        """
+        Reset the state of handling barcodes. It reseults self.receivedMember and self.receivedItems
+        """
+        self.receivedMember=None
+        self.recevedItems=[]
+
     def handleBarcode(self,barcode):
         """
         Handle the reception of a barcode. The barcode type is checked, and the state of previously received barcodes is checked. If a sane combination of barcodes is
@@ -79,7 +88,11 @@ class NurdBar(object):
         elif self.getBarcodeType(barcode) == BarcodeTypes.ITEMBARCODE:
             item=self.getAvailableItemByBarcode(barcode)
             if not item:
-                raise ValueError('Item is not available (no stock present)')
+                item=self.getItemByBarcode(barcode)
+                if item:
+                    events.OutOfStockEvent.fire(item)
+                    raise exceptions.ItemOutOfStockError('Item %s (%s) is out of stock'%(item.item_id,item.barcode))
+                raise exceptions.ItemDoesNotExistError('Item %s does not exist'%barcode)
             self.receivedItems.append(item)
         if self.receivedMember is not None and len(self.receivedItems)>0:
             for item in self.receivedItems:

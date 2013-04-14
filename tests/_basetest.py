@@ -1,5 +1,5 @@
 import unittest
-from nurdbar import model, NurdBar
+from nurdbar import model, NurdBar, events
 import os
 import logging
 import traceback
@@ -31,4 +31,6 @@ class BaseTest(unittest.TestCase):
             self.bar.session.rollback()
             raise
         self.bar.drop_tables()
+        for event in events.__all__:
+            event.clearHandlers()
         self.log.debug('Finished BaseTest tearDown')

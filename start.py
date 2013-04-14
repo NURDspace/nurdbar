@@ -22,8 +22,8 @@ def main(configfile):
     log.debug('Starting interfaces')
     bar=NurdBar(configfile)
     importPlugins('nurdbar/plugins')
-    plugindir=bar.config.get('plugins','plugindir',None)
-    if plugindir:
+    if bar.config.has_option('plugins','plugindir'):
+        plugindir=bar.config.get('plugins','plugindir')
         importPlugins(plugindir)
 
     for portnum,factory in pluginregistry['tcpinterfaceplugin'].getPlugins():
