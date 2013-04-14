@@ -306,6 +306,7 @@ class NurdBar(object):
                 t.archived=True
                 processed_price-=t.transaction_price
             if processed_price>=amount:
+                self.log.debug('processed everything')
                 break
         try:
             self.session.commit()

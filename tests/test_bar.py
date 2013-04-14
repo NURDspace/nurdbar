@@ -95,6 +95,17 @@ class TestBar(BaseTest):
         self.assertEqual(trans.item.stock,8)
         self.assertEqual(self.member.balance,2.00)
 
+    def test_payment_negative_transactions(self):
+        self.item.stock=10
+        self.bar.takeItem(self.member.barcode,self.item.barcode)
+        self.bar.takeItem(self.member.barcode,self.item.barcode)
+        self.bar.takeItem(self.member.barcode,self.item.barcode)
+        self.bar.takeItem(self.member.barcode,self.item.barcode)
+        self.bar.takeItem(self.member.barcode,self.item.barcode)
+        self.bar.takeItem(self.member.barcode,self.item.barcode)
+        self.assertEqual(self.member.balance,-3.0)
+        self.bar.payAmount(self.member,2.0)
+
     def test_payment(self):
         self.bar.giveItem(self.member2.barcode,self.item.barcode,0.50,20) #give 20 beer
         trans1=self.bar.takeItem(self.member.barcode,self.item.barcode,10) #take 10 beer
@@ -122,5 +133,4 @@ class TestBar(BaseTest):
         self.assertEqual(self.member.balance,-15.50)
         self.bar.payAmount(self.member,10)
         self.assertEqual(self.member.balance,-5.50)
-        self.fail("Line 242 in nurdbar.NurdBar.payAmount (line with if followed by break) not tested!")
 
