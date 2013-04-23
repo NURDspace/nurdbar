@@ -1,11 +1,12 @@
 from twisted.protocols import basic
 from twisted.internet import protocol, reactor, serialport
 from nurdbar.plugins.api import *
-from nurdbar.events import BarcodeScannedEvent, OutOfStockEvent
+from nurdbar.events import BarcodeScannedEvent, OutOfStockEvent, MemberBarcodeScannedEvent
 from nurdbar import exceptions
 import traceback
 import logging
 log=logging.getLogger(__name__)
+
 
 class BarcodeProtocol(basic.LineReceiver):
 
@@ -21,15 +22,22 @@ class BarcodeProtocol(basic.LineReceiver):
         print('connection Made')
         BarcodeScannedEvent.register(self.printBarcode)
         OutOfStockEvent.register(self.printOutOfStockEvent)
+        MemberBarcodeScannedEvent.register(self.printMember)
 
-    def printOutOfStockEvent(self,item):
+    def printMember(self,event):
+        member=event.attributes['member']
+        print("Found member %s"%member.member_id)
+
+    def printOutOfStockEvent(self,event):
+        item=event.attributes['item']
         print('Item %s is out of stock'%item.item_id)
 
-    def printBarcode(self,barcode):
+    def printBarcode(self,event):
+        barcode=event.attributes['barcode']
         print('Scanned the following barcode: %s'%barcode)
 
     def lineReceived(self, barcode):
-        BarcodeScannedEvent.fire(barcode)
+        barcode=BarcodeScannedEvent.fire(barcode)
         try:
             self.bar.handleBarcode(barcode)
         except exceptions.ItemOutOfStockError:

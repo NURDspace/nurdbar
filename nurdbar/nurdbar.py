@@ -83,8 +83,10 @@ class NurdBar(object):
         :param barcode: the received barcode.
         :type barcode: str
         """
+        barcode=events.BarcodeScannedEvent.fire(barcode)
         if self.getBarcodeType(barcode) == BarcodeTypes.MEMBERBARCODE:
             self.receivedMember=self.getMemberByBarcode(barcode)
+            self.receivedMember=events.MemberBarcodeScannedEvent.fire(self.receivedMember)
         elif self.getBarcodeType(barcode) == BarcodeTypes.ITEMBARCODE:
             item=self.getAvailableItemByBarcode(barcode)
             if not item:
@@ -224,7 +226,10 @@ class NurdBar(object):
             raise
 
     def getMemberByBarcode(self,barcode):
-        return self.session.query(Member).filter_by(barcode=barcode).first()
+        member=self.session.query(Member).filter_by(barcode=barcode).first()
+        if member is None:
+            events.MemberNotFoundEvent.fire(barcode=barcode)
+        return member
 
     def getMemberByNick(self,nick):
         return self.session.query(Member).filter_by(nick=nick).first()
