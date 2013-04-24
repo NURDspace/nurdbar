@@ -35,7 +35,7 @@ class _MemberBarcodeScannedEvent(_BaseEvent):
 
 class _MemberNotFoundEvent(_BaseEvent):
     def fire(self,barcode):
-        return super(_MemberBarcodeScannedEvent,self).fire(barcode=barcode)
+        return super(_MemberNotFoundEvent,self).fire(barcode=barcode)
 
 class _BarcodeScannedEvent(_BaseEvent):
     def fire(self,barcode):
