@@ -17,6 +17,7 @@ class BarcodeProtocol(basic.LineReceiver):
         print('connection Lost')
         BarcodeScannedEvent.unregister(self.printBarcode)
         OutOfStockEvent.unregister(self.printOutOfStockEvent)
+        MemberBarcodeScannedEvent.unregister(self.printMember)
 
     def connectionMade(self):
         print('connection Made')
