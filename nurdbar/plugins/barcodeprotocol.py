@@ -3,6 +3,7 @@ from twisted.internet import protocol, reactor, serialport
 from nurdbar.plugins.api import *
 from nurdbar.events import BarcodeScannedEvent, OutOfStockEvent, MemberBarcodeScannedEvent
 from nurdbar import exceptions
+from nurdbar import barcodelookup
 import traceback
 import logging
 log=logging.getLogger(__name__)
@@ -39,6 +40,11 @@ class BarcodeProtocol(basic.LineReceiver):
     def printBarcode(self,event):
         barcode=event.attributes['barcode']
         print('Scanned the following barcode: %s'%barcode)
+        x = barcodelookup.BarcodeLookup()
+        try:
+            print (x.lookupBarcode(barcode))
+        except:
+            print ("Error!")
 
     def lineReceived(self, barcode):
         barcode=BarcodeScannedEvent.fire(barcode)
