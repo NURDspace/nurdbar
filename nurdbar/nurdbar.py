@@ -23,7 +23,7 @@ class NurdBar(object):
     """
     def __init__(self,configfile='nurdbar.cfg'):
         """
-        INstantiate the NurdBar
+        Instantiate the NurdBar
 
         :param configfile: The filename of the configuration file to read.
         :type configfile: str

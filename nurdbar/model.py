@@ -83,7 +83,7 @@ class Item(Base):
     #: Creation DateTime of the Item.
     creationdatetime = Column(DateTime,default=datetime.datetime.now)
     #: Last modification DateTime of the Item.
-    lastModifieddatetime = Column(DateTime,onupdate=datetime.datetime.now,default=datetime.datetime.now)
+    lastmodifieddatetime = Column(DateTime,onupdate=datetime.datetime.now,default=datetime.datetime.now)
     #: Buy price of the Item (for which the Item was bought)
     buy_price = Column(Numeric)
     #: Sell price of the Item (for which the Item will be sold). Defaults to buy_price
