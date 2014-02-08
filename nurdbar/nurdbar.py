@@ -63,9 +63,9 @@ class NurdBar(object):
         :return: BarcodeTypes -- Constant for the type of barcode.
 
         """
-        if not str(barcode).startswith('1337'):
+        if not str(barcode).startswith('MK'):
             return BarcodeTypes.ITEMBARCODE
-        if str(barcode).startswith('1337'):
+        if str(barcode).startswith('MK'):
             return BarcodeTypes.MEMBERBARCODE
 
     def resetHandleState(self):

@@ -27,7 +27,10 @@ class BarcodeProtocol(basic.LineReceiver):
 
     def printMember(self,event):
         member=event.attributes['member']
-        print("Found member %s"%member.member_id)
+        if member is not None:
+            print("Found member %s"%member.member_id)
+        else:
+            print ("Unknown member barcode.")
 
     def printOutOfStockEvent(self,event):
         item=event.attributes['item']

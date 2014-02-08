@@ -23,11 +23,11 @@ class Member(Base):
     #: Id of the member
     member_id = Column(Integer, primary_key=True)
     #: Date the Member was created
-    creationDateTime = Column(DateTime,default=datetime.datetime.now)
+    creationdatetime = Column(DateTime,default=datetime.datetime.now)
     #: DateTime on which the Member was last modified
-    lastModifiedDateTime = Column(DateTime,onupdate=datetime.datetime.now,default=datetime.datetime.now)
+    lastmodifieddatetime = Column(DateTime,onupdate=datetime.datetime.now,default=datetime.datetime.now)
     #: Barcode of the Member.
-    barcode = Column(BigInteger,unique=True)
+    barcode = Column(String,unique=True)
     #: Nick of the Member
     nick = Column(String)
 
@@ -43,28 +43,28 @@ class Member(Base):
         """
         The members (non-archived) transactions.
         """
-        return self._transactions.filter(Transaction.archived==False).order_by(Transaction.transactionDateTime).all()
+        return self._transactions.filter(Transaction.archived==False).order_by(Transaction.transactiondatetime).all()
 
     @property
     def negativeTransactions(self):
         """
         The members (non-archived) negative transactions (items bought).
         """
-        return self._transactions.filter(Transaction.archived==False,Transaction.transaction_price<0).order_by(Transaction.transactionDateTime).all()
+        return self._transactions.filter(Transaction.archived==False,Transaction.transaction_price<0).order_by(Transaction.transactiondatetime).all()
 
     @property
     def positiveTransactions(self):
         """
         The members (non-archived) positive transactions (items sold and payments).
         """
-        return self._transactions.filter(Transaction.archived==False,Transaction.transaction_price>0).order_by(Transaction.transactionDateTime).all()
+        return self._transactions.filter(Transaction.archived==False,Transaction.transaction_price>0).order_by(Transaction.transactiondatetime).all()
 
     @property
     def allTransactions(self):
         """
         All transactions of the member.
         """
-        return self._transactions.order_by(Transaction.transactionDateTime).all()
+        return self._transactions.order_by(Transaction.transactiondeatetime).all()
 
     def __init__(self,barcode,nick):
         self.nick=nick
@@ -79,11 +79,11 @@ class Item(Base):
     #: Id of the item (primary key)
     item_id = Column(Integer, primary_key=True)
     #: Barcode of the item. The combination of barcode and buy_price should be unique (but the barcode itself does not have to be).
-    barcode = Column(BigInteger,nullable=False)
+    barcode = Column(String,nullable=False)
     #: Creation DateTime of the Item.
-    creationDateTime = Column(DateTime,default=datetime.datetime.now)
+    creationdatetime = Column(DateTime,default=datetime.datetime.now)
     #: Last modification DateTime of the Item.
-    lastModifiedDateTime = Column(DateTime,onupdate=datetime.datetime.now,default=datetime.datetime.now)
+    lastModifieddatetime = Column(DateTime,onupdate=datetime.datetime.now,default=datetime.datetime.now)
     #: Buy price of the Item (for which the Item was bought)
     buy_price = Column(Numeric)
     #: Sell price of the Item (for which the Item will be sold). Defaults to buy_price
@@ -92,7 +92,7 @@ class Item(Base):
     stock = Column(Integer)
 
     def __init__(self,barcode,buy_price,sell_price=None):
-        log.debug('Adding Item with bacode %s, buy_price %s, sell_price %s'%(barcode,buy_price,sell_price))
+        log.debug('Adding Item with barcode %s, buy_price %s, sell_price %s'%(barcode,buy_price,sell_price))
         if sell_price == None:
             sell_price = buy_price
             log.debug('Setting sell price to %s'%sell_price)
@@ -106,7 +106,7 @@ class Transaction(Base):
     transaction_id = Column(Integer, primary_key=True)
     item_id = Column(Integer, ForeignKey('items.item_id'))
     member_id = Column(Integer, ForeignKey('members.member_id'))
-    transactionDateTime = Column(DateTime)
+    transactiondatetime = Column(DateTime)
     archived = Column(Boolean,default=False)
     transaction_price = Column(Numeric)
 

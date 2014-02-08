@@ -34,5 +34,12 @@ def main(configfile):
     reactor.run()
 
 if __name__=='__main__':
-    configfile=sys.argv[1]
+    try:
+        configfile=sys.argv[1]
+    except:
+        configfile = 'config.cfg'
+        if not os.path.isfile(configfile):
+            logging.warn('No config.cfg file exists, creating a blank one.')
+            with open (configfile,'a'):
+                os.utime(configfile,None)
     main(configfile)
