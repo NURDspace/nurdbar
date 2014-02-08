@@ -263,7 +263,7 @@ class NurdBar(object):
         :type barcode: str
         :returns: nurdbar.model.Item
         """
-        return self.session.query(Item).filter_by(barcode=barcode).order_by(Item.creationDateTime).first()
+        return self.session.query(Item).filter_by(barcode=barcode).order_by(Item.creationdatetime).first()
 
     def getItemByBarcodePrice(self,barcode,buy_price):
         """
@@ -275,7 +275,7 @@ class NurdBar(object):
         :type buy_price: float
         :returns: nurdbar.model.Item
         """
-        return self.session.query(Item).filter_by(barcode=barcode,buy_price=buy_price).order_by(Item.creationDateTime).first()
+        return self.session.query(Item).filter_by(barcode=barcode,buy_price=buy_price).order_by(Item.creationdatetime).first()
 
     def getAvailableItemByBarcode(self,barcode):
         """
@@ -285,7 +285,7 @@ class NurdBar(object):
         :type barcode: str
         :returns: nurdbar.model.Item
         """
-        return self.session.query(Item).filter(Item.barcode==barcode,Item.stock>0).order_by(Item.creationDateTime).first()
+        return self.session.query(Item).filter(Item.barcode==barcode,Item.stock>0).order_by(Item.creationdatetime).first()
 
     def getBalance(self,member):
         """
