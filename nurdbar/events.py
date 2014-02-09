@@ -54,7 +54,7 @@ class _OutOfStockEvent(_BarcodeScannedEvent):
         return super(_BarcodeScannedEvent,self).fire(item=item)
 
 class _CommandBarcodeScannedEvent(_BarcodeScannedEvent):
-    def fire(self,item):
+    def fire(self,barcode):
         return super(_BarcodeScannedEvent,self).fire(barcode=barcode)
 
 BarcodeScannedEvent=_BarcodeScannedEvent()

@@ -11,21 +11,22 @@ log=logging.getLogger(__name__)
 
 class BarcodeProtocol(basic.LineReceiver):
 
-    def __init__(self,bar):
+    def __init__(self,bar,screenObj):
         self.bar=bar
+        self.screenObj = screenObj
 
     def connectionLost(self,reason):
         print('connection Lost')
         BarcodeScannedEvent.unregister(self.printBarcode)
-        OutOfStockEvent.unregister(self.printOutOfStockEvent)
-        ItemBarcodeScannedEvent.unregister(self.printItem)
+#        OutOfStockEvent.unregister(self.printOutOfStockEvent)
+#        ItemBarcodeScannedEvent.unregister(self.printItem)
 #        MemberBarcodeScannedEvent.unregister(self.printMember)
 
     def connectionMade(self):
         print('connection Made')
         BarcodeScannedEvent.register(self.printBarcode)
-        OutOfStockEvent.register(self.printOutOfStockEvent)
-        ItemBarcodeScannedEvent.register(self.printItem)
+#        OutOfStockEvent.register(self.printOutOfStockEvent)
+#        ItemBarcodeScannedEvent.register(self.printItem)
 #        MemberBarcodeScannedEvent.register(self.printMember)
 
     def printItem(self,event):
@@ -50,7 +51,7 @@ class BarcodeProtocol(basic.LineReceiver):
 
     def printBarcode(self,event):
         barcode=event.attributes['barcode']
-        print('Scanned the following barcode: %s'%barcode)
+        self.screenObj.addLine('Scanned the following barcode: %s'%barcode, 'top')
 #        x = barcodelookup.BarcodeLookup()
 #        try:
 #            print (x.lookupBarcode(barcode))
@@ -72,10 +73,10 @@ class BarcodeProtocol(basic.LineReceiver):
             log.error(traceback.format_exc())
 
 
-@TransportInterfacePlugin
-def getLocalInterfacePlugin(bar,reactor):
+@CursesInterfacePlugin
+def getLocalInterfacePlugin(bar,screenObj,reactor):
     log.info('Starting barcode monitor')
     port=bar.config.get('scanner','port')
     log.debug('Using serial port %s'%port)
     baudrate=bar.config.get('scanner','baudrate')
-    serialport.SerialPort(BarcodeProtocol(bar),port,reactor, baudrate=baudrate)
+    serialport.SerialPort(BarcodeProtocol(bar,screenObj),port,reactor,baudrate=baudrate)

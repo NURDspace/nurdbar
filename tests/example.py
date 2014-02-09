@@ -45,7 +45,7 @@ print("member,balance=%s Correct? %s"%(member.balance,member.balance==93.00))
 bar.session.commit()
 bar.session.flush()
 member=bar.getMemberByBarcode('USER4432')
-item=bar.getItemByBarcode('12312893712938')
+item=bar.getItemByBarcode('12310038')
 
 #check new stock and balance
 print("item.stock=%s Correct? %s"%(item.stock,item.stock==3)) #4-1=3
