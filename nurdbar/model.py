@@ -91,7 +91,7 @@ class Item(Base):
     #: The amount of the Item in stock (modified by creating transactions).
     stock = Column(Integer)
 
-    def __init__(self,barcode,buy_price,sell_price=None):
+    def __init__(self,barcode,buy_price,sell_price=None,stock=0):
         log.debug('Adding Item with barcode %s, buy_price %s, sell_price %s'%(barcode,buy_price,sell_price))
         if sell_price == None:
             sell_price = buy_price
@@ -99,14 +99,14 @@ class Item(Base):
         self.barcode=barcode
         self.buy_price=buy_price
         self.sell_price=sell_price
-        self.stock=0
+        self.stock=stock
 
 class Transaction(Base):
     __tablename__ = 'transactions'
     transaction_id = Column(Integer, primary_key=True)
     item_id = Column(Integer, ForeignKey('items.item_id'))
     member_id = Column(Integer, ForeignKey('members.member_id'))
-    transactiondatetime = Column(DateTime)
+    transactiondatetime = Column(DateTime,default=datetime.datetime.now)
     archived = Column(Boolean,default=False)
     transaction_price = Column(Numeric)
 

@@ -15,6 +15,7 @@ import traceback
 
 class BarcodeTypes(object):
     ITEMBARCODE = 'Item Barcode'
+    COMMANDBARCODE = 'Command Barcode'
     MEMBERBARCODE = 'Member Barcode'
 
 class NurdBar(object):
@@ -34,6 +35,7 @@ class NurdBar(object):
         self.log.debug('Read config')
         print('setup nurdbar')
         self.engine,self.metadata,self.session=self.setupModel()
+        self.commandState='BUY'
         self.receivedItems=[]
         self.receivedMember=None
 
@@ -63,14 +65,16 @@ class NurdBar(object):
         :return: BarcodeTypes -- Constant for the type of barcode.
 
         """
-        if not str(barcode).startswith('MK'):
-            return BarcodeTypes.ITEMBARCODE
-        if str(barcode).startswith('MK'):
+        if str(barcode).startswith('USER'):
+            return BarcodeTypes.MEMBERBARCODE
+        elif str(barcode).startswith('MK'):
+            return BarcodeTypes.COMMANDBARCODE
+        else:
             return BarcodeTypes.MEMBERBARCODE
 
     def resetHandleState(self):
         """
-        Reset the state of handling barcodes. It reseults self.receivedMember and self.receivedItems
+        Reset the state of handling barcodes. It resets self.receivedMember and self.receivedItems
         """
         self.receivedMember=None
         self.recevedItems=[]
@@ -87,6 +91,8 @@ class NurdBar(object):
         if self.getBarcodeType(barcode) == BarcodeTypes.MEMBERBARCODE:
             self.receivedMember=self.getMemberByBarcode(barcode)
             self.receivedMember=events.MemberBarcodeScannedEvent.fire(self.receivedMember)
+        if self.getBarcodeType(barcode) == BarcodeTypes.COMMANDBARCODE:
+            events.CommandBarcodeScannedEvent.fire(barcode)
         elif self.getBarcodeType(barcode) == BarcodeTypes.ITEMBARCODE:
             item=self.getAvailableItemByBarcode(barcode)
             if not item:
@@ -97,20 +103,25 @@ class NurdBar(object):
                 raise exceptions.ItemDoesNotExistError('Item %s does not exist'%barcode)
             self.receivedItems.append(item)
         if self.receivedMember is not None and len(self.receivedItems)>0:
-            for item in self.receivedItems:
-                self.takeItem(self.receivedMember.barcode,item.barcode)
+            if self.commandState == 'SELL':
+                buyprice = None #Need to add user input for this one.
+                for item in self.receivedItems:
+                    self.sellItem(self.receivedMember.barcode,item.barcode,buyprice)
+            else:
+                for item in self.receivedItems:
+                    self.buyItem(self.receivedMember.barcode,item.barcode)
             self.receivedItems = []
-            self.receivedMember = None
+#            self.receivedMember = None #Timeout needed for this.
 
-    def giveItem(self,member_barcode,item_barcode,buy_price=None,amount=1,sell_price=None):
+    def sellItem(self,member_barcode,item_barcode,buy_price=None,amount=1,sell_price=None):
         """
-        Give an item, or on other words, sell something to the bar/add stock. This both changes the stock of the item being given, and changes the balance for the Member giving the item.
+        Sell something to the bar/add stock. This both changes the stock of the item being given, and changes the balance for the Member giving the item.
         If the Item already exists (with the same buy_price), this item is used. If the Item is new, a new Item is stored in the database.
         If the Member is unkown, ValueError is raised.
 
         :param member_barcode: The barcode of the Member giving the Item.
         :type member_barcode: str
-        :param item_barcode: The barcode fo the Item being given.
+        :param item_barcode: The barcode of the Item being given.
         :type item_barcode: str
         :param buy_price: The buy price (for which the bar buys it) of the item being given
         :type buy_price: float
@@ -123,7 +134,7 @@ class NurdBar(object):
         """
         member=self.getMemberByBarcode(member_barcode)
         if member==None:
-            raise ValueError('Member with barcode %s is unkown'%(member_barcode,))
+            raise ValueError('Member with barcode %s is unknown'%(member_barcode,))
         if sell_price==None:
             sell_price=buy_price
         item=self.getItemByBarcodePrice(item_barcode,buy_price)
@@ -133,7 +144,7 @@ class NurdBar(object):
         item.stock+=amount
         return self.addTransaction(item,member,transaction_price=buy_price*amount)
 
-    def takeItem(self,member_barcode,item_barcode,amount=1):
+    def buyItem(self,member_barcode,item_barcode,amount=1):
         """
         Take an Item from the bar. In other words: buy something. This both changes the stock of the Item, and the balance of the Member taking the Item.
         If multiple Items with the same barcode but different buy_price exist, the oldest Item is sold first untill it stock runs out, then the next-oldest Item will be sold, etc.
@@ -153,7 +164,7 @@ class NurdBar(object):
             raise ValueError('Member with barcode %s is unkown'%member_barcode)
         rest_amount=0
         item=self.getAvailableItemByBarcode(item_barcode)
-        payment_item=self.getItemByBarcode(1010101010)
+        payment_item=self.getItemByBarcode('CASH')
         if not item:
             raise ValueError('Item is not available (no stock present)')
         self.log.info('Member %s has taken %s item(s) %s with barcode %s and sell_price %s'%(member.member_id,amount,item.item_id,item.barcode,item.sell_price))
@@ -193,17 +204,18 @@ class NurdBar(object):
             except Exception:
                 self.log.error("Exception occured during commit:\n%s"%traceback.format_exc())
                 self.session.rollback()
-                raise
+                raise exceptions.SessionCommitError
             taken_price=taken_price-processed_payment_price #only process the remaining price
         if taken_price>0:
             trans=self.addTransaction(item,member,-taken_price)
         if rest_amount>0:
-            return self.takeItem(member_barcode,item_barcode,rest_amount)
+            return self.buyItem(member_barcode,item_barcode,rest_amount)
         else:
             return trans
 
     def fill_tables(self):
-        payment_item=self.addItem(1010101010,0.01)
+        payment_item=self.addItem('CASH',0.01)
+        pass
 
     def create_tables(self):
         self.metadata.create_all()
@@ -277,6 +289,18 @@ class NurdBar(object):
         """
         return self.session.query(Item).filter_by(barcode=barcode,buy_price=buy_price).order_by(Item.creationdatetime).first()
 
+    def getItemTotalStock(self,barcode):
+        """
+        Get an Item that represents an average of all items of this barcode type.
+
+        :param barcode: The barcode of the Item to get.
+        :type barcode: str
+        :param buy_price: The buy_price of the Item to get.
+        :type buy_price: float
+        :returns: nurdbar.model.Item
+        """
+        return self.session.filter_by(barcode=barcode).query(func.avg(Item.buy_price)).first() #er?
+
     def getAvailableItemByBarcode(self,barcode):
         """
         Get the first available (stock>0) Item by barcode. If several items with the same barcode are available, the oldest available Item is returned.
@@ -333,7 +357,7 @@ class NurdBar(object):
             self.log.error("Exception occured during commit:\n%s"%traceback.format_exc())
             self.session.rollback()
             raise
-        payment_item=self.getItemByBarcode(1010101010)
+        payment_item=self.getItemByBarcode('CASH')
         if processed_price>0:
             trans=self.addTransaction(payment_item,member,processed_price)
             trans.archived=True
@@ -373,7 +397,7 @@ class NurdBar(object):
 
     def addItem(self,barcode,buy_price,sell_price=None):
         """
-        Add an Item to the bar.
+        Add a new Item entry to the bar.
 
         :param barcode: The barcode of the new Item
         :type barcode: str
@@ -381,7 +405,7 @@ class NurdBar(object):
         :type buy_price: float
         :param sell_price: The price by which the Item is sold by the bar (defaults to buy_price)
         :type sell_price: float
-        :returns: model.Member
+        :returns: model.Item
         """
         if sell_price==None:
             sell_price=buy_price
@@ -393,5 +417,18 @@ class NurdBar(object):
         except Exception:
             self.log.error("Exception occured during commit:\n%s"%traceback.format_exc())
             self.session.rollback()
-            raise
+            raise exceptions.SessionCommitError
         return item
+
+    def commandChange(self,command):
+        """
+        Change the command mode of the engine. Allows users to sell upon correct command code entry.
+        """
+        if command == 'BUY':
+            self.commandState = 'BUY'
+        if command == 'SELL':
+            self.commandState = 'SELL'
+        if command == 'LOGOUT':
+            self.receivedItems = []
+            self.receivedMember = None
+            self.commandState = 'BUY'

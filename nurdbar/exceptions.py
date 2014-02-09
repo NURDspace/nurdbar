@@ -3,3 +3,6 @@ class ItemOutOfStockError(Exception):
 
 class ItemDoesNotExistError(Exception):
     pass
+
+class SessionCommitError(Exception):
+    pass

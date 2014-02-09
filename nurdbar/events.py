@@ -29,25 +29,41 @@ class _BaseEvent(object):
     def unregister(self,func):
         self.handlers.remove(func)
 
-class _MemberBarcodeScannedEvent(_BaseEvent):
-    def fire(self,member):
-        return super(_MemberBarcodeScannedEvent,self).fire(member=member)
-
-class _MemberNotFoundEvent(_BaseEvent):
-    def fire(self,barcode):
-        return super(_MemberNotFoundEvent,self).fire(barcode=barcode)
-
 class _BarcodeScannedEvent(_BaseEvent):
     def fire(self,barcode):
         return super(_BarcodeScannedEvent,self).fire(barcode=barcode)
 
-class _OutOfStockEvent(_BaseEvent):
+class _MemberBarcodeScannedEvent(_BarcodeScannedEvent):
+    def fire(self,member):
+        return super(_BarcodeScannedEvent,self).fire(member=member)
+
+class _MemberNotFoundEvent(_BarcodeScannedEvent):
+    def fire(self,barcode):
+        return super(_BarcodeScannedEvent,self).fire(barcode=barcode)
+
+class _ItemBarcodeScannedEvent(_BarcodeScannedEvent):
     def fire(self,item):
-        return super(_OutOfStockEvent,self).fire(item=item)
+        return super(_BarcodeScannedEvent,self).fire(item=item)
+
+class _ItemNotFoundEvent(_BarcodeScannedEvent):
+    def fire(self,barcode):
+        return super(_BarcodeScannedEvent,self).fire(barcode=barcode)
+
+class _OutOfStockEvent(_BarcodeScannedEvent):
+    def fire(self,item):
+        return super(_BarcodeScannedEvent,self).fire(item=item)
+
+class _CommandBarcodeScannedEvent(_BarcodeScannedEvent):
+    def fire(self,item):
+        return super(_BarcodeScannedEvent,self).fire(barcode=barcode)
 
 BarcodeScannedEvent=_BarcodeScannedEvent()
 OutOfStockEvent=_OutOfStockEvent()
 MemberBarcodeScannedEvent=_MemberBarcodeScannedEvent()
+ItemBarcodeScannedEvent=_ItemBarcodeScannedEvent()
 MemberNotFoundEvent=_MemberNotFoundEvent()
+ItemNotFoundEvent=_ItemNotFoundEvent()
+CommandBarcodeScannedEvent=_CommandBarcodeScannedEvent()
 
-__all__=[BarcodeScannedEvent,OutOfStockEvent,MemberBarcodeScannedEvent,MemberNotFoundEvent]
+__all__=[BarcodeScannedEvent,OutOfStockEvent,MemberBarcodeScannedEvent,MemberNotFoundEvent,
+         ItemNotFoundEvent,CommandBarcodeScannedEvent]
