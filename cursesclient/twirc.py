@@ -7,10 +7,9 @@ class IRC(IRCClient):
     """ A protocol object for IRC """
 
     def __init__(self, screenObj, nickname,channel,debugmode=False):
-        # screenObj should be 'stdscr' or a curses window/pad object
         self.screenObj = screenObj
-        # for testing (hacky way around initial bad design for this example) :)
         self.screenObj.irc = self
+
         self.debugmode = debugmode
         self.nickname = nickname
         self.originalnick = nickname

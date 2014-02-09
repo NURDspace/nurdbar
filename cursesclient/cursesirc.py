@@ -147,6 +147,7 @@ class Screen(CursesStdIO):
                     except: pass
             elif self.cursorpos == 'top':
                 self.addLine(text, 'top')
+                self.bar.sendLine(text)
                 #try sending it to the bar engine
             text = ''
 

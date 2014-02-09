@@ -13,7 +13,7 @@ Traceback (most recent call last):
 --- <exception caught here> ---
   File "/usr/lib/python2.7/dist-packages/twisted/internet/defer.py", line 137, in maybeDeferred
     result = f(*args, **kw)
-  File "/home/ircguest/nurdbar/cursesclient/cursesirc.py", line 185, in Ping
+  File "/home/ircguest/nurdbar/cursesclient/cursesirc.py", line 186, in Ping
     self.irc.sendLine('PING space.nurdspace.nl')
 exceptions.AttributeError: Screen instance has no attribute 'irc'
 /home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py:1: RuntimeWarning: Parent module 'nurdbar/plugins' not found while handling absolute import

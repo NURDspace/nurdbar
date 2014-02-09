@@ -14,16 +14,17 @@ class BarcodeProtocol(basic.LineReceiver):
     def __init__(self,bar,screenObj):
         self.bar=bar
         self.screenObj = screenObj
+        self.screenObj.bar = self
 
     def connectionLost(self,reason):
-        print('connection Lost')
+        self.screenObj.addLine('connection Lost','top')
         BarcodeScannedEvent.unregister(self.printBarcode)
 #        OutOfStockEvent.unregister(self.printOutOfStockEvent)
 #        ItemBarcodeScannedEvent.unregister(self.printItem)
 #        MemberBarcodeScannedEvent.unregister(self.printMember)
 
     def connectionMade(self):
-        print('connection Made')
+        self.screenObj.addLine('connection Made','top')
         BarcodeScannedEvent.register(self.printBarcode)
 #        OutOfStockEvent.register(self.printOutOfStockEvent)
 #        ItemBarcodeScannedEvent.register(self.printItem)
@@ -32,7 +33,8 @@ class BarcodeProtocol(basic.LineReceiver):
     def printItem(self,event):
         item=event.attributes['item']
         if item is not None:
-            print("Found item %s"%item.item_id)
+            pass
+#            print("Found item %s"%item.item_id)
         else:
             self.sendLine('\a')
             print ("Unknown item barcode.")
@@ -59,14 +61,13 @@ class BarcodeProtocol(basic.LineReceiver):
 #            print ("Error!")
 
     def lineReceived(self, barcode):
-        barcode=BarcodeScannedEvent.fire(barcode)
         try:
             self.bar.handleBarcode(barcode)
         except exceptions.ItemOutOfStockError:
             log.warn('Item out of stock')
             self.bar.resetHandleState()
         except exceptions.ItemDoesNotExistError:
-            log.warn('Item not registered. Would you like to register it?')
+            log.warn('Item not registered.')
             self.bar.resetHandleState()
         except Exception:
             self.bar.resetHandleState()
