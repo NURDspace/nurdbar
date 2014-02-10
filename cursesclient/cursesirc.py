@@ -1,7 +1,6 @@
 import curses, time, traceback, sys, re
 import curses.wrapper
 
-from twisted.internet.task import LoopingCall
 from twisted.python import log
 
 class CursesStdIO:
@@ -15,8 +14,7 @@ class CursesStdIO:
     def logPrefix(self): return 'CursesClient'
 
 class Screen(CursesStdIO):
-    def __init__(self, stdscr,screensratio,forgettime):
-        self.forgettime = forgettime
+    def __init__(self, stdscr,screensratio):
         self.timer = 0
         self.statusText = "NO NAME SELECTED: /nick <name>"
         self.ircText = ''
@@ -24,12 +22,6 @@ class Screen(CursesStdIO):
         self.prevText = ['']
         self.prevCount = 0
         self.stdscr = stdscr
-
-        self.handleTimeout = 0
-        forgetter = LoopingCall(self.checkForgetHandle)
-        forgetter.start(60) #seconds\
-        pinger = LoopingCall(self.Ping)
-        pinger.start(180) #seconds
 
         # set screen attributes
         self.stdscr.nodelay(1) # this is used to make input calls non-blocking
@@ -144,10 +136,14 @@ class Screen(CursesStdIO):
                         self.prevText.append(self.ircText)
                         if len(self.prevText)>20: pop(self.prevText)
                         self.prevCount = 0
-                    except: pass
+                    except:
+                        self.addLine('irc is not connected.','bottom')
             elif self.cursorpos == 'top':
                 self.addLine(text, 'top')
-                self.bar.sendLine(text)
+                try:
+                    self.bar.sendLine(text)
+                except:
+                    self.addLine('bar is not connected.','top')
                 #try sending it to the bar engine
             text = ''
 

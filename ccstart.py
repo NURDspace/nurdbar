@@ -45,7 +45,7 @@ def importPlugins(plugindir):
 def main(configfile):
     log.debug('Starting interfaces')
     stdscr = curses.initscr() # initialize curses
-    screen = cursesirc.Screen(stdscr,SCREENSRATIO,FORGETTIME)   # create Screen object
+    screen = cursesirc.Screen(stdscr,SCREENSRATIO)   # create Screen object
     stdscr.refresh()
 
     bar=NurdBar(configfile)
@@ -63,7 +63,7 @@ def main(configfile):
     for factory in pluginregistry['cursesinterfaceplugin'].getPlugins():
         factory(bar,screen,reactor)
 
-    ircFactory = twirc.IRCFactory(screen, NICKNAME, CHANNEL, DEBUGMODE)
+    ircFactory = twirc.IRCFactory(screen, NICKNAME, CHANNEL, FORGETTIME, DEBUGMODE)
     reactor.addReader(screen) # add screen object as a reader to the reactor
     reactor.connectTCP("irc.oftc.net",6667,ircFactory) # connect to IRC
     reactor.run() # have fun!

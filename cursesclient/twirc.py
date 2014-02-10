@@ -1,21 +1,29 @@
 import time, re, traceback
 from twisted.internet.protocol import ClientFactory
 from twisted.words.protocols.irc import IRCClient
+from twisted.internet.task import LoopingCall
 
 class IRC(IRCClient):
 
     """ A protocol object for IRC """
 
-    def __init__(self, screenObj, nickname,channel,debugmode=False):
+    def __init__(self, screenObj, nickname,channel,forgettime = 20,debugmode=False):
         self.screenObj = screenObj
         self.screenObj.irc = self
 
+        self.forgettime = forgettime
         self.debugmode = debugmode
         self.nickname = nickname
         self.originalnick = nickname
         self.realname = ' '
         self.channel = channel
         self.lineRate = 1
+
+        self.handleTimeout=0
+        forgetter = LoopingCall(self.checkForgetHandle)
+        forgetter.start(60) #seconds\
+        pinger = LoopingCall(self.Ping)
+        pinger.start(180) #seconds
 
     def lineReceived(self, line):
         """ When receiving a line, filter and add it to the output buffer """
@@ -37,6 +45,7 @@ class IRC(IRCClient):
             type = line
         if 'PING' in type:
             self.sendLine('PONG :'+msg)
+            return
         elif 'PRIVMSG' in type:
             if self.channel in type:
                 if 'ACTION' in msg:
@@ -67,6 +76,16 @@ class IRC(IRCClient):
         self.screenObj.addLine("* DISCONNECTED")
         pass
 
+    def Ping(self):
+        self.sendLine('PING space.nurdspace.nl')
+
+    def checkForgetHandle(self):
+        self.handleTimeout = self.handleTimeout + 1
+        if self.handleTimeout > self.forgettime:
+            self.screenObj.statusText = "NO NAME SELECTED: /nick <name>"
+            self.nickname = self.originalnick
+            self.sendLine('NICK '+self.nickname)
+            self.screenObj.redisplayLines()
 
 class IRCFactory(ClientFactory):
 
@@ -76,8 +95,8 @@ class IRCFactory(ClientFactory):
 
     protocol = IRC
 
-    def __init__(self, screenObj,nickname,channel,debug):
-        self.irc = self.protocol(screenObj,nickname,channel,debug)
+    def __init__(self, screenObj,nickname,channel,forgettime,debug):
+        self.irc = self.protocol(screenObj,nickname,channel,forgettime,debug)
 
     def buildProtocol(self, addr=None):
         return self.irc
