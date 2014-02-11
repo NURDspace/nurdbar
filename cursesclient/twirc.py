@@ -95,7 +95,7 @@ class IRCFactory(ClientFactory):
 
     protocol = IRC
 
-    def __init__(self, screenObj,nickname,channel,forgettime,debug):
+    def __init__(self, screenObj,nickname,channel,forgettime=20,debug=False):
         self.irc = self.protocol(screenObj,nickname,channel,forgettime,debug)
 
     def buildProtocol(self, addr=None):

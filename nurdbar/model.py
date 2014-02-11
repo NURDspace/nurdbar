@@ -3,7 +3,7 @@ The datamodel for the NurdBar. The datamodel is created using SQLAlchemy. Instan
 Manipulation of the database can be done by instantiating and manipulating these objects.
 For a first intro on SQLAlchemy see http://docs.sqlalchemy.org/en/rel_0_7/orm/tutorial.html#querying
 """
-from sqlalchemy import create_engine, Column, Integer, String, Numeric, DateTime, Boolean
+from sqlalchemy import create_engine, Column, Integer, String, Numeric, DateTime, Boolean, func
 from sqlalchemy.schema import UniqueConstraint
 from sqlalchemy.types import BigInteger
 from sqlalchemy.ext.declarative import declarative_base
@@ -64,7 +64,7 @@ class Member(Base):
         """
         All transactions of the member.
         """
-        return self._transactions.order_by(Transaction.transactiondeatetime).all()
+        return self._transactions.order_by(Transaction.transactiondatetime).all()
 
     def __init__(self,barcode,nick):
         self.nick=nick
@@ -100,6 +100,31 @@ class Item(Base):
         self.buy_price=buy_price
         self.sell_price=sell_price
         self.stock=stock
+
+class BarcodeDesc(Base):
+    """
+    All descriptions for barcodes. May or may not be automatically generated.
+    """
+    __tablename__ = 'barcodedesc'
+    #: id of the desc (primary key)
+    desc_id = Column(Integer, primary_key=True)
+    #: Barcode of the item. This must be present. MAY clash in the future with RCN-8s - Functionality to fix then.
+    barcode = Column(String,nullable=False)
+    #: Creation DateTime of the name.
+    creationdatetime = Column(DateTime,default=datetime.datetime.now)
+    #: text description of this barcode.
+    description = Column(String)
+    #: size/weight of this barcode item.
+    volume = Column(String)
+    #: issuing country of this barcode.
+    issuing_country = Column(String)
+
+    def __init__(self,barcode,description,volume='',issuing_country=''):
+        log.debug('Adding barcode description with barcode %s, description %s, volume %s, issuing country %s'%(barcode,description,volume,issuing_country))
+        self.barcode=barcode
+        self.description=description
+        self.volume=volume
+        self.issuing_country=issuing_country
 
 class Transaction(Base):
     __tablename__ = 'transactions'

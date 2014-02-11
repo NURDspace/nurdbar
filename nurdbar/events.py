@@ -42,8 +42,8 @@ class _MemberNotFoundEvent(_BarcodeScannedEvent):
         return super(_BarcodeScannedEvent,self).fire(barcode=barcode)
 
 class _ItemBarcodeScannedEvent(_BarcodeScannedEvent):
-    def fire(self,item):
-        return super(_BarcodeScannedEvent,self).fire(item=item)
+    def fire(self,item,barcodedesc=None):
+        return super(_BarcodeScannedEvent,self).fire(item=item,barcodedesc=barcodedesc)
 
 class _ItemNotFoundEvent(_BarcodeScannedEvent):
     def fire(self,barcode):
@@ -54,8 +54,8 @@ class _OutOfStockEvent(_BarcodeScannedEvent):
         return super(_BarcodeScannedEvent,self).fire(item=item)
 
 class _CommandBarcodeScannedEvent(_BarcodeScannedEvent):
-    def fire(self,barcode):
-        return super(_BarcodeScannedEvent,self).fire(barcode=barcode)
+    def fire(self,command):
+        return super(_BarcodeScannedEvent,self).fire(command=command)
 
 BarcodeScannedEvent=_BarcodeScannedEvent()
 OutOfStockEvent=_OutOfStockEvent()
