@@ -4,6 +4,9 @@ from nurdbar.plugins.api import *
 from nurdbar.events import BarcodeScannedEvent,OutOfStockEvent,ItemBarcodeScannedEvent,MemberBarcodeScannedEvent,CommandBarcodeScannedEvent
 from nurdbar import exceptions
 from nurdbar import barcodelookup
+
+from iso3166 import countries
+
 import traceback
 import logging
 log=logging.getLogger(__name__)
@@ -49,10 +52,16 @@ class BarcodeProtocol(basic.LineReceiver):
         CommandBarcodeScannedEvent.register(self.modeChange)
 
     def scanItem(self,event):
+        #Reset state machines if in progress
+        if self.registeringItem: self.registerNewItem()
+        if self.sellingItem: self.sellItemHandler()
+        if self.buyingItem: self.buyItemHandler()
+
         item=event.attributes['item']
         barcodedesc=event.attributes['barcodedesc']
+
         if item is None:
-            self.screenObj.addLine('This item has no entry in the database.','top')
+            self.screenObj.addLine('This item is recognised, but we have none.','top')
 #            self.newItemBarcode = barcode
 #            self.registerNewItem()
 #            return
@@ -127,10 +136,20 @@ class BarcodeProtocol(basic.LineReceiver):
         """
         Overriding the default input to run state engine.
         """
-        self.lastLine = line
-        if self.registeringItem: self.registerNewItem()
-        if self.sellingItem: self.sellItemHandler()
-        if self.buyingItem: self.buyItemHandler()
+        self.lastLine = line.strip()
+        if self.registeringItem:
+            self.registerNewItem()
+            return
+        if self.sellingItem:
+            self.sellItemHandler()
+            return
+        if self.buyingItem:
+            self.buyItemHandler()
+            return
+        try:
+            self.newItemNumber = int(self.lastLine)
+        except:
+            pass
 
     def sellItemHandler(self):
         if self.sellingItem == False:
@@ -144,7 +163,7 @@ class BarcodeProtocol(basic.LineReceiver):
                 self.newItemNumber = 1
             else:
                 try:
-                    self.newItemNumber = int(self.lastLine)
+                    self.newItemNumber = int(self.lastLine.strip())
                 except:
                     self.newItemNumber = 1
                     self.screenObj.addLine('Invalid entry. Defaulting to 1...','top')
@@ -152,12 +171,12 @@ class BarcodeProtocol(basic.LineReceiver):
             return
         if not self.newItemPrice:
             try:
-                self.newItemPrice = float(self.lastLine)
+                self.newItemPrice = float(self.lastLine.strip())
             except:
                 self.newItemPrice = None
                 self.screenObj.addLine('Invalid value. Please try again.','top')
                 return
-            self.screenObj.addLine('Buying from'+str(self.currentMember.barcode),'top')
+            self.screenObj.addLine('Buying from '+str(self.currentMember.nick),'top')
             self.screenObj.addLine('Item: '+str(self.newItemBarcode),'top')
             self.screenObj.addLine('Number: '+str(self.newItemNumber),'top')
             self.screenObj.addLine('Buying at EUR '+str(self.newItemPrice),'top')
@@ -177,7 +196,7 @@ class BarcodeProtocol(basic.LineReceiver):
                 self.newItemNumber = 1
             else:
                 try:
-                    self.newItemNumber = int(self.lastLine)
+                    self.newItemNumber = int(self.lastLine.strip())
                 except:
                     self.screenObj.addLine('Invalid entry. Defaulting to 1...','top')
             currentstock = self.bar.getItemTotalStock(self.newItemBarcode)
@@ -197,32 +216,47 @@ class BarcodeProtocol(basic.LineReceiver):
             self.newItemDesc=None
             self.newItemVolume=None
             self.newItemCountry=None
-            self.lastLine = ''
+
+            self.screenObj.addLine('Looking online for what this is...','top')
+            response = barcodelookup.BarcodeLookup().lookupBarcode(self.newItemBarcode)
+            if response:
+                self.newItemDesc,self.newItemVolume,self.newItemCountry = response
+                self.screenObj.addLine('I think this is '+str(self.newItemDesc)+' '+str(self.newItemVolume)+' from '+str(self.newItemCountry)+'.','top')
+                self.screenObj.addLine("Please enter a price (in EUR). If you don't know one, leave blank.",'top')
+                return
+            else:
+                self.screenObj.addLine('Not found. Please enter a description or name.','top')
+                return
+        if not self.newItemDesc:
+            self.newItemDesc = str(self.lastLine.strip())
+            self.screenObj.addLine('Please enter a size or volume (e.g. 500ml).','top')
+            return
+        if not self.newItemVolume:
+            self.newItemVolume = str(self.lastLine.strip())
+            self.screenObj.addLine('Please enter a country of origin (e.g. Germany).','top')
+            return
+        if self.newItemCountry is None:
+            if self.lastLine.strip() is not '':
+                try:
+                    countries.get(str(self.lastLine.strip()))
+                except:
+                    self.screenObj.addLine('Unrecognised country. Please try again (or leave blank).','top')
+                    return
+            self.newItemCountry = str(self.lastLine.strip())
             self.screenObj.addLine("Please enter a price (in EUR). If you don't know one, leave blank.",'top')
             return
         if self.newItemPrice is None:
             if self.lastLine.strip() == '':
                 self.newItemPrice = 0
             try:
-                self.newItemPrice = float(self.lastLine)
+                self.newItemPrice = float(self.lastLine.strip())
             except:
                 self.newItemPrice = 0
                 self.screenObj.addLine('Invalid value. Skipping...','top')
-            self.screenObj.addLine('Please enter a description or name.','top')
-            return
-        if not self.newItemDesc:
-            self.newItemDesc = str(self.lastLine)
-            self.screenObj.addLine('Please enter a size or volume (e.g. 500ml).','top')
-            return
-        if not self.newItemVolume:
-            self.newItemVolume = str(self.lastLine)
-            self.screenObj.addLine('Please enter a country of origin (e.g. Germany).','top')
-            return
-        if not self.newItemCountry:
-            self.newItemCountry = str(self.lastLine)
-            self.screenObj.addLine('Entering data now.','top')
-            if self.newItemPrice is not 0:
-                self.bar.addItem(self.newItemBarcode,self.newItemPrice)
+        self.screenObj.addLine('Entering data now.','top')
+        if self.newItemPrice is not 0:
+            self.bar.addItem(self.newItemBarcode,self.newItemPrice)
+        if self.newItemDesc and self.newItemVolume and self.newItemCountry:        
             self.bar.addBarcodeDesc(self.newItemBarcode,self.newItemDesc,self.newItemVolume,self.newItemCountry)
             self.registeringItem=False
             self.newItemBarcode=None

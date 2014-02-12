@@ -1,0 +1,167 @@
+2014-02-12 19:25:50,753 DEBUG Read config
+2014-02-12 19:25:50,838 DEBUG Session setup
+2014-02-12 19:25:50,895 INFO Starting telnet protocol
+2014-02-12 19:25:50,897 INFO Starting barcode monitor
+2014-02-12 19:25:50,898 DEBUG Using serial port /dev/ttySCAN
+2014-02-12 19:26:10,939 DEBUG Read config
+2014-02-12 19:26:11,023 DEBUG Session setup
+2014-02-12 19:26:11,079 INFO Starting telnet protocol
+2014-02-12 19:26:11,081 INFO Starting barcode monitor
+2014-02-12 19:26:11,081 DEBUG Using serial port /dev/ttySCAN
+2014-02-12 19:26:18,700 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '4029764001807'}
+2014-02-12 19:26:19,586 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2007-03-27T19:10:44' at 388b9e0>, 'description': 'Club-Mate', 'noCacheAfterUTC': <DateTime '2014-02-13T12:26:19' at 388b998>, 'ean': '4029764001807', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': '0.5L', 'issuerCountry': 'Germany', 'issuerCountryCode': 'de'}
+2014-02-12 19:26:19,587 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '4029764001807'}
+2014-02-12 19:26:19,847 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2007-03-27T19:10:44' at 388ba28>, 'description': 'Club-Mate', 'noCacheAfterUTC': <DateTime '2014-02-13T12:26:19' at 388b950>, 'ean': '4029764001807', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': '0.5L', 'issuerCountry': 'Germany', 'issuerCountryCode': 'de'}
+2014-02-12 19:28:01,595 DEBUG Read config
+2014-02-12 19:28:01,679 DEBUG Session setup
+2014-02-12 19:28:01,737 INFO Starting telnet protocol
+2014-02-12 19:28:01,739 INFO Starting barcode monitor
+2014-02-12 19:28:01,739 DEBUG Using serial port /dev/ttySCAN
+2014-02-12 19:28:06,088 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '4029764001807'}
+2014-02-12 19:28:06,903 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2007-03-27T19:10:44' at 213db48>, 'description': 'Club-Mate', 'noCacheAfterUTC': <DateTime '2014-02-13T12:28:06' at 213db00>, 'ean': '4029764001807', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': '0.5L', 'issuerCountry': 'Germany', 'issuerCountryCode': 'de'}
+2014-02-12 19:28:51,441 DEBUG Read config
+2014-02-12 19:28:51,525 DEBUG Session setup
+2014-02-12 19:28:51,583 INFO Starting telnet protocol
+2014-02-12 19:28:51,584 INFO Starting barcode monitor
+2014-02-12 19:28:51,585 DEBUG Using serial port /dev/ttySCAN
+2014-02-12 19:28:55,401 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '4029764001807'}
+2014-02-12 19:29:06,634 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2007-03-27T19:10:44' at 3bac950>, 'description': 'Club-Mate', 'noCacheAfterUTC': <DateTime '2014-02-13T12:29:06' at 3bac908>, 'ean': '4029764001807', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': '0.5L', 'issuerCountry': 'Germany', 'issuerCountryCode': 'de'}
+2014-02-12 19:29:06,635 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '4029764001807'}
+2014-02-12 19:29:06,870 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2007-03-27T19:10:44' at 3bac998>, 'description': 'Club-Mate', 'noCacheAfterUTC': <DateTime '2014-02-13T12:29:06' at 3bac8c0>, 'ean': '4029764001807', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': '0.5L', 'issuerCountry': 'Germany', 'issuerCountryCode': 'de'}
+2014-02-12 19:43:51,907 DEBUG Read config
+2014-02-12 19:43:51,991 DEBUG Session setup
+2014-02-12 19:44:47,931 DEBUG Read config
+2014-02-12 19:44:48,015 DEBUG Session setup
+2014-02-12 19:44:48,076 INFO Starting telnet protocol
+2014-02-12 19:44:48,078 INFO Starting barcode monitor
+2014-02-12 19:44:48,078 DEBUG Using serial port /dev/ttySCAN
+2014-02-12 19:44:54,487 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '4029764001807'}
+2014-02-12 19:44:55,425 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2007-03-27T19:10:44' at 3734ab8>, 'description': 'Club-Mate', 'noCacheAfterUTC': <DateTime '2014-02-13T12:44:55' at 3734a70>, 'ean': '4029764001807', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': '0.5L', 'issuerCountry': 'Germany', 'issuerCountryCode': 'de'}
+2014-02-12 19:44:55,425 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '4029764001807'}
+2014-02-12 19:44:55,693 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2007-03-27T19:10:44' at 3734b00>, 'description': 'Club-Mate', 'noCacheAfterUTC': <DateTime '2014-02-13T12:44:55' at 3734a28>, 'ean': '4029764001807', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': '0.5L', 'issuerCountry': 'Germany', 'issuerCountryCode': 'de'}
+2014-02-12 19:44:55,706 DEBUG Identified country as deu
+2014-02-12 19:45:18,135 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '4029764001883'}
+2014-02-12 19:45:18,667 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-12 19:45:18,668 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '4029764001883'}
+2014-02-12 19:45:19,180 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-12 19:45:35,202 DEBUG Identified country as deu
+2014-02-12 19:45:45,280 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0000023001251'}
+2014-02-12 19:45:45,808 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-12 19:45:45,808 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0000023001251'}
+2014-02-12 19:45:46,332 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-12 19:45:46,333 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0000023001251'}
+2014-02-12 19:45:46,849 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-12 19:46:09,955 DEBUG Identified country as nld
+2014-02-12 19:46:18,065 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0000023035423'}
+2014-02-12 19:46:18,588 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2014-02-08T14:31:46' at 3740ab8>, 'description': 'Chocolate Chip Cookies', 'noCacheAfterUTC': <DateTime '2014-02-13T12:46:18' at 37409e0>, 'ean': '0000023035423', 'upc': '000023035423', 'pendingUpdates': 1, 'found': True, 'message': 'Database entry found', 'size': '300g', 'issuerCountry': 'United States', 'issuerCountryCode': 'us'}
+2014-02-12 19:46:18,589 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0000023035423'}
+2014-02-12 19:46:18,833 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2014-02-08T14:31:46' at 3740758>, 'description': 'Chocolate Chip Cookies', 'noCacheAfterUTC': <DateTime '2014-02-13T12:46:18' at 3740ab8>, 'ean': '0000023035423', 'upc': '000023035423', 'pendingUpdates': 1, 'found': True, 'message': 'Database entry found', 'size': '300g', 'issuerCountry': 'United States', 'issuerCountryCode': 'us'}
+2014-02-12 19:46:18,833 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0000023035423'}
+2014-02-12 19:46:19,853 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2014-02-08T14:31:46' at 3740a70>, 'description': 'Chocolate Chip Cookies', 'noCacheAfterUTC': <DateTime '2014-02-13T12:46:19' at 3740998>, 'ean': '0000023035423', 'upc': '000023035423', 'pendingUpdates': 1, 'found': True, 'message': 'Database entry found', 'size': '300g', 'issuerCountry': 'United States', 'issuerCountryCode': 'us'}
+2014-02-12 19:46:19,854 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0000023035423'}
+2014-02-12 19:46:20,106 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2014-02-08T14:31:46' at 3740a70>, 'description': 'Chocolate Chip Cookies', 'noCacheAfterUTC': <DateTime '2014-02-13T12:46:20' at 3740710>, 'ean': '0000023035423', 'upc': '000023035423', 'pendingUpdates': 1, 'found': True, 'message': 'Database entry found', 'size': '300g', 'issuerCountry': 'United States', 'issuerCountryCode': 'us'}
+2014-02-12 19:46:20,107 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0000023035423'}
+2014-02-12 19:46:20,928 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2014-02-08T14:31:46' at 3740b00>, 'description': 'Chocolate Chip Cookies', 'noCacheAfterUTC': <DateTime '2014-02-13T12:46:20' at 37408c0>, 'ean': '0000023035423', 'upc': '000023035423', 'pendingUpdates': 1, 'found': True, 'message': 'Database entry found', 'size': '300g', 'issuerCountry': 'United States', 'issuerCountryCode': 'us'}
+2014-02-12 19:46:20,929 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0000023035423'}
+2014-02-12 19:46:21,162 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2014-02-08T14:31:46' at 37408c0>, 'description': 'Chocolate Chip Cookies', 'noCacheAfterUTC': <DateTime '2014-02-13T12:46:21' at 37409e0>, 'ean': '0000023035423', 'upc': '000023035423', 'pendingUpdates': 1, 'found': True, 'message': 'Database entry found', 'size': '300g', 'issuerCountry': 'United States', 'issuerCountryCode': 'us'}
+2014-02-12 19:46:21,163 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0000023035423'}
+2014-02-12 19:46:21,684 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2014-02-08T14:31:46' at 3740b90>, 'description': 'Chocolate Chip Cookies', 'noCacheAfterUTC': <DateTime '2014-02-13T12:46:21' at 3740a28>, 'ean': '0000023035423', 'upc': '000023035423', 'pendingUpdates': 1, 'found': True, 'message': 'Database entry found', 'size': '300g', 'issuerCountry': 'United States', 'issuerCountryCode': 'us'}
+2014-02-12 19:46:21,684 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0000023035423'}
+2014-02-12 19:46:21,917 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2014-02-08T14:31:46' at 3740b48>, 'description': 'Chocolate Chip Cookies', 'noCacheAfterUTC': <DateTime '2014-02-13T12:46:21' at 3740680>, 'ean': '0000023035423', 'upc': '000023035423', 'pendingUpdates': 1, 'found': True, 'message': 'Database entry found', 'size': '300g', 'issuerCountry': 'United States', 'issuerCountryCode': 'us'}
+2014-02-12 19:46:21,930 DEBUG Identified country as usa
+2014-02-12 19:47:57,731 DEBUG Read config
+2014-02-12 19:47:57,816 DEBUG Session setup
+2014-02-12 19:47:57,878 INFO Starting telnet protocol
+2014-02-12 19:47:57,879 INFO Starting barcode monitor
+2014-02-12 19:47:57,880 DEBUG Using serial port /dev/ttySCAN
+2014-02-12 19:48:04,489 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '8710400507666'}
+2014-02-12 19:48:05,092 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-12 19:53:20,829 DEBUG Identified country as nld
+2014-02-12 19:53:52,395 DEBUG Read config
+2014-02-12 19:53:52,479 DEBUG Session setup
+2014-02-12 19:53:52,535 INFO Starting telnet protocol
+2014-02-12 19:53:52,536 INFO Starting barcode monitor
+2014-02-12 19:53:52,537 DEBUG Using serial port /dev/ttySCAN
+2014-02-12 19:54:05,822 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '3185370000335'}
+2014-02-12 19:54:06,781 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2007-06-11T02:24:26' at 2eb7290>, 'description': 'Mo?t & Chandon champagne brut imp?rial', 'noCacheAfterUTC': <DateTime '2014-02-13T12:54:06' at 2eb71b8>, 'ean': '3185370000335', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': '750ml', 'issuerCountry': 'France', 'issuerCountryCode': 'fr'}
+2014-02-12 19:54:06,782 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '3185370000335'}
+2014-02-12 19:54:07,037 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2007-06-11T02:24:26' at 2eb7248>, 'description': 'Mo?t & Chandon champagne brut imp?rial', 'noCacheAfterUTC': <DateTime '2014-02-13T12:54:06' at 2eb7170>, 'ean': '3185370000335', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': '750ml', 'issuerCountry': 'France', 'issuerCountryCode': 'fr'}
+2014-02-12 19:54:07,056 DEBUG Identified country as fra
+2014-02-12 19:54:17,766 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0000023003033'}
+2014-02-12 19:54:18,275 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2010-05-21T11:53:59' at 2eb7ef0>, 'description': 'Schulten brau', 'noCacheAfterUTC': <DateTime '2014-02-13T12:54:18' at 2eb7e18>, 'ean': '0000023003033', 'upc': '000023003033', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': '30 cl', 'issuerCountry': 'United States', 'issuerCountryCode': 'us'}
+2014-02-12 19:54:18,275 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0000023003033'}
+2014-02-12 19:54:18,510 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2010-05-21T11:53:59' at 2eb7b90>, 'description': 'Schulten brau', 'noCacheAfterUTC': <DateTime '2014-02-13T12:54:18' at 2eb7ef0>, 'ean': '0000023003033', 'upc': '000023003033', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': '30 cl', 'issuerCountry': 'United States', 'issuerCountryCode': 'us'}
+2014-02-12 19:54:18,511 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0000023003033'}
+2014-02-12 19:54:19,027 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2010-05-21T11:53:59' at 2eb7f80>, 'description': 'Schulten brau', 'noCacheAfterUTC': <DateTime '2014-02-13T12:54:18' at 2eb7f38>, 'ean': '0000023003033', 'upc': '000023003033', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': '30 cl', 'issuerCountry': 'United States', 'issuerCountryCode': 'us'}
+2014-02-12 19:54:19,028 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0000023003033'}
+2014-02-12 19:54:19,287 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2010-05-21T11:53:59' at 2eb7ea8>, 'description': 'Schulten brau', 'noCacheAfterUTC': <DateTime '2014-02-13T12:54:19' at 2eb7dd0>, 'ean': '0000023003033', 'upc': '000023003033', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': '30 cl', 'issuerCountry': 'United States', 'issuerCountryCode': 'us'}
+2014-02-12 19:54:19,306 DEBUG Identified country as usa
+2014-02-12 19:54:24,802 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '5206683000015'}
+2014-02-12 19:54:25,384 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-12 19:54:25,384 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '5206683000015'}
+2014-02-12 19:54:25,908 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-12 19:54:25,909 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '5206683000015'}
+2014-02-12 19:54:26,408 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-12 19:55:56,948 DEBUG Identified country as grc
+2014-02-12 19:56:04,777 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '5410228142027'}
+2014-02-12 19:56:05,761 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2012-05-28T07:45:21' at 2ebc9e0>, 'description': 'Jupiler 25cl 5,2% alc', 'noCacheAfterUTC': <DateTime '2014-02-13T12:56:05' at 2ebc998>, 'ean': '5410228142027', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': ' 500 gr', 'issuerCountry': 'Luxembourg', 'issuerCountryCode': 'lu'}
+2014-02-12 19:56:05,762 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '5410228142027'}
+2014-02-12 19:56:05,992 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2012-05-28T07:45:21' at 2ebc638>, 'description': 'Jupiler 25cl 5,2% alc', 'noCacheAfterUTC': <DateTime '2014-02-13T12:56:05' at 2ebc9e0>, 'ean': '5410228142027', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': ' 500 gr', 'issuerCountry': 'Luxembourg', 'issuerCountryCode': 'lu'}
+2014-02-12 19:56:05,993 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '5410228142027'}
+2014-02-12 19:56:06,498 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2012-05-28T07:45:21' at 2ebca28>, 'description': 'Jupiler 25cl 5,2% alc', 'noCacheAfterUTC': <DateTime '2014-02-13T12:56:06' at 2ebc950>, 'ean': '5410228142027', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': ' 500 gr', 'issuerCountry': 'Luxembourg', 'issuerCountryCode': 'lu'}
+2014-02-12 19:56:06,498 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '5410228142027'}
+2014-02-12 19:56:06,752 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2012-05-28T07:45:21' at 2ebc6c8>, 'description': 'Jupiler 25cl 5,2% alc', 'noCacheAfterUTC': <DateTime '2014-02-13T12:56:06' at 2ebc758>, 'ean': '5410228142027', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': ' 500 gr', 'issuerCountry': 'Luxembourg', 'issuerCountryCode': 'lu'}
+2014-02-12 19:56:06,752 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '5410228142027'}
+2014-02-12 19:56:07,263 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2012-05-28T07:45:21' at 2ebc908>, 'description': 'Jupiler 25cl 5,2% alc', 'noCacheAfterUTC': <DateTime '2014-02-13T12:56:07' at 2ebc878>, 'ean': '5410228142027', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': ' 500 gr', 'issuerCountry': 'Luxembourg', 'issuerCountryCode': 'lu'}
+2014-02-12 19:56:07,264 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '5410228142027'}
+2014-02-12 19:56:07,495 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2012-05-28T07:45:21' at 2ebc950>, 'description': 'Jupiler 25cl 5,2% alc', 'noCacheAfterUTC': <DateTime '2014-02-13T12:56:07' at 2ebc998>, 'ean': '5410228142027', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': ' 500 gr', 'issuerCountry': 'Luxembourg', 'issuerCountryCode': 'lu'}
+2014-02-12 19:56:07,496 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '5410228142027'}
+2014-02-12 19:56:08,014 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2012-05-28T07:45:21' at 2ebcab8>, 'description': 'Jupiler 25cl 5,2% alc', 'noCacheAfterUTC': <DateTime '2014-02-13T12:56:07' at 2ebca70>, 'ean': '5410228142027', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': ' 500 gr', 'issuerCountry': 'Luxembourg', 'issuerCountryCode': 'lu'}
+2014-02-12 19:56:08,015 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '5410228142027'}
+2014-02-12 19:56:08,246 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2012-05-28T07:45:21' at 2ebcb00>, 'description': 'Jupiler 25cl 5,2% alc', 'noCacheAfterUTC': <DateTime '2014-02-13T12:56:08' at 2ebc710>, 'ean': '5410228142027', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': ' 500 gr', 'issuerCountry': 'Luxembourg', 'issuerCountryCode': 'lu'}
+2014-02-12 19:56:08,265 DEBUG Identified country as lux
+2014-02-12 19:56:12,902 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '8717452600437'}
+2014-02-12 19:56:13,437 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-12 19:56:13,437 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '8717452600437'}
+2014-02-12 19:56:13,948 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-12 19:56:13,949 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '8717452600437'}
+2014-02-12 19:56:14,593 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-12 19:56:14,593 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '8717452600437'}
+2014-02-12 19:56:15,678 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-12 19:56:15,679 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '8717452600437'}
+2014-02-12 19:56:16,638 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-12 19:57:49,575 DEBUG Identified country as nld
+2014-02-12 19:57:55,235 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '5425014686005'}
+2014-02-12 19:57:55,779 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-12 19:57:55,779 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '5425014686005'}
+2014-02-12 19:57:56,274 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-12 19:57:56,275 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '5425014686005'}
+2014-02-12 19:57:56,774 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-12 19:57:56,774 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '5425014686005'}
+2014-02-12 19:57:57,291 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-12 19:57:57,292 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '5425014686005'}
+2014-02-12 19:57:57,789 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-12 19:57:57,789 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '5425014686005'}
+2014-02-12 19:57:58,746 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-12 19:58:39,937 DEBUG Identified country as bel
+2014-02-12 20:14:03,957 DEBUG Read config
+2014-02-12 20:14:04,042 DEBUG Session setup
+2014-02-12 20:14:04,104 INFO Starting telnet protocol
+2014-02-12 20:14:04,106 INFO Starting barcode monitor
+2014-02-12 20:14:04,106 DEBUG Using serial port /dev/ttySCAN
+2014-02-12 20:14:54,191 INFO Changing stock of item 5 from 0 to 20
+2014-02-12 20:14:54,196 DEBUG Adding transaction with item 5, transaction_price 400.0 for member 1
+2014-02-12 20:16:10,489 DEBUG Read config
+2014-02-12 20:16:10,575 DEBUG Session setup
+2014-02-12 20:16:10,631 INFO Starting telnet protocol
+2014-02-12 20:16:10,633 INFO Starting barcode monitor
+2014-02-12 20:16:10,633 DEBUG Using serial port /dev/ttySCAN
+2014-02-12 20:16:21,125 INFO Changing stock of item 6 from 0 to 1
+2014-02-12 20:16:21,130 DEBUG Adding transaction with item 6, transaction_price 1.0 for member 1
+2014-02-12 20:19:30,429 DEBUG Read config
+2014-02-12 20:19:30,513 DEBUG Session setup
+2014-02-12 20:19:30,574 INFO Starting telnet protocol
+2014-02-12 20:19:30,575 INFO Starting barcode monitor
+2014-02-12 20:19:30,576 DEBUG Using serial port /dev/ttySCAN
+2014-02-12 20:19:43,000 INFO Changing stock of item 7 from 0 to 1
+2014-02-12 20:19:43,004 DEBUG Adding transaction with item 7, transaction_price 1.5 for member 1

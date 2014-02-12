@@ -12,8 +12,16 @@ configfile = 'config.cfg'
 from nurdbar import NurdBar
 #from serialEmulator import SerialEmulator
 bar=NurdBar(configfile)
-bar.drop_tables()
-bar.create_tables()
+s = raw_input('Do you want to drop all the tables?')
+if s == 'y':
+    bar.drop_tables()
+else:
+    s = raw_input('Do you want to drop the core tables?')
+    if s == 'y':
+        bar.drop('transactions)
+        bar.drop(items)
+        bar.drop(members)
+bar.create_tables(checkfirst=True)
 bar.fill_tables()
 
 bar.addMember('USR2232','SmokeyD')
@@ -35,7 +43,7 @@ member=bar.getMemberByBarcode('USR2232')
 bar.payAmount(member,40.00)
 member=bar.getMemberByBarcode('USR2232')
 print("item.stock=%s. Correct? %s"%(item.stock,item.stock==1)) #+3-1=1
-print("item.totalstock=%s. Correct? %s"%(bar.getItemTotalStock(item),bar.getItemTotalStock(item)==2)) #+5-3=2
+print("item.totalstock=%s. Correct? %s"%(bar.getItemTotalStock(item.barcode),bar.getItemTotalStock(item.barcode)==2)) #+5-3=2
 print("member.balance=%s Correct? %s"%(member.balance,member.balance==164.00)) #2*10+3*12+5*20+40-10-10-12=64.00
 print (member.allTransactions)
 #print("member,balance=%s Correct? %s"%(member.balance,member.balance==93.00))

@@ -18,6 +18,8 @@ from cursesclient import twirc
 logging.basicConfig(level=logging.DEBUG)
 
 log=logging.getLogger(__name__)
+#fh = logging.FileHandler('logging.log')
+#fh.setLevel(logging.DEBUG)
 
 CHANNEL = '#nurdbottest'
 FORGETTIME = 20

@@ -31,14 +31,14 @@ class UPCDatabaseProvider(BarcodeLookupProvider):
         results = self.server.lookup(params)
         logging.warn(results)
         if results['found']:
-            return results['description']
+            return (results['description'],results['size'],results['issuerCountry'])
         return None
 
 class BarcodeLookup(object):
 
     def __init__(self,providers=[]):
         providers.append(UPCDatabaseProvider())
-        providers.append(StreepjescodescannerProvider())
+#        providers.append(StreepjescodescannerProvider())
         for p in providers:
             if not isinstance(p,BarcodeLookupProvider):
                 raise ValueError('%s is doest not inherit from BarcodeLookupProvider. Please supply a list of BarcodeLookupProviders as providers argument to BarcodeLookup'%p)
