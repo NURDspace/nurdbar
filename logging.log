@@ -165,3 +165,513 @@
 2014-02-12 20:19:30,576 DEBUG Using serial port /dev/ttySCAN
 2014-02-12 20:19:43,000 INFO Changing stock of item 7 from 0 to 1
 2014-02-12 20:19:43,004 DEBUG Adding transaction with item 7, transaction_price 1.5 for member 1
+2014-02-12 20:21:15,058 DEBUG Read config
+2014-02-12 20:21:15,143 DEBUG Session setup
+2014-02-12 20:21:15,199 INFO Starting telnet protocol
+2014-02-12 20:21:15,201 INFO Starting barcode monitor
+2014-02-12 20:21:15,201 DEBUG Using serial port /dev/ttySCAN
+2014-02-13 08:40:19,601 DEBUG Read config
+2014-02-13 08:40:20,366 DEBUG Session setup
+2014-02-13 08:40:20,729 INFO Starting telnet protocol
+2014-02-13 08:40:20,731 INFO Starting barcode monitor
+2014-02-13 08:40:20,732 DEBUG Using serial port /dev/ttySCAN
+2014-02-13 19:59:25,953 DEBUG Read config
+2014-02-13 19:59:29,441 DEBUG Session setup
+2014-02-13 19:59:30,603 INFO Starting telnet protocol
+2014-02-13 19:59:30,605 INFO Starting barcode monitor
+2014-02-13 19:59:30,606 DEBUG Using serial port /dev/ttySCAN
+2014-02-13 20:06:42,441 DEBUG Read config
+2014-02-13 20:06:42,526 DEBUG Session setup
+2014-02-13 20:06:42,582 INFO Starting telnet protocol
+2014-02-13 20:06:42,584 INFO Starting barcode monitor
+2014-02-13 20:06:42,584 DEBUG Using serial port /dev/ttySCAN
+2014-02-13 20:10:16,572 DEBUG Read config
+2014-02-13 20:10:16,657 DEBUG Session setup
+2014-02-13 20:10:16,713 INFO Starting telnet protocol
+2014-02-13 20:10:16,715 INFO Starting barcode monitor
+2014-02-13 20:10:16,716 DEBUG Using serial port /dev/ttySCAN
+2014-02-13 20:13:30,335 DEBUG Read config
+2014-02-13 20:13:30,422 DEBUG Session setup
+2014-02-13 20:13:30,479 INFO Starting telnet protocol
+2014-02-13 20:13:30,481 INFO Starting barcode monitor
+2014-02-13 20:13:30,481 DEBUG Using serial port /dev/ttySCAN
+2014-02-13 20:16:18,007 DEBUG Read config
+2014-02-13 20:16:18,092 DEBUG Session setup
+2014-02-13 20:16:18,148 INFO Starting telnet protocol
+2014-02-13 20:16:18,149 INFO Starting barcode monitor
+2014-02-13 20:16:18,150 DEBUG Using serial port /dev/ttySCAN
+2014-02-13 20:16:44,953 DEBUG Read config
+2014-02-13 20:16:45,038 DEBUG Session setup
+2014-02-13 20:16:45,093 INFO Starting telnet protocol
+2014-02-13 20:16:45,095 INFO Starting barcode monitor
+2014-02-13 20:16:45,096 DEBUG Using serial port /dev/ttySCAN
+2014-02-13 20:17:40,329 DEBUG Read config
+2014-02-13 20:17:40,415 DEBUG Session setup
+2014-02-13 20:17:40,471 INFO Starting telnet protocol
+2014-02-13 20:17:40,473 INFO Starting barcode monitor
+2014-02-13 20:17:40,474 DEBUG Using serial port /dev/ttySCAN
+2014-02-13 20:22:37,747 DEBUG Read config
+2014-02-13 20:22:37,832 DEBUG Session setup
+2014-02-13 20:22:37,888 INFO Starting telnet protocol
+2014-02-13 20:22:37,890 INFO Starting barcode monitor
+2014-02-13 20:22:37,890 DEBUG Using serial port /dev/ttySCAN
+2014-02-13 20:55:05,819 DEBUG Read config
+2014-02-13 20:55:06,618 DEBUG Session setup
+2014-02-13 20:55:07,014 INFO Starting telnet protocol
+2014-02-13 20:55:07,016 INFO Starting barcode monitor
+2014-02-13 20:55:07,016 DEBUG Using serial port /dev/ttySCAN
+2014-02-13 22:25:31,914 DEBUG Read config
+2014-02-13 22:25:31,999 DEBUG Session setup
+2014-02-13 22:26:48,973 DEBUG Read config
+2014-02-13 22:26:49,057 DEBUG Session setup
+2014-02-13 22:28:15,885 DEBUG Read config
+2014-02-13 22:28:15,970 DEBUG Session setup
+2014-02-13 22:28:40,504 DEBUG Read config
+2014-02-13 22:28:40,588 DEBUG Session setup
+2014-02-13 22:28:40,652 INFO Starting telnet protocol
+2014-02-13 22:28:40,654 INFO Starting barcode monitor
+2014-02-13 22:28:40,654 DEBUG Using serial port /dev/ttySCAN
+2014-02-13 22:29:26,394 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 291, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 105, in handleBarcode
+    events.ItemBarcodeScannedEvent.fire(item,bdesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 46, in fire
+    return super(_BarcodeScannedEvent,self).fire(item=item,barcodedesc=barcodedesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 95, in scanItem
+    id = item.item_id
+NameError: global name 'item' is not defined
+
+2014-02-13 22:29:31,230 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 291, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 105, in handleBarcode
+    events.ItemBarcodeScannedEvent.fire(item,bdesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 46, in fire
+    return super(_BarcodeScannedEvent,self).fire(item=item,barcodedesc=barcodedesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 95, in scanItem
+    id = item.item_id
+NameError: global name 'item' is not defined
+
+2014-02-13 22:29:37,592 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 291, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 105, in handleBarcode
+    events.ItemBarcodeScannedEvent.fire(item,bdesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 46, in fire
+    return super(_BarcodeScannedEvent,self).fire(item=item,barcodedesc=barcodedesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 95, in scanItem
+    id = item.item_id
+NameError: global name 'item' is not defined
+
+2014-02-13 22:29:43,138 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 291, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 105, in handleBarcode
+    events.ItemBarcodeScannedEvent.fire(item,bdesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 46, in fire
+    return super(_BarcodeScannedEvent,self).fire(item=item,barcodedesc=barcodedesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 95, in scanItem
+    id = item.item_id
+NameError: global name 'item' is not defined
+
+2014-02-13 22:29:49,193 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 291, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 105, in handleBarcode
+    events.ItemBarcodeScannedEvent.fire(item,bdesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 46, in fire
+    return super(_BarcodeScannedEvent,self).fire(item=item,barcodedesc=barcodedesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 95, in scanItem
+    id = item.item_id
+NameError: global name 'item' is not defined
+
+2014-02-13 22:29:52,454 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 291, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 105, in handleBarcode
+    events.ItemBarcodeScannedEvent.fire(item,bdesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 46, in fire
+    return super(_BarcodeScannedEvent,self).fire(item=item,barcodedesc=barcodedesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 95, in scanItem
+    id = item.item_id
+NameError: global name 'item' is not defined
+
+2014-02-13 22:33:49,115 DEBUG Read config
+2014-02-13 22:33:49,199 DEBUG Session setup
+2014-02-13 22:33:49,261 INFO Starting telnet protocol
+2014-02-13 22:33:49,263 INFO Starting barcode monitor
+2014-02-13 22:33:49,263 DEBUG Using serial port /dev/ttySCAN
+2014-02-13 22:33:52,281 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 291, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 105, in handleBarcode
+    events.ItemBarcodeScannedEvent.fire(item,bdesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 46, in fire
+    return super(_BarcodeScannedEvent,self).fire(item=item,barcodedesc=barcodedesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 95, in scanItem
+    id = item.item_id
+NameError: global name 'item' is not defined
+
+2014-02-13 22:33:53,569 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 291, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 105, in handleBarcode
+    events.ItemBarcodeScannedEvent.fire(item,bdesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 46, in fire
+    return super(_BarcodeScannedEvent,self).fire(item=item,barcodedesc=barcodedesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 95, in scanItem
+    id = item.item_id
+NameError: global name 'item' is not defined
+
+2014-02-13 22:33:54,422 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 291, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 105, in handleBarcode
+    events.ItemBarcodeScannedEvent.fire(item,bdesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 46, in fire
+    return super(_BarcodeScannedEvent,self).fire(item=item,barcodedesc=barcodedesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 95, in scanItem
+    id = item.item_id
+NameError: global name 'item' is not defined
+
+2014-02-13 22:33:55,137 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 291, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 105, in handleBarcode
+    events.ItemBarcodeScannedEvent.fire(item,bdesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 46, in fire
+    return super(_BarcodeScannedEvent,self).fire(item=item,barcodedesc=barcodedesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 95, in scanItem
+    id = item.item_id
+NameError: global name 'item' is not defined
+
+2014-02-13 22:34:56,611 DEBUG Read config
+2014-02-13 22:34:56,696 DEBUG Session setup
+2014-02-13 22:34:56,758 INFO Starting telnet protocol
+2014-02-13 22:34:56,760 INFO Starting barcode monitor
+2014-02-13 22:34:56,761 DEBUG Using serial port /dev/ttySCAN
+2014-02-13 22:38:44,434 DEBUG Read config
+2014-02-13 22:38:44,518 DEBUG Session setup
+2014-02-13 22:38:44,580 INFO Starting telnet protocol
+2014-02-13 22:38:44,582 INFO Starting barcode monitor
+2014-02-13 22:38:44,582 DEBUG Using serial port /dev/ttySCAN
+2014-02-13 22:38:55,732 INFO Member 1 has taken 1 item(s) 5 with barcode 4029764001807
+2014-02-13 22:38:55,733 INFO Partially changing stock of item 5 from 20 to 19
+2014-02-13 22:38:55,733 DEBUG total taken_price: 20.0
+2014-02-13 22:38:55,801 DEBUG Found positive transaction: <Transaction transaction_price:24 item:3 member:1 archived:False> with payment_price: 24
+2014-02-13 22:38:55,802 DEBUG Changing transaction <Transaction transaction_price:24 item:3 member:1 archived:False> transaction_price to 4.0
+2014-02-13 22:38:55,803 DEBUG Adding transaction with item 5, transaction_price -20.0 for member 1
+2014-02-13 22:39:00,783 INFO Member 1 has taken 1 item(s) 5 with barcode 4029764001807
+2014-02-13 22:39:00,784 INFO Partially changing stock of item 5 from 19 to 18
+2014-02-13 22:39:00,784 DEBUG total taken_price: 20.0
+2014-02-13 22:39:00,807 DEBUG Found positive transaction: <Transaction transaction_price:4.0 item:3 member:1 archived:False> with payment_price: 4.0
+2014-02-13 22:39:00,808 DEBUG Setting transaction <Transaction transaction_price:4.0 item:3 member:1 archived:False> to archived=True
+2014-02-13 22:39:00,816 DEBUG Found positive transaction: <Transaction transaction_price:100 item:4 member:1 archived:False> with payment_price: 100
+2014-02-13 22:39:00,817 DEBUG Changing transaction <Transaction transaction_price:100 item:4 member:1 archived:False> transaction_price to 84.0
+2014-02-13 22:39:00,818 DEBUG Adding transaction with item 5, transaction_price -20.0 for member 1
+2014-02-13 22:44:48,090 DEBUG Read config
+2014-02-13 22:44:48,175 DEBUG Session setup
+2014-02-13 22:44:48,237 INFO Starting telnet protocol
+2014-02-13 22:44:48,238 INFO Starting barcode monitor
+2014-02-13 22:44:48,239 DEBUG Using serial port /dev/ttySCAN
+2014-02-13 22:44:55,649 INFO Member 1 has taken 1 item(s) 5 with barcode 4029764001807
+2014-02-13 22:44:55,649 INFO Partially changing stock of item 5 from 18 to 17
+2014-02-13 22:44:55,650 DEBUG total taken_price: 20.0
+2014-02-13 22:44:55,679 DEBUG Found positive transaction: <Transaction transaction_price:84.0 item:4 member:1 archived:False> with payment_price: 84.0
+2014-02-13 22:44:55,679 DEBUG Changing transaction <Transaction transaction_price:84.0 item:4 member:1 archived:False> transaction_price to 64.0
+2014-02-13 22:44:55,680 DEBUG Adding transaction with item 5, transaction_price -20.0 for member 1
+2014-02-13 22:44:57,099 INFO Member 1 has taken 1 item(s) 5 with barcode 4029764001807
+2014-02-13 22:44:57,099 INFO Partially changing stock of item 5 from 17 to 16
+2014-02-13 22:44:57,100 DEBUG total taken_price: 20.0
+2014-02-13 22:44:57,121 DEBUG Found positive transaction: <Transaction transaction_price:64.0 item:4 member:1 archived:False> with payment_price: 64.0
+2014-02-13 22:44:57,121 DEBUG Changing transaction <Transaction transaction_price:64.0 item:4 member:1 archived:False> transaction_price to 44.0
+2014-02-13 22:44:57,122 DEBUG Adding transaction with item 5, transaction_price -20.0 for member 1
+2014-02-13 22:45:34,251 INFO Member 1 has taken 1 item(s) 5 with barcode 4029764001807
+2014-02-13 22:45:34,252 INFO Partially changing stock of item 5 from 16 to 15
+2014-02-13 22:45:34,252 DEBUG total taken_price: 20.0
+2014-02-13 22:45:34,278 DEBUG Found positive transaction: <Transaction transaction_price:44.0 item:4 member:1 archived:False> with payment_price: 44.0
+2014-02-13 22:45:34,279 DEBUG Changing transaction <Transaction transaction_price:44.0 item:4 member:1 archived:False> transaction_price to 24.0
+2014-02-13 22:45:34,280 DEBUG Adding transaction with item 5, transaction_price -20.0 for member 1
+2014-02-13 22:45:48,578 INFO Member 1 has taken 1 item(s) 5 with barcode 4029764001807
+2014-02-13 22:45:48,578 INFO Partially changing stock of item 5 from 15 to 14
+2014-02-13 22:45:48,579 DEBUG total taken_price: 20.0
+2014-02-13 22:45:48,599 DEBUG Found positive transaction: <Transaction transaction_price:24.0 item:4 member:1 archived:False> with payment_price: 24.0
+2014-02-13 22:45:48,600 DEBUG Changing transaction <Transaction transaction_price:24.0 item:4 member:1 archived:False> transaction_price to 4.0
+2014-02-13 22:45:48,601 DEBUG Adding transaction with item 5, transaction_price -20.0 for member 1
+2014-02-13 22:46:07,960 INFO Member 1 has taken 1 item(s) 5 with barcode 4029764001807
+2014-02-13 22:46:07,961 INFO Partially changing stock of item 5 from 14 to 13
+2014-02-13 22:46:07,962 DEBUG total taken_price: 20.0
+2014-02-13 22:46:07,982 DEBUG Found positive transaction: <Transaction transaction_price:4.0 item:4 member:1 archived:False> with payment_price: 4.0
+2014-02-13 22:46:07,983 DEBUG Setting transaction <Transaction transaction_price:4.0 item:4 member:1 archived:False> to archived=True
+2014-02-13 22:46:07,992 DEBUG Found positive transaction: <Transaction transaction_price:40 item:1 member:1 archived:False> with payment_price: 40
+2014-02-13 22:46:07,992 DEBUG Changing transaction <Transaction transaction_price:40 item:1 member:1 archived:False> transaction_price to 24.0
+2014-02-13 22:46:07,993 DEBUG Adding transaction with item 5, transaction_price -20.0 for member 1
+2014-02-13 22:46:22,193 INFO Changing stock of item 7 from 1 to 2
+2014-02-13 22:46:22,194 DEBUG Adding transaction with item 7, transaction_price 1.5 for member 1
+2014-02-13 23:04:49,854 DEBUG Read config
+2014-02-13 23:04:49,939 DEBUG Session setup
+2014-02-13 23:04:50,002 INFO Starting telnet protocol
+2014-02-13 23:04:50,003 INFO Starting barcode monitor
+2014-02-13 23:04:50,004 DEBUG Using serial port /dev/ttySCAN
+2014-02-13 23:06:30,952 DEBUG Read config
+2014-02-13 23:06:31,037 DEBUG Session setup
+2014-02-13 23:06:31,093 INFO Starting telnet protocol
+2014-02-13 23:06:31,095 INFO Starting barcode monitor
+2014-02-13 23:06:31,095 DEBUG Using serial port /dev/ttySCAN
+2014-02-13 23:06:44,882 INFO Member 1 has taken 1 item(s) 5 with barcode 4029764001807
+2014-02-13 23:06:44,883 INFO Partially changing stock of item 5 from 13 to 12
+2014-02-13 23:06:44,883 DEBUG total taken_price: 20.0
+2014-02-13 23:06:44,919 DEBUG Found positive transaction: <Transaction transaction_price:24.0 item:1 member:1 archived:False> with payment_price: 24.0
+2014-02-13 23:06:44,920 DEBUG Changing transaction <Transaction transaction_price:24.0 item:1 member:1 archived:False> transaction_price to 4.0
+2014-02-13 23:06:44,921 DEBUG Adding transaction with item 5, transaction_price -20.0 for member 1
+2014-02-13 23:06:47,584 INFO Member 1 has taken 1 item(s) 5 with barcode 4029764001807
+2014-02-13 23:06:47,585 INFO Partially changing stock of item 5 from 12 to 11
+2014-02-13 23:06:47,585 DEBUG total taken_price: 20.0
+2014-02-13 23:06:47,607 DEBUG Found positive transaction: <Transaction transaction_price:4.0 item:1 member:1 archived:False> with payment_price: 4.0
+2014-02-13 23:06:47,608 DEBUG Setting transaction <Transaction transaction_price:4.0 item:1 member:1 archived:False> to archived=True
+2014-02-13 23:06:47,609 DEBUG Found positive transaction: <Transaction transaction_price:400.0 item:5 member:1 archived:False> with payment_price: 400.0
+2014-02-13 23:06:47,609 DEBUG Changing transaction <Transaction transaction_price:400.0 item:5 member:1 archived:False> transaction_price to 384.0
+2014-02-13 23:06:47,610 DEBUG Adding transaction with item 5, transaction_price -20.0 for member 1
+2014-02-13 23:08:43,869 DEBUG Read config
+2014-02-13 23:08:43,954 DEBUG Session setup
+2014-02-13 23:08:44,016 INFO Starting telnet protocol
+2014-02-13 23:08:44,018 INFO Starting barcode monitor
+2014-02-13 23:08:44,019 DEBUG Using serial port /dev/ttySCAN
+2014-02-13 23:10:02,679 DEBUG Read config
+2014-02-13 23:10:02,763 DEBUG Session setup
+2014-02-13 23:10:02,827 INFO Starting telnet protocol
+2014-02-13 23:10:02,829 INFO Starting barcode monitor
+2014-02-13 23:10:02,829 DEBUG Using serial port /dev/ttySCAN
+2014-02-13 23:10:08,376 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 301, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 105, in handleBarcode
+    events.ItemBarcodeScannedEvent.fire(item,bdesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 46, in fire
+    return super(_BarcodeScannedEvent,self).fire(item=item,barcodedesc=barcodedesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 104, in scanItem
+    self.sellItemHandler()
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 164, in sellItemHandler
+    olditem = bar.getItemByBarcode(self.newItemBarcode)
+NameError: global name 'bar' is not defined
+
+2014-02-13 23:10:18,479 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 301, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 105, in handleBarcode
+    events.ItemBarcodeScannedEvent.fire(item,bdesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 46, in fire
+    return super(_BarcodeScannedEvent,self).fire(item=item,barcodedesc=barcodedesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 104, in scanItem
+    self.sellItemHandler()
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 164, in sellItemHandler
+    olditem = bar.getItemByBarcode(self.newItemBarcode)
+NameError: global name 'bar' is not defined
+
+2014-02-13 23:13:43,700 DEBUG Read config
+2014-02-13 23:13:43,785 DEBUG Session setup
+2014-02-13 23:13:43,848 INFO Starting telnet protocol
+2014-02-13 23:13:43,850 INFO Starting barcode monitor
+2014-02-13 23:13:43,850 DEBUG Using serial port /dev/ttySCAN
+2014-02-13 23:13:50,814 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 301, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 105, in handleBarcode
+    events.ItemBarcodeScannedEvent.fire(item,bdesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 46, in fire
+    return super(_BarcodeScannedEvent,self).fire(item=item,barcodedesc=barcodedesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 104, in scanItem
+    self.sellItemHandler()
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 164, in sellItemHandler
+    olditem = self.bar.getItemByBarcode(self.newItemBarcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 289, in getItemByBarcode
+    return self.session.query(Item).filter_by(barcode=barcode).order_by(Item.creationdatetime).last()
+AttributeError: 'Query' object has no attribute 'last'
+
+2014-02-13 23:17:45,211 DEBUG Read config
+2014-02-13 23:17:45,297 DEBUG Session setup
+2014-02-13 23:17:45,354 INFO Starting telnet protocol
+2014-02-13 23:17:45,356 INFO Starting barcode monitor
+2014-02-13 23:17:45,356 DEBUG Using serial port /dev/ttySCAN
+2014-02-13 23:21:54,251 DEBUG Read config
+2014-02-13 23:21:54,335 DEBUG Session setup
+2014-02-13 23:21:54,398 INFO Starting telnet protocol
+2014-02-13 23:21:54,400 INFO Starting barcode monitor
+2014-02-13 23:21:54,400 DEBUG Using serial port /dev/ttySCAN
+2014-02-13 23:24:58,001 DEBUG Read config
+2014-02-13 23:24:58,086 DEBUG Session setup
+2014-02-13 23:24:58,148 INFO Starting telnet protocol
+2014-02-13 23:24:58,150 INFO Starting barcode monitor
+2014-02-13 23:24:58,151 DEBUG Using serial port /dev/ttySCAN
+2014-02-13 23:25:10,683 INFO Changing stock of item 7 from 2 to 3
+2014-02-13 23:25:10,684 DEBUG Adding transaction with item 7, transaction_price 1.5 for member 1
+2014-02-13 23:43:48,667 DEBUG Read config
+2014-02-13 23:43:48,752 DEBUG Session setup
+2014-02-13 23:44:50,699 DEBUG Read config
+2014-02-13 23:44:50,783 DEBUG Session setup
+2014-02-13 23:44:50,845 INFO Starting telnet protocol
+2014-02-13 23:44:50,847 INFO Starting barcode monitor
+2014-02-13 23:44:50,847 DEBUG Using serial port /dev/ttySCAN
+2014-02-13 23:45:02,041 INFO Member 1 has taken 1 item(s) 5 with barcode 4029764001807
+2014-02-13 23:45:02,042 INFO Partially changing stock of item 5 from 11 to 10
+2014-02-13 23:45:02,042 DEBUG total taken_price: 20.0
+2014-02-13 23:45:02,066 DEBUG Found positive transaction: <Transaction transaction_price:384.0 item:5 member:1 archived:False> with payment_price: 384.0
+2014-02-13 23:45:02,067 DEBUG Changing transaction <Transaction transaction_price:384.0 item:5 member:1 archived:False> transaction_price to 364.0
+2014-02-13 23:45:02,068 DEBUG Adding transaction with item 5, transaction_price -20.0 for member 1
+2014-02-13 23:45:05,600 INFO Member 1 has taken 1 item(s) 5 with barcode 4029764001807
+2014-02-13 23:45:05,600 INFO Partially changing stock of item 5 from 10 to 9
+2014-02-13 23:45:05,601 DEBUG total taken_price: 20.0
+2014-02-13 23:45:05,617 DEBUG Found positive transaction: <Transaction transaction_price:364.0 item:5 member:1 archived:False> with payment_price: 364.0
+2014-02-13 23:45:05,618 DEBUG Changing transaction <Transaction transaction_price:364.0 item:5 member:1 archived:False> transaction_price to 344.0
+2014-02-13 23:45:05,619 DEBUG Adding transaction with item 5, transaction_price -20.0 for member 1
+2014-02-13 23:45:08,892 INFO Member 1 has taken 1 item(s) 5 with barcode 4029764001807
+2014-02-13 23:45:08,892 INFO Partially changing stock of item 5 from 9 to 8
+2014-02-13 23:45:08,893 DEBUG total taken_price: 20.0
+2014-02-13 23:45:08,909 DEBUG Found positive transaction: <Transaction transaction_price:344.0 item:5 member:1 archived:False> with payment_price: 344.0
+2014-02-13 23:45:08,909 DEBUG Changing transaction <Transaction transaction_price:344.0 item:5 member:1 archived:False> transaction_price to 324.0
+2014-02-13 23:45:08,910 DEBUG Adding transaction with item 5, transaction_price -20.0 for member 1
+2014-02-13 23:45:10,926 INFO Member 1 has taken 1 item(s) 5 with barcode 4029764001807
+2014-02-13 23:45:10,926 INFO Partially changing stock of item 5 from 8 to 7
+2014-02-13 23:45:10,927 DEBUG total taken_price: 20.0
+2014-02-13 23:45:10,943 DEBUG Found positive transaction: <Transaction transaction_price:324.0 item:5 member:1 archived:False> with payment_price: 324.0
+2014-02-13 23:45:10,944 DEBUG Changing transaction <Transaction transaction_price:324.0 item:5 member:1 archived:False> transaction_price to 304.0
+2014-02-13 23:45:10,944 DEBUG Adding transaction with item 5, transaction_price -20.0 for member 1
+2014-02-13 23:46:01,926 INFO Member 1 has taken 1 item(s) 5 with barcode 4029764001807
+2014-02-13 23:46:01,927 INFO Partially changing stock of item 5 from 7 to 6
+2014-02-13 23:46:01,927 DEBUG total taken_price: 20.0
+2014-02-13 23:46:01,943 DEBUG Found positive transaction: <Transaction transaction_price:304.0 item:5 member:1 archived:False> with payment_price: 304.0
+2014-02-13 23:46:01,944 DEBUG Changing transaction <Transaction transaction_price:304.0 item:5 member:1 archived:False> transaction_price to 284.0
+2014-02-13 23:46:01,945 DEBUG Adding transaction with item 5, transaction_price -20.0 for member 1
+2014-02-13 23:46:24,143 INFO Changing stock of item 7 from 3 to 4
+2014-02-13 23:46:24,144 DEBUG Adding transaction with item 7, transaction_price 1.5 for member 1
+2014-02-13 23:48:40,281 DEBUG Read config
+2014-02-13 23:48:40,366 DEBUG Session setup
+2014-02-13 23:48:40,428 INFO Starting telnet protocol
+2014-02-13 23:48:40,430 INFO Starting barcode monitor
+2014-02-13 23:48:40,430 DEBUG Using serial port /dev/ttySCAN
+2014-02-13 23:48:53,557 INFO Changing stock of item 7 from 4 to 5
+2014-02-13 23:48:53,558 DEBUG Adding transaction with item 7, transaction_price 1.5 for member 1
+2014-02-13 23:48:56,603 INFO Changing stock of item 7 from 5 to 6
+2014-02-13 23:48:56,603 DEBUG Adding transaction with item 7, transaction_price 1.5 for member 1
+2014-02-13 23:48:58,776 INFO Changing stock of item 7 from 6 to 7
+2014-02-13 23:48:58,777 DEBUG Adding transaction with item 7, transaction_price 1.5 for member 1
+2014-02-13 23:49:02,270 INFO Changing stock of item 7 from 7 to 8
+2014-02-13 23:49:02,271 DEBUG Adding transaction with item 7, transaction_price 1.5 for member 1
+2014-02-13 23:50:52,678 DEBUG Read config
+2014-02-13 23:50:52,762 DEBUG Session setup
+2014-02-13 23:50:52,825 INFO Starting telnet protocol
+2014-02-13 23:50:52,827 INFO Starting barcode monitor
+2014-02-13 23:50:52,828 DEBUG Using serial port /dev/ttySCAN
+2014-02-13 23:51:47,603 INFO Changing stock of item 7 from 8 to 9
+2014-02-13 23:51:47,604 DEBUG Adding transaction with item 7, transaction_price 1.5 for member 1
+2014-02-13 23:52:04,558 INFO Changing stock of item 7 from 9 to 10
+2014-02-13 23:52:04,559 DEBUG Adding transaction with item 7, transaction_price 1.5 for member 1
+2014-02-13 23:52:39,031 INFO Member 1 has taken 1 item(s) 5 with barcode 4029764001807
+2014-02-13 23:52:39,032 INFO Partially changing stock of item 5 from 6 to 5
+2014-02-13 23:52:39,033 DEBUG total taken_price: 20.0
+2014-02-13 23:52:39,055 DEBUG Found positive transaction: <Transaction transaction_price:284.0 item:5 member:1 archived:False> with payment_price: 284.0
+2014-02-13 23:52:39,055 DEBUG Changing transaction <Transaction transaction_price:284.0 item:5 member:1 archived:False> transaction_price to 264.0
+2014-02-13 23:52:39,056 DEBUG Adding transaction with item 5, transaction_price -20.0 for member 1
+2014-02-13 23:53:00,920 INFO Member 1 has taken 3 item(s) 5 with barcode 4029764001807
+2014-02-13 23:53:00,921 INFO Partially changing stock of item 5 from 5 to 2
+2014-02-13 23:53:00,921 DEBUG total taken_price: 60.0
+2014-02-13 23:53:00,945 DEBUG Found positive transaction: <Transaction transaction_price:264.0 item:5 member:1 archived:False> with payment_price: 264.0
+2014-02-13 23:53:00,946 DEBUG Changing transaction <Transaction transaction_price:264.0 item:5 member:1 archived:False> transaction_price to 204.0
+2014-02-13 23:53:00,947 DEBUG Adding transaction with item 5, transaction_price -60.0 for member 1
+2014-02-13 23:53:20,009 INFO Member 1 has taken 3 item(s) 5 with barcode 4029764001807
+2014-02-13 23:53:20,010 INFO Changing stock of item 5 from 2 to 0
+2014-02-13 23:53:20,010 INFO Partially changing stock of item 6 from 1 to 0
+2014-02-13 23:53:20,011 DEBUG total taken_price: 41.0
+2014-02-13 23:53:20,032 DEBUG Found positive transaction: <Transaction transaction_price:204.0 item:5 member:1 archived:False> with payment_price: 204.0
+2014-02-13 23:53:20,033 DEBUG Changing transaction <Transaction transaction_price:204.0 item:5 member:1 archived:False> transaction_price to 163.0
+2014-02-13 23:53:20,034 DEBUG Adding transaction with item 6, transaction_price -41.0 for member 1
+2014-02-13 23:53:30,521 INFO Member 1 has taken 1 item(s) 7 with barcode 4029764001807
+2014-02-13 23:53:30,522 INFO Partially changing stock of item 7 from 10 to 9
+2014-02-13 23:53:30,522 DEBUG total taken_price: 1.5
+2014-02-13 23:53:30,547 DEBUG Found positive transaction: <Transaction transaction_price:163.0 item:5 member:1 archived:False> with payment_price: 163.0
+2014-02-13 23:53:30,548 DEBUG Changing transaction <Transaction transaction_price:163.0 item:5 member:1 archived:False> transaction_price to 161.5
+2014-02-13 23:53:30,549 DEBUG Adding transaction with item 7, transaction_price -1.5 for member 1
+2014-02-13 23:53:31,617 INFO Member 1 has taken 1 item(s) 7 with barcode 4029764001807
+2014-02-13 23:53:31,618 INFO Partially changing stock of item 7 from 9 to 8
+2014-02-13 23:53:31,618 DEBUG total taken_price: 1.5
+2014-02-13 23:53:31,643 DEBUG Found positive transaction: <Transaction transaction_price:161.5 item:5 member:1 archived:False> with payment_price: 161.5
+2014-02-13 23:53:31,644 DEBUG Changing transaction <Transaction transaction_price:161.5 item:5 member:1 archived:False> transaction_price to 160.0
+2014-02-13 23:53:31,645 DEBUG Adding transaction with item 7, transaction_price -1.5 for member 1
+2014-02-13 23:53:42,945 INFO Member 1 has taken 1 item(s) 7 with barcode 4029764001807
+2014-02-13 23:53:42,946 INFO Partially changing stock of item 7 from 8 to 7
+2014-02-13 23:53:42,946 DEBUG total taken_price: 1.5
+2014-02-13 23:53:42,970 DEBUG Found positive transaction: <Transaction transaction_price:160.0 item:5 member:1 archived:False> with payment_price: 160.0
+2014-02-13 23:53:42,971 DEBUG Changing transaction <Transaction transaction_price:160.0 item:5 member:1 archived:False> transaction_price to 158.5
+2014-02-13 23:53:42,972 DEBUG Adding transaction with item 7, transaction_price -1.5 for member 1
+2014-02-13 23:54:51,981 INFO Changing stock of item 7 from 7 to 17
+2014-02-13 23:54:51,982 DEBUG Adding transaction with item 7, transaction_price 15.0 for member 1
+2014-02-13 23:56:14,797 INFO Changing stock of item 7 from 17 to 18
+2014-02-13 23:56:14,797 DEBUG Adding transaction with item 7, transaction_price 1.5 for member 1
+2014-02-14 00:08:14,557 DEBUG Read config
+2014-02-14 00:08:14,643 DEBUG Session setup
+2014-02-14 00:08:14,706 INFO Starting telnet protocol
+2014-02-14 00:08:14,708 INFO Starting barcode monitor
+2014-02-14 00:08:14,709 DEBUG Using serial port /dev/ttySCAN
+2014-02-14 00:08:40,565 DEBUG Read config
+2014-02-14 00:08:40,650 DEBUG Session setup
+2014-02-14 00:08:40,713 INFO Starting telnet protocol
+2014-02-14 00:08:40,715 INFO Starting barcode monitor
+2014-02-14 00:08:40,716 DEBUG Using serial port /dev/ttySCAN
+2014-02-14 00:10:07,918 DEBUG Read config
+2014-02-14 00:10:08,003 DEBUG Session setup
+2014-02-14 00:10:08,067 INFO Starting telnet protocol
+2014-02-14 00:10:08,069 INFO Starting barcode monitor
+2014-02-14 00:10:08,069 DEBUG Using serial port /dev/ttySCAN
+2014-02-14 00:10:55,886 DEBUG Read config
+2014-02-14 00:10:55,970 DEBUG Session setup
+2014-02-14 00:10:56,033 INFO Starting telnet protocol
+2014-02-14 00:10:56,035 INFO Starting barcode monitor
+2014-02-14 00:10:56,035 DEBUG Using serial port /dev/ttySCAN
+2014-02-14 00:12:05,068 DEBUG Read config
+2014-02-14 00:12:05,153 DEBUG Session setup
+2014-02-14 00:12:05,217 INFO Starting telnet protocol
+2014-02-14 00:12:05,218 INFO Starting barcode monitor
+2014-02-14 00:12:05,219 DEBUG Using serial port /dev/ttySCAN
+2014-02-14 00:12:10,923 DEBUG Read config
+2014-02-14 00:12:11,008 DEBUG Session setup
+2014-02-14 00:12:11,065 INFO Starting telnet protocol
+2014-02-14 00:12:11,066 INFO Starting barcode monitor
+2014-02-14 00:12:11,067 DEBUG Using serial port /dev/ttySCAN
+2014-02-14 00:13:13,398 DEBUG Read config
+2014-02-14 00:13:13,483 DEBUG Session setup
+2014-02-14 00:13:13,545 INFO Starting telnet protocol
+2014-02-14 00:13:13,547 INFO Starting barcode monitor
+2014-02-14 00:13:13,548 DEBUG Using serial port /dev/ttySCAN
+2014-02-14 00:13:41,569 INFO Member 1 has taken 1 item(s) 7 with barcode 4029764001807
+2014-02-14 00:13:41,569 INFO Partially changing stock of item 7 from 18 to 17
+2014-02-14 00:13:41,570 DEBUG total taken_price: 1.5
+2014-02-14 00:13:41,601 DEBUG Found positive transaction: <Transaction transaction_price:158.5 item:5 member:1 archived:False> with payment_price: 158.5
+2014-02-14 00:13:41,602 DEBUG Changing transaction <Transaction transaction_price:158.5 item:5 member:1 archived:False> transaction_price to 157.0
+2014-02-14 00:13:41,603 DEBUG Adding transaction with item 7, transaction_price -1.5 for member 1

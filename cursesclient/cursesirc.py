@@ -133,11 +133,14 @@ class Screen(CursesStdIO):
                     cmd = 'PRIVMSG '+self.irc.channel+' :'+text
                     try:
                         self.irc.sendLine(cmd)
+                        self.irc.handleTimeout=0
                         self.prevText.append(self.ircText)
                         if len(self.prevText)>20: pop(self.prevText)
                         self.prevCount = 0
                     except:
                         self.addLine('irc is not connected.','bottom')
+                else:
+                    self.addLine("You are not identified. Message not sent.", 'bottom')                 
             elif self.cursorpos == 'top':
                 self.addLine(text, 'top')
                 try:
@@ -148,7 +151,6 @@ class Screen(CursesStdIO):
             text = ''
 
         else:
-            self.handleTimeout = 0
             if len(text) == self.cols-2: return
             try:
                     text = text + chr(c)

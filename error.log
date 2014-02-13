@@ -4,18 +4,22 @@ DEBUG:__main__:Starting interfaces
 /home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py:2: RuntimeWarning: Parent module 'nurdbar/plugins' not found while handling absolute import
   from twisted.internet import protocol, reactor, serialport
 /home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py:3: RuntimeWarning: Parent module 'nurdbar/plugins' not found while handling absolute import
-  from nurdbar.plugins.api import *
+  from twisted.internet.task import LoopingCall
 /home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py:4: RuntimeWarning: Parent module 'nurdbar/plugins' not found while handling absolute import
-  from nurdbar.events import BarcodeScannedEvent,OutOfStockEvent,ItemBarcodeScannedEvent,MemberBarcodeScannedEvent,CommandBarcodeScannedEvent
+  from nurdbar.plugins.api import *
 /home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py:5: RuntimeWarning: Parent module 'nurdbar/plugins' not found while handling absolute import
-  from nurdbar import exceptions
+  from nurdbar.events import BarcodeScannedEvent,OutOfStockEvent,ItemBarcodeScannedEvent,MemberBarcodeScannedEvent,CommandBarcodeScannedEvent
 /home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py:6: RuntimeWarning: Parent module 'nurdbar/plugins' not found while handling absolute import
-  from nurdbar import barcodelookup
+  from nurdbar import exceptions
+/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py:7: RuntimeWarning: Parent module 'nurdbar/plugins' not found while handling absolute import
+  from nurdbar import events
 /home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py:8: RuntimeWarning: Parent module 'nurdbar/plugins' not found while handling absolute import
-  from iso3166 import countries
+  from nurdbar import barcodelookup
 /home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py:10: RuntimeWarning: Parent module 'nurdbar/plugins' not found while handling absolute import
+  from iso3166 import countries
+/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py:12: RuntimeWarning: Parent module 'nurdbar/plugins' not found while handling absolute import
   import traceback
-/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py:11: RuntimeWarning: Parent module 'nurdbar/plugins' not found while handling absolute import
+/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py:13: RuntimeWarning: Parent module 'nurdbar/plugins' not found while handling absolute import
   import logging
 /home/ircguest/nurdbar/nurdbar/plugins/telnetprotocol.py:1: RuntimeWarning: Parent module 'nurdbar/plugins' not found while handling absolute import
   from twisted.internet import protocol

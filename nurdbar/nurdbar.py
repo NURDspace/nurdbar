@@ -280,13 +280,13 @@ class NurdBar(object):
 
     def getItemByBarcode(self,barcode):
         """
-        Get an Item by it's barcode. Whether or not it is in stock, is not taken into account. The oldest item is returned.
+        Get an Item by it's barcode. Whether or not it is in stock, is not taken into account. The newest item is returned.
 
         :param barcode: The barcode of the Item to get.
         :type barcode: str
         :returns: nurdbar.model.Item
         """
-        return self.session.query(Item).filter_by(barcode=barcode).order_by(Item.creationdatetime).first()
+        return self.session.query(Item).filter_by(barcode=barcode).order_by(Item.creationdatetime.desc()).first()
 
     def getItemByBarcodePrice(self,barcode,buy_price):
         """
@@ -491,6 +491,8 @@ class NurdBar(object):
             self.receivedItems = []
             self.receivedMember = None
             return 'RESET'
+        elif barcode == self.commandPrefix+'002':
+            return 'NEWUSER'
         elif barcode == self.commandPrefix+'010':
             return 'SELL'
         elif barcode == self.commandPrefix+'011':

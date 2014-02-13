@@ -1,8 +1,10 @@
 from twisted.protocols import basic
 from twisted.internet import protocol, reactor, serialport
+from twisted.internet.task import LoopingCall
 from nurdbar.plugins.api import *
 from nurdbar.events import BarcodeScannedEvent,OutOfStockEvent,ItemBarcodeScannedEvent,MemberBarcodeScannedEvent,CommandBarcodeScannedEvent
 from nurdbar import exceptions
+from nurdbar import events
 from nurdbar import barcodelookup
 
 from iso3166 import countries
@@ -19,24 +21,20 @@ class BarcodeProtocol(basic.LineReceiver):
         self.screenObj = screenObj
         self.screenObj.bar = self
 
+        self.maxIdle = 15
+        self.idleTime=0
+        idle = LoopingCall(self.idleHandler)
+        idle.start(1) #seconds
+
         self.state = 'BUY'
-        self.currentMember = None
-        self.currentItem = None
         self.lastLine = ''
+        self.resetFlags()
+        self.resetVariables()
+        self.resetScans()
 
-        self.registeringItem=False
-        self.sellingItem=False
-        self.buyingItem=False
-
-        self.newItemBarcode=None
-        self.newItemPrice=None
-        self.newItemNumber=0
-        self.newItemDesc=None
-        self.newItemVolume=None
-        self.newItemCountry=None
 
     def connectionLost(self,reason):
-        self.screenObj.addLine('connection Lost','top')
+        self.screenObj.addLine('Bar Offline.','top')
         BarcodeScannedEvent.unregister(self.printBarcode)
 #        OutOfStockEvent.unregister(self.printOutOfStockEvent)
         ItemBarcodeScannedEvent.unregister(self.scanItem)
@@ -44,93 +42,138 @@ class BarcodeProtocol(basic.LineReceiver):
         CommandBarcodeScannedEvent.unregister(self.modeChange)
 
     def connectionMade(self):
-        self.screenObj.addLine('connection Made','top')
+        self.screenObj.addLine('Bar Online.','top')
         BarcodeScannedEvent.register(self.printBarcode)
 #        OutOfStockEvent.register(self.printOutOfStockEvent)
         ItemBarcodeScannedEvent.register(self.scanItem)
         MemberBarcodeScannedEvent.register(self.identifyMember)
         CommandBarcodeScannedEvent.register(self.modeChange)
 
-    def scanItem(self,event):
-        #Reset state machines if in progress
-        if self.registeringItem: self.registerNewItem()
-        if self.sellingItem: self.sellItemHandler()
-        if self.buyingItem: self.buyItemHandler()
+    def resetFlags(self):
+            self.registeringItem=False
+            self.registeringUser=False
+            self.sellingItem=False
+            self.buyingItem=False
 
-        item=event.attributes['item']
-        barcodedesc=event.attributes['barcodedesc']
+    def resetScans(self):
+            self.currentMember=None
+            self.currentItem=None
+            self.currentBarcodeDesc=None
 
-        if item is None:
-            self.screenObj.addLine('This item is recognised, but we have none.','top')
-#            self.newItemBarcode = barcode
-#            self.registerNewItem()
-#            return
-            id = ''
-            barcode = barcodedesc.barcode
-        else:
-            id = item.item_id
-            barcode = item.barcode
-            self.currentItem = item
-            self.screenObj.addLine("Found item "+str(item.item_id),'top')
-#            self.sendLine('\a')
-        if self.currentMember is not None:
-            if self.state == 'BUY' and item is not None:
-                self.screenObj.addLine("Selling item "+str(id)+" to "+str(self.currentMember.nick),'top')
-                self.newItemBarcode = barcode
-                self.buyItemHandler()
-            if self.state == 'SELL':
-                self.screenObj.addLine("Buying item "+str(id)+" from "+str(self.currentMember.nick),'top')
-                self.newItemBarcode = barcode
-                self.sellItemHandler()
+    def resetVariables(self):
+            self.lastLine = ''
+            self.newUsername=None
+#            self.newItemBarcode=None
+            self.newItemNumber=None
+            self.oldItemPrice=None
+            self.newItemPrice=None
+            self.newItemDesc=None
+            self.newItemVolume=None
+            self.newItemCountry=None
+
+    def handlerFinish(self):
         try:
-            name = barcodedesc.description
+            if self.buyingItem: self.buyItemHandler(default=True)
+            if self.sellingItem: self.sellItemHandler(default=True)
         except:
-            name = item.id
-#         if self.currentMember and self.state == 'SELL':
-#                   self.screenObj.addLine('Buying in '+str(name)+'?','top')
-        try:        
-            stock = self.bar.getItemTotalStock(item.barcode)
-            self.screenObj.addLine(str(name)+': total stock count: '+str(stock),'top')
-        except:
-            pass
+            self.screenObj.addLine("Last transaction not completed. Continuing...",'top')
+            if self.buyingItem: self.buyItemHandler()
+            if self.sellingItem: self.sellItemHandler()
+            return False
+        return True
 
-    def identifyMember(self,event):
-        member=event.attributes['member']
-        if member is not None:
-            self.currentMember = member
-            self.screenObj.addLine("Hello, "+str(member.nick),'top')
-        else:
-            self.sendLine('\a')
-            self.screenObj.addLine("Unknown member barcode.",'top')
-
-    def printOutOfStockEvent(self,event):
-        item=event.attributes['item']
-        try:
-            name = self.bar.getBarcodeDescByBarcode(item.barcode).description
-        except:
-            name = item.id
-        if self.currentMember and self.state == 'SELL':
-               self.screenObj.addLine('Buying in '+str(name)+'?','top')
-        self.screenObj.addLine('Item '+str(name)+' is out of stock','top')
+    def idleHandler(self):
+        self.idleTime = self.idleTime+1
+        if self.idleTime>self.maxIdle:
+            try:
+                if self.buyingItem: self.buyItemHandler(default=True)
+                if self.sellingItem: self.sellItemHandler(default=True)
+            except:
+                self.screenObj.addLine("Last transaction not completed. Cancelled.",'top')
+            if self.currentMember:
+                self.state = 'BUY'
+                self.resetFlags()
+                self.resetScans()
+                self.screenObj.addLine('Reset.','top')
 
     def modeChange(self,event):
         command=event.attributes['command']
+        if not self.handlerFinish(): return
         if command == 'RESET':
             self.state = 'BUY'
-            self.currentMember = None
-            self.currentItem = None
-            self.registeringItem=False
-            self.sellingItem=False
-            self.buyingItem=False
-            self.screenObj.addLine('Resetting.','top')
+            self.resetFlags()
+            self.resetScans()
+            self.screenObj.addLine('Transaction cancelled.','top')
         else:
+            self.resetFlags()
             self.state = command
             self.screenObj.addLine('Changing to mode: '+str(command),'top')
 
+    def scanItem(self,event):
+        #Reset state machines if in progress
+        if not self.handlerFinish(): return
+        self.resetFlags()
+        self.resetVariables()
+        self.currentItem=event.attributes['item']
+        self.currentBarcodeDesc=event.attributes['barcodedesc']
+        if self.currentBarcodeDesc is not None:
+#            self.screenObj.addLine('This item is recognised, but we have none.','top')
+            id = ''
+            barcode = self.currentBarcodeDesc.barcode
+            self.newItemBarcode = barcode
+        else:
+            self.registerNewItem()
+            return
+        if self.currentItem is not None:
+            id = self.currentItem.item_id
+            self.screenObj.addLine("Found item "+str(self.currentItem.item_id),'top')
+        if self.currentMember is not None:
+            if self.state == 'BUY':
+                self.screenObj.addLine("Selling item "+str(id)+" to "+str(self.currentMember.nick),'top')
+                self.buyItemHandler()
+                return
+            if self.state == 'SELL':
+                self.screenObj.addLine("Buying item "+str(id)+" from "+str(self.currentMember.nick),'top')
+                self.sellItemHandler()
+                return
+        try:
+            name = self.currentBarcodeDesc.description
+        except:
+            name = self.currentItem.id
+        stock = self.bar.getItemTotalStock(barcode)
+        self.screenObj.addLine(str(name)+': total stock count: '+str(stock),'top')
+
+    def identifyMember(self,event):
+        if not self.handlerFinish(): return
+        member=event.attributes['member']
+        if member is not None:
+            if self.currentMember is not None and self.state == 'NEWUSER':
+                self.newItemBarcode = self.lastBarcode
+                self.registerNewUser()
+                return
+            if self.buyingItem: self.buyItemHandler()
+            self.currentMember = member
+            self.state='BUY'
+            self.screenObj.addLine("Hello, "+str(member.nick),'top')
+        else:
+            self.screenObj.addLine("Unknown member barcode.",'top')
+
+#    def printOutOfStockEvent(self,event):
+#        item=event.attributes['item']
+#        try:
+#            name = self.bar.getBarcodeDescByBarcode(item.barcode).description
+#        except:
+#            name = item.id
+#        if self.currentMember and self.state == 'SELL':
+#               self.screenObj.addLine('Buying in '+str(name)+'?','top')
+#        self.screenObj.addLine('Item '+str(name)+' is out of stock','top')
+
 
     def printBarcode(self,event):
-        barcode=event.attributes['barcode']
-        self.screenObj.addLine('Scanned the following barcode: %s'%barcode, 'top')
+#        barcode=event.attributes['barcode']
+        self.idleTime=0
+        self.lastBarcode=event.attributes['barcode']
+#        self.screenObj.addLine('Scanned the following barcode: %s'%barcode, 'top')
 
     def sendLine(self, line):
         """
@@ -151,12 +194,12 @@ class BarcodeProtocol(basic.LineReceiver):
         except:
             pass
 
-    def sellItemHandler(self):
+    def sellItemHandler(self,default=False):
         if self.sellingItem == False:
+            self.resetFlags()
+            self.resetVariables()
             self.sellingItem=True
-            self.newItemNumber=0
-            self.newItemPrice=None
-            self.screenObj.addLine('How many are you selling? (default: 1)','top')
+            self.screenObj.addLine('How many are you selling? (Default: 1)','top')
             return
         if not self.newItemNumber:
             if self.lastLine.strip() == '':
@@ -167,29 +210,47 @@ class BarcodeProtocol(basic.LineReceiver):
                 except:
                     self.newItemNumber = 1
                     self.screenObj.addLine('Invalid entry. Defaulting to 1...','top')
-            self.screenObj.addLine('Please enter a price (in EUR).','top')
-            return
+            try:
+                self.oldItemPrice = self.bar.getItemByBarcode(self.newItemBarcode).buy_price
+            except:
+                self.oldItemPrice = None
+
+            if self.oldItemPrice:
+                self.screenObj.addLine('Please enter a price (in EUR) (Default: '+"{:.2f}".format(self.oldItemPrice)+')','top')
+            else:
+                self.screenObj.addLine('Please enter a price (in EUR)','top')
+
+            if default:
+                if not self.oldItemPrice: raise exceptions.ItemDoesNotExistError
+                self.newItemPrice = self.oldItemPrice
+            else:
+                return
         if not self.newItemPrice:
             try:
                 self.newItemPrice = float(self.lastLine.strip())
             except:
-                self.newItemPrice = None
-                self.screenObj.addLine('Invalid value. Please try again.','top')
-                return
-            self.screenObj.addLine('Buying from '+str(self.currentMember.nick),'top')
-            self.screenObj.addLine('Item: '+str(self.newItemBarcode),'top')
-            self.screenObj.addLine('Number: '+str(self.newItemNumber),'top')
-            self.screenObj.addLine('Buying at EUR '+str(self.newItemPrice),'top')
-            self.bar.sellItem(self.currentMember.barcode, self.newItemBarcode, self.newItemPrice, amount=self.newItemNumber)
-            self.sellingItem=False
-            self.newItemNumber=0
-            self.newItemPrice=None
+                if self.oldItemPrice:
+                    self.newItemPrice = self.oldItemPrice
+                    self.screenObj.addLine('Defaulting to '+"{:.2f}".format(self.oldItemPrice),'top')
+                else:
+                    self.newItemPrice = None
+                    self.screenObj.addLine('Invalid value. Please try again.','top')
+                    return
+        self.screenObj.addLine('Buying from '+str(self.currentMember.nick)+' Item: '+str(self.newItemBarcode),'top')
+        self.screenObj.addLine('Number: '+str(self.newItemNumber)+' Buying at EUR '+"{:.2f}".format(self.newItemPrice),'top')
+        self.bar.sellItem(self.currentMember.barcode, self.newItemBarcode, self.newItemPrice, amount=self.newItemNumber)
+        self.resetFlags()
+        self.resetVariables()
+        return
 
-    def buyItemHandler(self):
+    def buyItemHandler(self,default=False):
         if self.buyingItem == False:
+            self.resetFlags()
+            self.resetVariables()
             self.buyingItem=True
-            self.newItemNumber=0
-            self.screenObj.addLine('How many are you buying? (default: 1)','top')
+            price = self.currentItem.sell_price
+            currentstock = self.bar.getItemTotalStock(self.newItemBarcode)
+            self.screenObj.addLine("Price: EUR "+"{:.2f}".format(price)+"  How many are you buying? (Default: 1, Max: "+str(currentstock)+")","top")
             return
         if not self.newItemNumber:
             if self.lastLine.strip() == '':
@@ -202,20 +263,19 @@ class BarcodeProtocol(basic.LineReceiver):
             currentstock = self.bar.getItemTotalStock(self.newItemBarcode)
             if self.newItemNumber>currentstock:
                 self.newItemNumber = None
-                self.screenObj.addLine("You can't buy that many! We only have "+str(currentstock),'top')
+                self.screenObj.addLine("You can't buy that many! We only have "+str(currentstock),"top")
                 return
-            self.screenObj.addLine('Selling '+str(self.newItemBarcode),'top')
+            self.screenObj.addLine('Selling '+str(self.newItemNumber)+' of #'+str(self.currentItem.item_id)+' to '+str(self.currentMember.nick),'top')
             self.bar.buyItem(self.currentMember.barcode, self.newItemBarcode, amount=self.newItemNumber)
-            self.buyingItem=False
-            self.newItemNumber=0
+            self.resetFlags()
+            self.resetVariables()
+            return
 
     def registerNewItem(self):
         if self.registeringItem == False:
+            self.resetFlags()
+            self.resetVariables()
             self.registeringItem=True
-            self.newItemPrice=None
-            self.newItemDesc=None
-            self.newItemVolume=None
-            self.newItemCountry=None
 
             self.screenObj.addLine('Looking online for what this is...','top')
             response = barcodelookup.BarcodeLookup().lookupBarcode(self.newItemBarcode)
@@ -258,27 +318,41 @@ class BarcodeProtocol(basic.LineReceiver):
             self.bar.addItem(self.newItemBarcode,self.newItemPrice)
         if self.newItemDesc and self.newItemVolume and self.newItemCountry:        
             self.bar.addBarcodeDesc(self.newItemBarcode,self.newItemDesc,self.newItemVolume,self.newItemCountry)
-            self.registeringItem=False
-            self.newItemBarcode=None
-            self.newItemPrice=None
-            self.newItemDesc=None
-            self.newItemVolume=None
-            self.newItemCountry=None
+            self.resetFlags()
+            self.resetVariables()
+            return
+
+    def registerNewUser(self):
+        if self.registeringUser == False:
+            self.resetFlags()
+            self.resetVariables()
+            self.registeringUser=True
+
+            self.screenObj.addLine('New user. Please enter a username.','top')
+            return
+        if not self.newUsername:
+            self.newUsername = str(self.lastLine.strip())
+            self.screenObj.addLine('Adding new user '+str(self.newUsername)+'...','top')
+            self.bar.addMember(self.newItemBarcode,self.newUsername)
+            self.resetFlags()
+            self.resetVariables()
             return
 
     def lineReceived(self, barcode):
         try:
             self.bar.handleBarcode(barcode)
         except exceptions.ItemOutOfStockError:
-            log.warn('Item out of stock')
-            self.bar.resetHandleState()
+            pass
+#            log.warn('Item out of stock')
+#            self.bar.resetHandleState()
         except exceptions.ItemDoesNotExistError:
-            self.screenObj.addLine("Unknown item barcode. Registering...",'top')
-            self.newItemBarcode = barcode
-            self.registerNewItem()
-            self.bar.resetHandleState()
+            pass
+#            self.screenObj.addLine("Unknown item barcode. Registering...",'top')
+#            self.newItemBarcode = barcode
+#            self.registerNewItem()
+#            self.bar.resetHandleState()
         except Exception:
-            self.bar.resetHandleState()
+#            self.bar.resetHandleState()
             log.error(traceback.format_exc())
 
 
