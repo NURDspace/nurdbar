@@ -21,12 +21,12 @@ log=logging.getLogger(__name__)
 #fh = logging.FileHandler('logging.log')
 #fh.setLevel(logging.DEBUG)
 
-CHANNEL = '#nurds'
+CHANNEL = '#nurdbottest'
 FORGETTIME = 20
 SCREENSRATIO=0.333
 NICKNAME = 'popcorn'
 DEBUGMODE = False
-CATCHEXIT = True
+CATCHEXIT = False
 
 def sighandler(signum,frame):
     pass

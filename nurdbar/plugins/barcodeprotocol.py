@@ -122,6 +122,7 @@ class BarcodeProtocol(basic.LineReceiver):
             barcode = self.currentBarcodeDesc.barcode
             self.newItemBarcode = barcode
         else:
+            self.screenObj.addLine("Registering new item...",'top')
             self.registerNewItem()
             return
         if self.currentItem is not None:
@@ -146,15 +147,16 @@ class BarcodeProtocol(basic.LineReceiver):
     def identifyMember(self,event):
         if not self.handlerFinish(): return
         member=event.attributes['member']
+        if self.currentMember is not None and self.state == 'NEWUSER':
+            self.newItemBarcode = self.lastBarcode
+            self.registerNewUser()
+            return
         if member is not None:
-            if self.currentMember is not None and self.state == 'NEWUSER':
-                self.newItemBarcode = self.lastBarcode
-                self.registerNewUser()
-                return
             if self.buyingItem: self.buyItemHandler()
             self.currentMember = member
             self.state='BUY'
             self.screenObj.addLine("Hello, "+str(member.nick),'top')
+            self.screenObj.addLine("your current Balance: EUR "+"{:.2f}".format(member.balance),'top')
         else:
             self.screenObj.addLine("Unknown member barcode.",'top')
 
@@ -182,6 +184,9 @@ class BarcodeProtocol(basic.LineReceiver):
         self.lastLine = line.strip()
         if self.registeringItem:
             self.registerNewItem()
+            return
+        if self.registeringUser:
+            self.registerNewUser()
             return
         if self.sellingItem:
             self.sellItemHandler()
@@ -336,6 +341,7 @@ class BarcodeProtocol(basic.LineReceiver):
             self.bar.addMember(self.newItemBarcode,self.newUsername)
             self.resetFlags()
             self.resetVariables()
+            self.state = 'BUY'
             return
 
     def lineReceived(self, barcode):
@@ -347,9 +353,9 @@ class BarcodeProtocol(basic.LineReceiver):
 #            self.bar.resetHandleState()
         except exceptions.ItemDoesNotExistError:
             pass
-#            self.screenObj.addLine("Unknown item barcode. Registering...",'top')
-#            self.newItemBarcode = barcode
-#            self.registerNewItem()
+            self.screenObj.addLine("Unknown item barcode. Registering...",'top')
+            self.newItemBarcode = barcode
+            self.registerNewItem()
 #            self.bar.resetHandleState()
         except Exception:
 #            self.bar.resetHandleState()

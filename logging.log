@@ -675,3 +675,53 @@ AttributeError: 'Query' object has no attribute 'last'
 2014-02-14 00:13:41,601 DEBUG Found positive transaction: <Transaction transaction_price:158.5 item:5 member:1 archived:False> with payment_price: 158.5
 2014-02-14 00:13:41,602 DEBUG Changing transaction <Transaction transaction_price:158.5 item:5 member:1 archived:False> transaction_price to 157.0
 2014-02-14 00:13:41,603 DEBUG Adding transaction with item 7, transaction_price -1.5 for member 1
+2014-02-14 00:17:25,182 DEBUG Read config
+2014-02-14 00:17:25,268 DEBUG Session setup
+2014-02-14 00:17:25,331 INFO Starting telnet protocol
+2014-02-14 00:17:25,333 INFO Starting barcode monitor
+2014-02-14 00:17:25,333 DEBUG Using serial port /dev/ttySCAN
+2014-02-14 19:58:35,282 DEBUG Read config
+2014-02-14 19:58:36,083 DEBUG Session setup
+2014-02-14 19:58:36,481 INFO Starting telnet protocol
+2014-02-14 19:58:36,483 INFO Starting barcode monitor
+2014-02-14 19:58:36,483 DEBUG Using serial port /dev/ttySCAN
+2014-02-14 20:02:25,270 DEBUG Read config
+2014-02-14 20:02:25,357 DEBUG Session setup
+2014-02-14 20:02:25,413 INFO Starting telnet protocol
+2014-02-14 20:02:25,415 INFO Starting barcode monitor
+2014-02-14 20:02:25,415 DEBUG Using serial port /dev/ttySCAN
+2014-02-14 23:12:15,728 DEBUG Read config
+2014-02-14 23:12:15,813 DEBUG Session setup
+2014-02-14 23:12:15,877 INFO Starting telnet protocol
+2014-02-14 23:12:15,879 INFO Starting barcode monitor
+2014-02-14 23:12:15,879 DEBUG Using serial port /dev/ttySCAN
+2014-02-14 23:15:22,828 DEBUG Read config
+2014-02-14 23:15:22,913 DEBUG Session setup
+2014-02-14 23:15:22,976 INFO Starting telnet protocol
+2014-02-14 23:15:22,978 INFO Starting barcode monitor
+2014-02-14 23:15:22,979 DEBUG Using serial port /dev/ttySCAN
+2014-02-14 23:15:26,187 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '8710614305522'}
+2014-02-14 23:15:27,031 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-14 23:16:09,687 DEBUG Identified country as bel
+2014-02-14 23:17:33,073 DEBUG Read config
+2014-02-14 23:17:33,159 DEBUG Session setup
+2014-02-14 23:17:33,223 INFO Starting telnet protocol
+2014-02-14 23:17:33,225 INFO Starting barcode monitor
+2014-02-14 23:17:33,225 DEBUG Using serial port /dev/ttySCAN
+2014-02-14 23:19:15,005 DEBUG Read config
+2014-02-14 23:19:15,089 DEBUG Session setup
+2014-02-14 23:19:15,152 INFO Starting telnet protocol
+2014-02-14 23:19:15,154 INFO Starting barcode monitor
+2014-02-14 23:19:15,155 DEBUG Using serial port /dev/ttySCAN
+2014-02-14 23:21:55,857 DEBUG Read config
+2014-02-14 23:21:55,942 DEBUG Session setup
+2014-02-14 23:21:56,006 INFO Starting telnet protocol
+2014-02-14 23:21:56,008 INFO Starting barcode monitor
+2014-02-14 23:21:56,008 DEBUG Using serial port /dev/ttySCAN
+2014-02-14 23:22:28,839 INFO Changing stock of item 7 from 17 to 22
+2014-02-14 23:22:28,840 DEBUG Adding transaction with item 7, transaction_price 7.5 for member 2
+2014-02-14 23:30:46,262 DEBUG Read config
+2014-02-14 23:30:46,348 DEBUG Session setup
+2014-02-14 23:30:46,411 INFO Starting telnet protocol
+2014-02-14 23:30:46,413 INFO Starting barcode monitor
+2014-02-14 23:30:46,413 DEBUG Using serial port /dev/ttySCAN

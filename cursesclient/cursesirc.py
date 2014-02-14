@@ -75,7 +75,7 @@ class Screen(CursesStdIO):
                                curses.color_pair(2))
             i = i + 1
             index = index - 1
-        self.stdscr.move(self.rows-1, len(self.ircText))
+        self.cursorMove()
         self.stdscr.refresh()
 
     def paintStatus(self, text):
