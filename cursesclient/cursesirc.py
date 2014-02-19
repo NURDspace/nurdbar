@@ -126,6 +126,7 @@ class Screen(CursesStdIO):
                     self.statusText = 'IDENTIFIED AS '+handle+'. CHANGE NAMES WITH /nick <name>'
                     self.irc.nickname = self.irc.originalnick+'-'+handle
                     self.irc.sendLine('NICK '+self.irc.nickname)
+                    self.irc.handleTimeout=0
                     self.redisplayLines()
                 elif self.irc.nickname != self.irc.originalnick:
                     newline = time.strftime('<%H:%M>')

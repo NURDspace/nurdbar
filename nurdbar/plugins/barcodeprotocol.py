@@ -54,6 +54,7 @@ class BarcodeProtocol(basic.LineReceiver):
             self.registeringUser=False
             self.sellingItem=False
             self.buyingItem=False
+            self.depositing=False
 
     def resetScans(self):
             self.currentMember=None
@@ -63,7 +64,6 @@ class BarcodeProtocol(basic.LineReceiver):
     def resetVariables(self):
             self.lastLine = ''
             self.newUsername=None
-#            self.newItemBarcode=None
             self.newItemNumber=None
             self.oldItemPrice=None
             self.newItemPrice=None
@@ -108,6 +108,8 @@ class BarcodeProtocol(basic.LineReceiver):
             self.resetFlags()
             self.state = command
             self.screenObj.addLine('Changing to mode: '+str(command),'top')
+            if self.state == 'DEPOSIT':
+                self.depositHandler()
 
     def scanItem(self,event):
         #Reset state machines if in progress
@@ -120,7 +122,7 @@ class BarcodeProtocol(basic.LineReceiver):
 #            self.screenObj.addLine('This item is recognised, but we have none.','top')
             id = ''
             barcode = self.currentBarcodeDesc.barcode
-            self.newItemBarcode = barcode
+            self.newBarcode = barcode
         else:
             self.screenObj.addLine("Registering new item...",'top')
             self.registerNewItem()
@@ -148,7 +150,7 @@ class BarcodeProtocol(basic.LineReceiver):
         if not self.handlerFinish(): return
         member=event.attributes['member']
         if self.currentMember is not None and self.state == 'NEWUSER':
-            self.newItemBarcode = self.lastBarcode
+            self.newBarcode = self.lastBarcode
             self.registerNewUser()
             return
         if member is not None:
@@ -181,6 +183,7 @@ class BarcodeProtocol(basic.LineReceiver):
         """
         Overriding the default input to run state engine.
         """
+        self.idleTime=0
         self.lastLine = line.strip()
         if self.registeringItem:
             self.registerNewItem()
@@ -193,6 +196,9 @@ class BarcodeProtocol(basic.LineReceiver):
             return
         if self.buyingItem:
             self.buyItemHandler()
+            return
+        if self.depositing:
+            self.depositHandler()
             return
         try:
             self.newItemNumber = int(self.lastLine)
@@ -216,7 +222,7 @@ class BarcodeProtocol(basic.LineReceiver):
                     self.newItemNumber = 1
                     self.screenObj.addLine('Invalid entry. Defaulting to 1...','top')
             try:
-                self.oldItemPrice = self.bar.getItemByBarcode(self.newItemBarcode).buy_price
+                self.oldItemPrice = self.bar.getItemByBarcode(self.newBarcode).buy_price
             except:
                 self.oldItemPrice = None
 
@@ -241,9 +247,9 @@ class BarcodeProtocol(basic.LineReceiver):
                     self.newItemPrice = None
                     self.screenObj.addLine('Invalid value. Please try again.','top')
                     return
-        self.screenObj.addLine('Buying from '+str(self.currentMember.nick)+' Item: '+str(self.newItemBarcode),'top')
+        self.screenObj.addLine('Buying from '+str(self.currentMember.nick)+' Item: '+str(self.newBarcode),'top')
         self.screenObj.addLine('Number: '+str(self.newItemNumber)+' Buying at EUR '+"{:.2f}".format(self.newItemPrice),'top')
-        self.bar.sellItem(self.currentMember.barcode, self.newItemBarcode, self.newItemPrice, amount=self.newItemNumber)
+        self.bar.sellItem(self.currentMember.barcode, self.newBarcode, self.newItemPrice, amount=self.newItemNumber)
         self.resetFlags()
         self.resetVariables()
         return
@@ -254,7 +260,7 @@ class BarcodeProtocol(basic.LineReceiver):
             self.resetVariables()
             self.buyingItem=True
             price = self.currentItem.sell_price
-            currentstock = self.bar.getItemTotalStock(self.newItemBarcode)
+            currentstock = self.bar.getItemTotalStock(self.newBarcode)
             self.screenObj.addLine("Price: EUR "+"{:.2f}".format(price)+"  How many are you buying? (Default: 1, Max: "+str(currentstock)+")","top")
             return
         if not self.newItemNumber:
@@ -264,14 +270,38 @@ class BarcodeProtocol(basic.LineReceiver):
                 try:
                     self.newItemNumber = int(self.lastLine.strip())
                 except:
+                    self.newItemNumber = 1
                     self.screenObj.addLine('Invalid entry. Defaulting to 1...','top')
-            currentstock = self.bar.getItemTotalStock(self.newItemBarcode)
+            currentstock = self.bar.getItemTotalStock(self.newBarcode)
             if self.newItemNumber>currentstock:
                 self.newItemNumber = None
                 self.screenObj.addLine("You can't buy that many! We only have "+str(currentstock),"top")
                 return
             self.screenObj.addLine('Selling '+str(self.newItemNumber)+' of #'+str(self.currentItem.item_id)+' to '+str(self.currentMember.nick),'top')
-            self.bar.buyItem(self.currentMember.barcode, self.newItemBarcode, amount=self.newItemNumber)
+            self.bar.buyItem(self.currentMember.barcode, self.newBarcode, amount=self.newItemNumber)
+            self.resetFlags()
+            self.resetVariables()
+            return
+
+    def depositHandler(self,default=False):
+        if not self.currentMember:
+            self.screenObj.addLine("Please log in first.","top")
+            return            
+        if self.depositing == False:
+            self.resetFlags()
+            self.resetVariables()
+            self.depositing=True
+            self.screenObj.addLine("How much are you depositing? (in EUR)","top")
+            return
+        if not self.newItemPrice:
+            try:
+                self.newItemPrice = int(self.lastLine.strip())
+            except:
+                self.newItemPrice = 0
+                self.screenObj.addLine('Invalid entry.','top')
+                return
+            self.screenObj.addLine('Depositing EUR '+"{:.2f}".format(self.newItemPrice)+' to '+str(self.currentMember.nick),'top')
+            self.bar.payAmount(self.currentMember,self.newItemPrice)
             self.resetFlags()
             self.resetVariables()
             return
@@ -283,7 +313,7 @@ class BarcodeProtocol(basic.LineReceiver):
             self.registeringItem=True
 
             self.screenObj.addLine('Looking online for what this is...','top')
-            response = barcodelookup.BarcodeLookup().lookupBarcode(self.newItemBarcode)
+            response = barcodelookup.BarcodeLookup().lookupBarcode(self.newBarcode)
             if response:
                 self.newItemDesc,self.newItemVolume,self.newItemCountry = response
                 self.screenObj.addLine('I think this is '+str(self.newItemDesc)+' '+str(self.newItemVolume)+' from '+str(self.newItemCountry)+'.','top')
@@ -320,9 +350,9 @@ class BarcodeProtocol(basic.LineReceiver):
                 self.screenObj.addLine('Invalid value. Skipping...','top')
         self.screenObj.addLine('Entering data now.','top')
         if self.newItemPrice is not 0:
-            self.bar.addItem(self.newItemBarcode,self.newItemPrice)
+            self.bar.addItem(self.newBarcode,self.newItemPrice)
         if self.newItemDesc and self.newItemVolume and self.newItemCountry:        
-            self.bar.addBarcodeDesc(self.newItemBarcode,self.newItemDesc,self.newItemVolume,self.newItemCountry)
+            self.bar.addBarcodeDesc(self.newBarcode,self.newItemDesc,self.newItemVolume,self.newItemCountry)
             self.resetFlags()
             self.resetVariables()
             return
@@ -338,7 +368,7 @@ class BarcodeProtocol(basic.LineReceiver):
         if not self.newUsername:
             self.newUsername = str(self.lastLine.strip())
             self.screenObj.addLine('Adding new user '+str(self.newUsername)+'...','top')
-            self.bar.addMember(self.newItemBarcode,self.newUsername)
+            self.bar.addMember(self.newBarcode,self.newUsername)
             self.resetFlags()
             self.resetVariables()
             self.state = 'BUY'
@@ -349,12 +379,10 @@ class BarcodeProtocol(basic.LineReceiver):
             self.bar.handleBarcode(barcode)
         except exceptions.ItemOutOfStockError:
             pass
-#            log.warn('Item out of stock')
-#            self.bar.resetHandleState()
         except exceptions.ItemDoesNotExistError:
             pass
             self.screenObj.addLine("Unknown item barcode. Registering...",'top')
-            self.newItemBarcode = barcode
+            self.newBarcode = barcode
             self.registerNewItem()
 #            self.bar.resetHandleState()
         except Exception:

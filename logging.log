@@ -725,3 +725,638 @@ AttributeError: 'Query' object has no attribute 'last'
 2014-02-14 23:30:46,411 INFO Starting telnet protocol
 2014-02-14 23:30:46,413 INFO Starting barcode monitor
 2014-02-14 23:30:46,413 DEBUG Using serial port /dev/ttySCAN
+2014-02-15 00:24:11,103 DEBUG Read config
+2014-02-15 00:24:11,194 DEBUG Session setup
+2014-02-15 00:24:27,425 DEBUG Read config
+2014-02-15 00:24:27,514 DEBUG Session setup
+2014-02-15 00:29:19,969 DEBUG Read config
+2014-02-15 00:29:20,055 DEBUG Session setup
+2014-02-15 00:29:20,119 INFO Starting telnet protocol
+2014-02-15 00:29:20,121 INFO Starting barcode monitor
+2014-02-15 00:29:20,121 DEBUG Using serial port /dev/ttySCAN
+2014-02-15 00:51:02,269 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '8710614305522'}
+2014-02-15 00:51:03,466 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-15 00:52:27,930 DEBUG Identified country as bel
+2014-02-15 00:52:42,517 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '4029764001807'}
+2014-02-15 00:52:44,255 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2007-03-27T19:10:44' at 2e5a488>, 'description': 'Club-Mate', 'noCacheAfterUTC': <DateTime '2014-02-15T17:52:44' at 2e5a440>, 'ean': '4029764001807', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': '0.5L', 'issuerCountry': 'Germany', 'issuerCountryCode': 'de'}
+2014-02-15 00:52:44,255 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '4029764001807'}
+2014-02-15 00:52:44,508 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2007-03-27T19:10:44' at 2e5a0e0>, 'description': 'Club-Mate', 'noCacheAfterUTC': <DateTime '2014-02-15T17:52:44' at 2e5a488>, 'ean': '4029764001807', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': '0.5L', 'issuerCountry': 'Germany', 'issuerCountryCode': 'de'}
+2014-02-15 00:52:44,508 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '4029764001807'}
+2014-02-15 00:52:45,035 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2007-03-27T19:10:44' at 2e5a560>, 'description': 'Club-Mate', 'noCacheAfterUTC': <DateTime '2014-02-15T17:52:45' at 2e5a518>, 'ean': '4029764001807', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': '0.5L', 'issuerCountry': 'Germany', 'issuerCountryCode': 'de'}
+2014-02-15 00:52:45,035 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '4029764001807'}
+2014-02-15 00:52:45,427 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2007-03-27T19:10:44' at 2e5a5a8>, 'description': 'Club-Mate', 'noCacheAfterUTC': <DateTime '2014-02-15T17:52:45' at 2e5a4d0>, 'ean': '4029764001807', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': '0.5L', 'issuerCountry': 'Germany', 'issuerCountryCode': 'de'}
+2014-02-15 00:52:52,954 DEBUG Identified country as deu
+2014-02-15 00:53:30,453 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0000023003033'}
+2014-02-15 00:53:31,178 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2010-05-21T11:53:59' at 2e5dd88>, 'description': 'Schulten brau', 'noCacheAfterUTC': <DateTime '2014-02-15T17:53:31' at 2e5dcb0>, 'ean': '0000023003033', 'upc': '000023003033', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': '30 cl', 'issuerCountry': 'United States', 'issuerCountryCode': 'us'}
+2014-02-15 00:53:31,179 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0000023003033'}
+2014-02-15 00:53:31,413 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2010-05-21T11:53:59' at 2e5da70>, 'description': 'Schulten brau', 'noCacheAfterUTC': <DateTime '2014-02-15T17:53:31' at 2e5dcb0>, 'ean': '0000023003033', 'upc': '000023003033', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': '30 cl', 'issuerCountry': 'United States', 'issuerCountryCode': 'us'}
+2014-02-15 00:53:31,414 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0000023003033'}
+2014-02-15 00:53:32,251 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2010-05-21T11:53:59' at 2e5dcf8>, 'description': 'Schulten brau', 'noCacheAfterUTC': <DateTime '2014-02-15T17:53:32' at 2e5dc20>, 'ean': '0000023003033', 'upc': '000023003033', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': '30 cl', 'issuerCountry': 'United States', 'issuerCountryCode': 'us'}
+2014-02-15 00:53:32,252 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0000023003033'}
+2014-02-15 00:53:32,656 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2010-05-21T11:53:59' at 2e5dcf8>, 'description': 'Schulten brau', 'noCacheAfterUTC': <DateTime '2014-02-15T17:53:32' at 2e5da28>, 'ean': '0000023003033', 'upc': '000023003033', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': '30 cl', 'issuerCountry': 'United States', 'issuerCountryCode': 'us'}
+2014-02-15 00:53:32,656 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0000023003033'}
+2014-02-15 00:53:33,176 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2010-05-21T11:53:59' at 2e5de18>, 'description': 'Schulten brau', 'noCacheAfterUTC': <DateTime '2014-02-15T17:53:33' at 2e5dd40>, 'ean': '0000023003033', 'upc': '000023003033', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': '30 cl', 'issuerCountry': 'United States', 'issuerCountryCode': 'us'}
+2014-02-15 00:53:33,177 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0000023003033'}
+2014-02-15 00:53:33,426 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2010-05-21T11:53:59' at 2e5ddd0>, 'description': 'Schulten brau', 'noCacheAfterUTC': <DateTime '2014-02-15T17:53:33' at 2e5db90>, 'ean': '0000023003033', 'upc': '000023003033', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': '30 cl', 'issuerCountry': 'United States', 'issuerCountryCode': 'us'}
+2014-02-15 00:53:39,119 DEBUG Identified country as usa
+2014-02-15 00:53:43,191 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0000023001251'}
+2014-02-15 00:53:43,677 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-15 00:53:43,677 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0000023001251'}
+2014-02-15 00:53:44,395 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-15 00:53:44,396 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0000023001251'}
+2014-02-15 00:53:45,261 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-15 00:53:45,262 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0000023001251'}
+2014-02-15 00:53:46,045 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-15 00:54:15,384 DEBUG Identified country as nld
+2014-02-15 00:54:56,048 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '3222474207250'}
+2014-02-15 00:54:56,978 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-15 00:54:56,979 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '3222474207250'}
+2014-02-15 00:54:57,957 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-15 00:54:57,958 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '3222474207250'}
+2014-02-15 00:54:58,953 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-15 00:54:58,953 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '3222474207250'}
+2014-02-15 00:54:59,982 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-15 00:54:59,983 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '3222474207250'}
+2014-02-15 00:55:00,986 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-15 00:56:08,579 DEBUG Identified country as fra
+2014-02-15 21:13:35,745 DEBUG Read config
+2014-02-15 21:13:39,822 DEBUG Session setup
+2014-02-15 21:13:41,149 INFO Starting telnet protocol
+2014-02-15 21:13:41,151 INFO Starting barcode monitor
+2014-02-15 21:13:41,151 DEBUG Using serial port /dev/ttySCAN
+2014-02-16 01:01:29,586 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0000023058415'}
+2014-02-16 01:01:30,473 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-16 01:02:43,369 DEBUG Identified country as deu
+2014-02-16 01:03:30,072 INFO Changing stock of item 4 from 0 to 50
+2014-02-16 01:03:30,076 DEBUG Adding transaction with item 4, transaction_price 500.0 for member 1
+2014-02-16 01:04:05,539 INFO Member 1 has taken 15 item(s) 4 with barcode 23058415
+2014-02-16 01:04:05,540 INFO Partially changing stock of item 4 from 50 to 35
+2014-02-16 01:04:05,541 DEBUG total taken_price: 150.0
+2014-02-16 01:04:05,693 DEBUG Found positive transaction: <Transaction transaction_price:500.0 item:4 member:1 archived:False> with payment_price: 500.0
+2014-02-16 01:04:05,694 DEBUG Changing transaction <Transaction transaction_price:500.0 item:4 member:1 archived:False> transaction_price to 350.0
+2014-02-16 01:04:05,695 DEBUG Adding transaction with item 4, transaction_price -150.0 for member 1
+2014-02-16 01:04:16,410 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:16,410 INFO Partially changing stock of item 4 from 35 to 34
+2014-02-16 01:04:16,411 DEBUG total taken_price: 10.0
+2014-02-16 01:04:16,426 DEBUG Found positive transaction: <Transaction transaction_price:350.0 item:4 member:1 archived:False> with payment_price: 350.0
+2014-02-16 01:04:16,426 DEBUG Changing transaction <Transaction transaction_price:350.0 item:4 member:1 archived:False> transaction_price to 340.0
+2014-02-16 01:04:16,427 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:21,436 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:21,437 INFO Partially changing stock of item 4 from 34 to 33
+2014-02-16 01:04:21,437 DEBUG total taken_price: 10.0
+2014-02-16 01:04:21,452 DEBUG Found positive transaction: <Transaction transaction_price:340.0 item:4 member:1 archived:False> with payment_price: 340.0
+2014-02-16 01:04:21,453 DEBUG Changing transaction <Transaction transaction_price:340.0 item:4 member:1 archived:False> transaction_price to 330.0
+2014-02-16 01:04:21,454 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:21,854 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:21,854 INFO Partially changing stock of item 4 from 33 to 32
+2014-02-16 01:04:21,855 DEBUG total taken_price: 10.0
+2014-02-16 01:04:21,870 DEBUG Found positive transaction: <Transaction transaction_price:330.0 item:4 member:1 archived:False> with payment_price: 330.0
+2014-02-16 01:04:21,872 DEBUG Changing transaction <Transaction transaction_price:330.0 item:4 member:1 archived:False> transaction_price to 320.0
+2014-02-16 01:04:21,872 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:22,349 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:22,350 INFO Partially changing stock of item 4 from 32 to 31
+2014-02-16 01:04:22,350 DEBUG total taken_price: 10.0
+2014-02-16 01:04:22,365 DEBUG Found positive transaction: <Transaction transaction_price:320.0 item:4 member:1 archived:False> with payment_price: 320.0
+2014-02-16 01:04:22,366 DEBUG Changing transaction <Transaction transaction_price:320.0 item:4 member:1 archived:False> transaction_price to 310.0
+2014-02-16 01:04:22,367 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:22,920 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:22,921 INFO Partially changing stock of item 4 from 31 to 30
+2014-02-16 01:04:22,921 DEBUG total taken_price: 10.0
+2014-02-16 01:04:22,938 DEBUG Found positive transaction: <Transaction transaction_price:310.0 item:4 member:1 archived:False> with payment_price: 310.0
+2014-02-16 01:04:22,939 DEBUG Changing transaction <Transaction transaction_price:310.0 item:4 member:1 archived:False> transaction_price to 300.0
+2014-02-16 01:04:22,939 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:23,521 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:23,521 INFO Partially changing stock of item 4 from 30 to 29
+2014-02-16 01:04:23,522 DEBUG total taken_price: 10.0
+2014-02-16 01:04:23,537 DEBUG Found positive transaction: <Transaction transaction_price:300.0 item:4 member:1 archived:False> with payment_price: 300.0
+2014-02-16 01:04:23,538 DEBUG Changing transaction <Transaction transaction_price:300.0 item:4 member:1 archived:False> transaction_price to 290.0
+2014-02-16 01:04:23,539 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:23,788 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:23,788 INFO Partially changing stock of item 4 from 29 to 28
+2014-02-16 01:04:23,789 DEBUG total taken_price: 10.0
+2014-02-16 01:04:23,804 DEBUG Found positive transaction: <Transaction transaction_price:290.0 item:4 member:1 archived:False> with payment_price: 290.0
+2014-02-16 01:04:23,804 DEBUG Changing transaction <Transaction transaction_price:290.0 item:4 member:1 archived:False> transaction_price to 280.0
+2014-02-16 01:04:23,805 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:24,089 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:24,090 INFO Partially changing stock of item 4 from 28 to 27
+2014-02-16 01:04:24,090 DEBUG total taken_price: 10.0
+2014-02-16 01:04:24,106 DEBUG Found positive transaction: <Transaction transaction_price:280.0 item:4 member:1 archived:False> with payment_price: 280.0
+2014-02-16 01:04:24,106 DEBUG Changing transaction <Transaction transaction_price:280.0 item:4 member:1 archived:False> transaction_price to 270.0
+2014-02-16 01:04:24,107 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:24,383 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:24,383 INFO Partially changing stock of item 4 from 27 to 26
+2014-02-16 01:04:24,384 DEBUG total taken_price: 10.0
+2014-02-16 01:04:24,399 DEBUG Found positive transaction: <Transaction transaction_price:270.0 item:4 member:1 archived:False> with payment_price: 270.0
+2014-02-16 01:04:24,399 DEBUG Changing transaction <Transaction transaction_price:270.0 item:4 member:1 archived:False> transaction_price to 260.0
+2014-02-16 01:04:24,400 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:26,895 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:26,896 INFO Partially changing stock of item 4 from 26 to 25
+2014-02-16 01:04:26,896 DEBUG total taken_price: 10.0
+2014-02-16 01:04:26,912 DEBUG Found positive transaction: <Transaction transaction_price:260.0 item:4 member:1 archived:False> with payment_price: 260.0
+2014-02-16 01:04:26,913 DEBUG Changing transaction <Transaction transaction_price:260.0 item:4 member:1 archived:False> transaction_price to 250.0
+2014-02-16 01:04:26,914 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:28,518 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:28,519 INFO Partially changing stock of item 4 from 25 to 24
+2014-02-16 01:04:28,519 DEBUG total taken_price: 10.0
+2014-02-16 01:04:28,536 DEBUG Found positive transaction: <Transaction transaction_price:250.0 item:4 member:1 archived:False> with payment_price: 250.0
+2014-02-16 01:04:28,537 DEBUG Changing transaction <Transaction transaction_price:250.0 item:4 member:1 archived:False> transaction_price to 240.0
+2014-02-16 01:04:28,537 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:28,934 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:28,935 INFO Partially changing stock of item 4 from 24 to 23
+2014-02-16 01:04:28,935 DEBUG total taken_price: 10.0
+2014-02-16 01:04:28,951 DEBUG Found positive transaction: <Transaction transaction_price:240.0 item:4 member:1 archived:False> with payment_price: 240.0
+2014-02-16 01:04:28,951 DEBUG Changing transaction <Transaction transaction_price:240.0 item:4 member:1 archived:False> transaction_price to 230.0
+2014-02-16 01:04:28,952 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:29,769 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:29,770 INFO Partially changing stock of item 4 from 23 to 22
+2014-02-16 01:04:29,770 DEBUG total taken_price: 10.0
+2014-02-16 01:04:29,785 DEBUG Found positive transaction: <Transaction transaction_price:230.0 item:4 member:1 archived:False> with payment_price: 230.0
+2014-02-16 01:04:29,786 DEBUG Changing transaction <Transaction transaction_price:230.0 item:4 member:1 archived:False> transaction_price to 220.0
+2014-02-16 01:04:29,787 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:30,577 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:30,578 INFO Partially changing stock of item 4 from 22 to 21
+2014-02-16 01:04:30,578 DEBUG total taken_price: 10.0
+2014-02-16 01:04:30,594 DEBUG Found positive transaction: <Transaction transaction_price:220.0 item:4 member:1 archived:False> with payment_price: 220.0
+2014-02-16 01:04:30,594 DEBUG Changing transaction <Transaction transaction_price:220.0 item:4 member:1 archived:False> transaction_price to 210.0
+2014-02-16 01:04:30,595 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:34,448 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:34,449 INFO Partially changing stock of item 4 from 21 to 20
+2014-02-16 01:04:34,449 DEBUG total taken_price: 10.0
+2014-02-16 01:04:34,466 DEBUG Found positive transaction: <Transaction transaction_price:210.0 item:4 member:1 archived:False> with payment_price: 210.0
+2014-02-16 01:04:34,467 DEBUG Changing transaction <Transaction transaction_price:210.0 item:4 member:1 archived:False> transaction_price to 200.0
+2014-02-16 01:04:34,467 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:36,085 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:36,086 INFO Partially changing stock of item 4 from 20 to 19
+2014-02-16 01:04:36,086 DEBUG total taken_price: 10.0
+2014-02-16 01:04:36,101 DEBUG Found positive transaction: <Transaction transaction_price:200.0 item:4 member:1 archived:False> with payment_price: 200.0
+2014-02-16 01:04:36,102 DEBUG Changing transaction <Transaction transaction_price:200.0 item:4 member:1 archived:False> transaction_price to 190.0
+2014-02-16 01:04:36,102 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:37,415 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:37,416 INFO Partially changing stock of item 4 from 19 to 18
+2014-02-16 01:04:37,416 DEBUG total taken_price: 10.0
+2014-02-16 01:04:37,433 DEBUG Found positive transaction: <Transaction transaction_price:190.0 item:4 member:1 archived:False> with payment_price: 190.0
+2014-02-16 01:04:37,434 DEBUG Changing transaction <Transaction transaction_price:190.0 item:4 member:1 archived:False> transaction_price to 180.0
+2014-02-16 01:04:37,434 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:38,490 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:38,491 INFO Partially changing stock of item 4 from 18 to 17
+2014-02-16 01:04:38,491 DEBUG total taken_price: 10.0
+2014-02-16 01:04:38,506 DEBUG Found positive transaction: <Transaction transaction_price:180.0 item:4 member:1 archived:False> with payment_price: 180.0
+2014-02-16 01:04:38,507 DEBUG Changing transaction <Transaction transaction_price:180.0 item:4 member:1 archived:False> transaction_price to 170.0
+2014-02-16 01:04:38,508 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:39,596 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:39,597 INFO Partially changing stock of item 4 from 17 to 16
+2014-02-16 01:04:39,598 DEBUG total taken_price: 10.0
+2014-02-16 01:04:39,613 DEBUG Found positive transaction: <Transaction transaction_price:170.0 item:4 member:1 archived:False> with payment_price: 170.0
+2014-02-16 01:04:39,614 DEBUG Changing transaction <Transaction transaction_price:170.0 item:4 member:1 archived:False> transaction_price to 160.0
+2014-02-16 01:04:39,614 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:41,082 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:41,083 INFO Partially changing stock of item 4 from 16 to 15
+2014-02-16 01:04:41,083 DEBUG total taken_price: 10.0
+2014-02-16 01:04:41,098 DEBUG Found positive transaction: <Transaction transaction_price:160.0 item:4 member:1 archived:False> with payment_price: 160.0
+2014-02-16 01:04:41,099 DEBUG Changing transaction <Transaction transaction_price:160.0 item:4 member:1 archived:False> transaction_price to 150.0
+2014-02-16 01:04:41,100 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:41,747 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:41,748 INFO Partially changing stock of item 4 from 15 to 14
+2014-02-16 01:04:41,749 DEBUG total taken_price: 10.0
+2014-02-16 01:04:41,766 DEBUG Found positive transaction: <Transaction transaction_price:150.0 item:4 member:1 archived:False> with payment_price: 150.0
+2014-02-16 01:04:41,766 DEBUG Changing transaction <Transaction transaction_price:150.0 item:4 member:1 archived:False> transaction_price to 140.0
+2014-02-16 01:04:41,767 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:42,529 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:42,530 INFO Partially changing stock of item 4 from 14 to 13
+2014-02-16 01:04:42,530 DEBUG total taken_price: 10.0
+2014-02-16 01:04:42,545 DEBUG Found positive transaction: <Transaction transaction_price:140.0 item:4 member:1 archived:False> with payment_price: 140.0
+2014-02-16 01:04:42,546 DEBUG Changing transaction <Transaction transaction_price:140.0 item:4 member:1 archived:False> transaction_price to 130.0
+2014-02-16 01:04:42,547 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:43,210 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:43,211 INFO Partially changing stock of item 4 from 13 to 12
+2014-02-16 01:04:43,212 DEBUG total taken_price: 10.0
+2014-02-16 01:04:43,227 DEBUG Found positive transaction: <Transaction transaction_price:130.0 item:4 member:1 archived:False> with payment_price: 130.0
+2014-02-16 01:04:43,227 DEBUG Changing transaction <Transaction transaction_price:130.0 item:4 member:1 archived:False> transaction_price to 120.0
+2014-02-16 01:04:43,228 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:44,087 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:44,088 INFO Partially changing stock of item 4 from 12 to 11
+2014-02-16 01:04:44,088 DEBUG total taken_price: 10.0
+2014-02-16 01:04:44,104 DEBUG Found positive transaction: <Transaction transaction_price:120.0 item:4 member:1 archived:False> with payment_price: 120.0
+2014-02-16 01:04:44,104 DEBUG Changing transaction <Transaction transaction_price:120.0 item:4 member:1 archived:False> transaction_price to 110.0
+2014-02-16 01:04:44,105 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:45,663 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:45,664 INFO Partially changing stock of item 4 from 11 to 10
+2014-02-16 01:04:45,664 DEBUG total taken_price: 10.0
+2014-02-16 01:04:45,679 DEBUG Found positive transaction: <Transaction transaction_price:110.0 item:4 member:1 archived:False> with payment_price: 110.0
+2014-02-16 01:04:45,680 DEBUG Changing transaction <Transaction transaction_price:110.0 item:4 member:1 archived:False> transaction_price to 100.0
+2014-02-16 01:04:45,681 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:46,319 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:46,320 INFO Partially changing stock of item 4 from 10 to 9
+2014-02-16 01:04:46,320 DEBUG total taken_price: 10.0
+2014-02-16 01:04:46,337 DEBUG Found positive transaction: <Transaction transaction_price:100.0 item:4 member:1 archived:False> with payment_price: 100.0
+2014-02-16 01:04:46,338 DEBUG Changing transaction <Transaction transaction_price:100.0 item:4 member:1 archived:False> transaction_price to 90.0
+2014-02-16 01:04:46,339 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:47,088 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:47,088 INFO Partially changing stock of item 4 from 9 to 8
+2014-02-16 01:04:47,089 DEBUG total taken_price: 10.0
+2014-02-16 01:04:47,104 DEBUG Found positive transaction: <Transaction transaction_price:90.0 item:4 member:1 archived:False> with payment_price: 90.0
+2014-02-16 01:04:47,104 DEBUG Changing transaction <Transaction transaction_price:90.0 item:4 member:1 archived:False> transaction_price to 80.0
+2014-02-16 01:04:47,105 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:50,763 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:50,764 INFO Partially changing stock of item 4 from 8 to 7
+2014-02-16 01:04:50,764 DEBUG total taken_price: 10.0
+2014-02-16 01:04:50,779 DEBUG Found positive transaction: <Transaction transaction_price:80.0 item:4 member:1 archived:False> with payment_price: 80.0
+2014-02-16 01:04:50,780 DEBUG Changing transaction <Transaction transaction_price:80.0 item:4 member:1 archived:False> transaction_price to 70.0
+2014-02-16 01:04:50,781 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:51,467 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:51,467 INFO Partially changing stock of item 4 from 7 to 6
+2014-02-16 01:04:51,468 DEBUG total taken_price: 10.0
+2014-02-16 01:04:51,483 DEBUG Found positive transaction: <Transaction transaction_price:70.0 item:4 member:1 archived:False> with payment_price: 70.0
+2014-02-16 01:04:51,484 DEBUG Changing transaction <Transaction transaction_price:70.0 item:4 member:1 archived:False> transaction_price to 60.0
+2014-02-16 01:04:51,484 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:52,090 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:52,090 INFO Partially changing stock of item 4 from 6 to 5
+2014-02-16 01:04:52,091 DEBUG total taken_price: 10.0
+2014-02-16 01:04:52,106 DEBUG Found positive transaction: <Transaction transaction_price:60.0 item:4 member:1 archived:False> with payment_price: 60.0
+2014-02-16 01:04:52,107 DEBUG Changing transaction <Transaction transaction_price:60.0 item:4 member:1 archived:False> transaction_price to 50.0
+2014-02-16 01:04:52,108 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:52,635 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:52,635 INFO Partially changing stock of item 4 from 5 to 4
+2014-02-16 01:04:52,636 DEBUG total taken_price: 10.0
+2014-02-16 01:04:52,653 DEBUG Found positive transaction: <Transaction transaction_price:50.0 item:4 member:1 archived:False> with payment_price: 50.0
+2014-02-16 01:04:52,654 DEBUG Changing transaction <Transaction transaction_price:50.0 item:4 member:1 archived:False> transaction_price to 40.0
+2014-02-16 01:04:52,654 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:53,117 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:53,118 INFO Partially changing stock of item 4 from 4 to 3
+2014-02-16 01:04:53,118 DEBUG total taken_price: 10.0
+2014-02-16 01:04:53,134 DEBUG Found positive transaction: <Transaction transaction_price:40.0 item:4 member:1 archived:False> with payment_price: 40.0
+2014-02-16 01:04:53,135 DEBUG Changing transaction <Transaction transaction_price:40.0 item:4 member:1 archived:False> transaction_price to 30.0
+2014-02-16 01:04:53,135 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:53,765 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:53,765 INFO Partially changing stock of item 4 from 3 to 2
+2014-02-16 01:04:53,766 DEBUG total taken_price: 10.0
+2014-02-16 01:04:53,781 DEBUG Found positive transaction: <Transaction transaction_price:30.0 item:4 member:1 archived:False> with payment_price: 30.0
+2014-02-16 01:04:53,782 DEBUG Changing transaction <Transaction transaction_price:30.0 item:4 member:1 archived:False> transaction_price to 20.0
+2014-02-16 01:04:53,782 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:54,105 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:54,106 INFO Partially changing stock of item 4 from 2 to 1
+2014-02-16 01:04:54,106 DEBUG total taken_price: 10.0
+2014-02-16 01:04:54,121 DEBUG Found positive transaction: <Transaction transaction_price:20.0 item:4 member:1 archived:False> with payment_price: 20.0
+2014-02-16 01:04:54,122 DEBUG Changing transaction <Transaction transaction_price:20.0 item:4 member:1 archived:False> transaction_price to 10.0
+2014-02-16 01:04:54,123 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:54,548 INFO Member 1 has taken 1 item(s) 4 with barcode 23058415
+2014-02-16 01:04:54,549 INFO Partially changing stock of item 4 from 1 to 0
+2014-02-16 01:04:54,550 DEBUG total taken_price: 10.0
+2014-02-16 01:04:54,565 DEBUG Found positive transaction: <Transaction transaction_price:10.0 item:4 member:1 archived:False> with payment_price: 10.0
+2014-02-16 01:04:54,565 DEBUG Setting transaction <Transaction transaction_price:10.0 item:4 member:1 archived:False> to archived=True
+2014-02-16 01:04:54,566 DEBUG Adding transaction with item 4, transaction_price -10.0 for member 1
+2014-02-16 01:04:57,515 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 349, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 105, in handleBarcode
+    events.ItemBarcodeScannedEvent.fire(item,bdesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 46, in fire
+    return super(_BarcodeScannedEvent,self).fire(item=item,barcodedesc=barcodedesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 134, in scanItem
+    self.buyItemHandler()
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 256, in buyItemHandler
+    price = self.currentItem.sell_price
+AttributeError: 'NoneType' object has no attribute 'sell_price'
+
+2014-02-16 01:05:54,984 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 349, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 105, in handleBarcode
+    events.ItemBarcodeScannedEvent.fire(item,bdesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 46, in fire
+    return super(_BarcodeScannedEvent,self).fire(item=item,barcodedesc=barcodedesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 134, in scanItem
+    self.buyItemHandler()
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 256, in buyItemHandler
+    price = self.currentItem.sell_price
+AttributeError: 'NoneType' object has no attribute 'sell_price'
+
+2014-02-16 01:06:01,138 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 349, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 105, in handleBarcode
+    events.ItemBarcodeScannedEvent.fire(item,bdesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 46, in fire
+    return super(_BarcodeScannedEvent,self).fire(item=item,barcodedesc=barcodedesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 134, in scanItem
+    self.buyItemHandler()
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 256, in buyItemHandler
+    price = self.currentItem.sell_price
+AttributeError: 'NoneType' object has no attribute 'sell_price'
+
+2014-02-16 01:06:02,699 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 349, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 105, in handleBarcode
+    events.ItemBarcodeScannedEvent.fire(item,bdesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 46, in fire
+    return super(_BarcodeScannedEvent,self).fire(item=item,barcodedesc=barcodedesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 134, in scanItem
+    self.buyItemHandler()
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 256, in buyItemHandler
+    price = self.currentItem.sell_price
+AttributeError: 'NoneType' object has no attribute 'sell_price'
+
+2014-02-16 18:55:46,325 DEBUG Read config
+2014-02-16 18:55:47,157 DEBUG Session setup
+2014-02-16 18:55:47,548 INFO Starting telnet protocol
+2014-02-16 18:55:47,550 INFO Starting barcode monitor
+2014-02-16 18:55:47,551 DEBUG Using serial port /dev/ttySCAN
+2014-02-17 21:21:34,249 DEBUG Read config
+2014-02-17 21:21:37,263 DEBUG Session setup
+2014-02-17 21:21:38,457 INFO Starting telnet protocol
+2014-02-17 21:21:38,460 INFO Starting barcode monitor
+2014-02-17 21:21:38,460 DEBUG Using serial port /dev/ttySCAN
+2014-02-18 18:12:48,319 DEBUG Read config
+2014-02-18 18:12:49,151 DEBUG Session setup
+2014-02-18 18:12:49,551 INFO Starting telnet protocol
+2014-02-18 18:12:49,553 INFO Starting barcode monitor
+2014-02-18 18:12:49,553 DEBUG Using serial port /dev/ttySCAN
+2014-02-18 20:10:15,933 DEBUG Read config
+2014-02-18 20:10:16,748 DEBUG Session setup
+2014-02-18 20:10:17,140 INFO Starting telnet protocol
+2014-02-18 20:10:17,142 INFO Starting barcode monitor
+2014-02-18 20:10:17,142 DEBUG Using serial port /dev/ttySCAN
+2014-02-19 16:41:14,311 DEBUG Read config
+2014-02-19 16:41:18,563 DEBUG Session setup
+2014-02-19 16:41:19,896 INFO Starting telnet protocol
+2014-02-19 16:41:19,898 INFO Starting barcode monitor
+2014-02-19 16:41:19,898 DEBUG Using serial port /dev/ttySCAN
+2014-02-19 18:06:13,389 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0000087318708'}
+2014-02-19 18:06:14,268 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-19 18:06:53,492 DEBUG Identified country as nld
+2014-02-19 20:37:14,067 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '000000000CASH'}
+2014-02-19 20:37:15,719 WARNING {'status': 'fail', 'message': 'Invalid EAN value'}
+2014-02-19 20:38:22,184 DEBUG Read config
+2014-02-19 20:38:22,271 DEBUG Session setup
+2014-02-19 20:38:22,328 INFO Starting telnet protocol
+2014-02-19 20:38:22,330 INFO Starting barcode monitor
+2014-02-19 20:38:22,331 DEBUG Using serial port /dev/ttySCAN
+2014-02-19 20:38:29,871 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '000000000CASH'}
+2014-02-19 20:38:30,497 WARNING {'status': 'fail', 'message': 'Invalid EAN value'}
+2014-02-19 20:41:25,638 DEBUG Read config
+2014-02-19 20:41:25,723 DEBUG Session setup
+2014-02-19 20:41:25,801 INFO Starting telnet protocol
+2014-02-19 20:41:25,803 INFO Starting barcode monitor
+2014-02-19 20:41:25,804 DEBUG Using serial port /dev/ttySCAN
+2014-02-19 20:41:29,016 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '000000000CASH'}
+2014-02-19 20:41:29,514 WARNING {'status': 'fail', 'message': 'Invalid EAN value'}
+2014-02-19 20:41:29,514 WARNING Scan resulted in error.
+2014-02-19 20:41:59,052 ERROR Exception occured during commit:
+Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 434, in addItem
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 64, in save_obj
+    table, insert)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 569, in _emit_insert_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+IntegrityError: (IntegrityError) duplicate key value violates unique constraint "items_buy_price_barcode_key"
+DETAIL:  Key (buy_price, barcode)=(0.01, CASH) already exists.
+ 'INSERT INTO items (barcode, creationdatetime, lastmodifieddatetime, buy_price, sell_price, stock) VALUES (%(barcode)s, %(creationdatetime)s, %(lastmodifieddatetime)s, %(buy_price)s, %(sell_price)s, %(stock)s) RETURNING items.item_id' {'lastmodifieddatetime': datetime.datetime(2014, 2, 19, 20, 41, 58, 828604), 'barcode': 'CASH', 'buy_price': 0.01, 'sell_price': 0.01, 'creationdatetime': datetime.datetime(2014, 2, 19, 20, 41, 58, 828529), 'stock': 0}
+
+2014-02-19 20:43:17,784 DEBUG Read config
+2014-02-19 20:43:17,870 DEBUG Session setup
+2014-02-19 20:43:17,926 INFO Starting telnet protocol
+2014-02-19 20:43:17,928 INFO Starting barcode monitor
+2014-02-19 20:43:17,928 DEBUG Using serial port /dev/ttySCAN
+2014-02-19 20:43:22,970 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '000000000CASH'}
+2014-02-19 20:43:23,523 WARNING {'status': 'fail', 'message': 'Invalid EAN value'}
+2014-02-19 20:43:23,523 WARNING Scan resulted in error.
+2014-02-19 20:51:06,372 DEBUG Read config
+2014-02-19 20:51:06,457 DEBUG Session setup
+2014-02-19 20:51:06,512 INFO Starting telnet protocol
+2014-02-19 20:51:06,514 INFO Starting barcode monitor
+2014-02-19 20:51:06,515 DEBUG Using serial port /dev/ttySCAN
+2014-02-19 20:51:08,556 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '000000000CASH'}
+2014-02-19 20:51:09,463 WARNING {'status': 'fail', 'message': 'Invalid EAN value'}
+2014-02-19 20:51:09,463 WARNING Scan resulted in error.
+2014-02-19 20:56:54,539 DEBUG Read config
+2014-02-19 20:56:54,631 DEBUG Session setup
+2014-02-19 20:57:50,045 DEBUG Read config
+2014-02-19 20:57:50,131 DEBUG Session setup
+2014-02-19 20:57:50,187 INFO Starting telnet protocol
+2014-02-19 20:57:50,189 INFO Starting barcode monitor
+2014-02-19 20:57:50,190 DEBUG Using serial port /dev/ttySCAN
+2014-02-19 20:58:06,525 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 349, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 105, in handleBarcode
+    events.ItemBarcodeScannedEvent.fire(item,bdesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 46, in fire
+    return super(_BarcodeScannedEvent,self).fire(item=item,barcodedesc=barcodedesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 134, in scanItem
+    self.buyItemHandler()
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 256, in buyItemHandler
+    price = self.currentItem.sell_price
+AttributeError: 'NoneType' object has no attribute 'sell_price'
+
+2014-02-19 20:58:20,931 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 349, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 105, in handleBarcode
+    events.ItemBarcodeScannedEvent.fire(item,bdesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 46, in fire
+    return super(_BarcodeScannedEvent,self).fire(item=item,barcodedesc=barcodedesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 134, in scanItem
+    self.buyItemHandler()
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 256, in buyItemHandler
+    price = self.currentItem.sell_price
+AttributeError: 'NoneType' object has no attribute 'sell_price'
+
+2014-02-19 20:58:39,805 INFO Changing stock of item 3 from 0 to 10
+2014-02-19 20:58:39,806 DEBUG Adding transaction with item 3, transaction_price 15.0 for member 1
+2014-02-19 20:59:03,123 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 349, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 105, in handleBarcode
+    events.ItemBarcodeScannedEvent.fire(item,bdesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 46, in fire
+    return super(_BarcodeScannedEvent,self).fire(item=item,barcodedesc=barcodedesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 134, in scanItem
+    self.buyItemHandler()
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 256, in buyItemHandler
+    price = self.currentItem.sell_price
+AttributeError: 'NoneType' object has no attribute 'sell_price'
+
+2014-02-19 21:10:06,253 DEBUG Read config
+2014-02-19 21:10:06,338 DEBUG Session setup
+2014-02-19 21:10:06,402 INFO Starting telnet protocol
+2014-02-19 21:10:06,404 INFO Starting barcode monitor
+2014-02-19 21:10:06,404 DEBUG Using serial port /dev/ttySCAN
+2014-02-19 21:13:45,663 DEBUG Read config
+2014-02-19 21:13:45,748 DEBUG Session setup
+2014-02-19 21:13:45,812 INFO Starting telnet protocol
+2014-02-19 21:13:45,814 INFO Starting barcode monitor
+2014-02-19 21:13:45,814 DEBUG Using serial port /dev/ttySCAN
+2014-02-19 21:14:06,083 DEBUG Adding transaction with item 1, transaction_price 15 for member 1
+2014-02-19 21:18:15,695 DEBUG Read config
+2014-02-19 21:18:15,780 DEBUG Session setup
+2014-02-19 21:18:15,844 INFO Starting telnet protocol
+2014-02-19 21:18:15,846 INFO Starting barcode monitor
+2014-02-19 21:18:15,847 DEBUG Using serial port /dev/ttySCAN
+2014-02-19 22:03:23,635 DEBUG Read config
+2014-02-19 22:03:23,721 DEBUG Session setup
+2014-02-19 22:03:23,778 INFO Starting telnet protocol
+2014-02-19 22:03:23,780 INFO Starting barcode monitor
+2014-02-19 22:03:23,780 DEBUG Using serial port /dev/ttySCAN
+2014-02-19 22:05:35,305 INFO Changing stock of item 7 from 0 to 1
+2014-02-19 22:05:35,310 DEBUG Adding transaction with item 7, transaction_price 0.5 for member 1
+2014-02-19 22:06:50,854 INFO Changing stock of item 7 from 1 to 2
+2014-02-19 22:06:50,855 DEBUG Adding transaction with item 7, transaction_price 0.5 for member 1
+2014-02-19 22:06:53,326 INFO Changing stock of item 7 from 2 to 3
+2014-02-19 22:06:53,326 DEBUG Adding transaction with item 7, transaction_price 0.5 for member 1
+2014-02-19 22:06:57,112 INFO Changing stock of item 7 from 3 to 4
+2014-02-19 22:06:57,113 DEBUG Adding transaction with item 7, transaction_price 0.5 for member 1
+2014-02-19 22:06:58,170 INFO Changing stock of item 7 from 4 to 5
+2014-02-19 22:06:58,171 DEBUG Adding transaction with item 7, transaction_price 0.5 for member 1
+2014-02-19 22:06:59,158 INFO Changing stock of item 7 from 5 to 6
+2014-02-19 22:06:59,159 DEBUG Adding transaction with item 7, transaction_price 0.5 for member 1
+2014-02-19 22:07:02,558 INFO Changing stock of item 7 from 6 to 7
+2014-02-19 22:07:02,559 DEBUG Adding transaction with item 7, transaction_price 0.5 for member 1
+2014-02-19 22:07:14,331 INFO Changing stock of item 7 from 7 to 8
+2014-02-19 22:07:14,332 DEBUG Adding transaction with item 7, transaction_price 0.5 for member 1
+2014-02-19 22:08:10,397 INFO Member 1 has taken 1 item(s) 7 with barcode 23003033
+2014-02-19 22:08:10,398 INFO Partially changing stock of item 7 from 8 to 7
+2014-02-19 22:08:10,398 DEBUG total taken_price: 0.5
+2014-02-19 22:08:10,428 DEBUG Found positive transaction: <Transaction transaction_price:15.0 item:3 member:1 archived:False> with payment_price: 15.0
+2014-02-19 22:08:10,429 DEBUG Changing transaction <Transaction transaction_price:15.0 item:3 member:1 archived:False> transaction_price to 14.5
+2014-02-19 22:08:10,430 DEBUG Adding transaction with item 7, transaction_price -0.5 for member 1
+2014-02-19 22:08:11,346 INFO Member 1 has taken 1 item(s) 7 with barcode 23003033
+2014-02-19 22:08:11,347 INFO Partially changing stock of item 7 from 7 to 6
+2014-02-19 22:08:11,347 DEBUG total taken_price: 0.5
+2014-02-19 22:08:11,369 DEBUG Found positive transaction: <Transaction transaction_price:14.5 item:3 member:1 archived:False> with payment_price: 14.5
+2014-02-19 22:08:11,370 DEBUG Changing transaction <Transaction transaction_price:14.5 item:3 member:1 archived:False> transaction_price to 14.0
+2014-02-19 22:08:11,371 DEBUG Adding transaction with item 7, transaction_price -0.5 for member 1
+2014-02-19 22:08:12,292 INFO Member 1 has taken 1 item(s) 7 with barcode 23003033
+2014-02-19 22:08:12,293 INFO Partially changing stock of item 7 from 6 to 5
+2014-02-19 22:08:12,293 DEBUG total taken_price: 0.5
+2014-02-19 22:08:12,317 DEBUG Found positive transaction: <Transaction transaction_price:14.0 item:3 member:1 archived:False> with payment_price: 14.0
+2014-02-19 22:08:12,318 DEBUG Changing transaction <Transaction transaction_price:14.0 item:3 member:1 archived:False> transaction_price to 13.5
+2014-02-19 22:08:12,319 DEBUG Adding transaction with item 7, transaction_price -0.5 for member 1
+2014-02-19 22:08:20,965 INFO Member 1 has taken None item(s) 7 with barcode 23003033
+2014-02-19 22:08:27,807 INFO Member 1 has taken None item(s) 7 with barcode 23003033
+2014-02-19 22:11:30,646 DEBUG Read config
+2014-02-19 22:11:30,731 DEBUG Session setup
+2014-02-19 22:11:30,794 INFO Starting telnet protocol
+2014-02-19 22:11:30,796 INFO Starting barcode monitor
+2014-02-19 22:11:30,796 DEBUG Using serial port /dev/ttySCAN
+2014-02-19 22:12:03,990 INFO Member 1 has taken 1 item(s) 7 with barcode 23003033
+2014-02-19 22:12:03,990 INFO Partially changing stock of item 7 from 5 to 4
+2014-02-19 22:12:03,991 DEBUG total taken_price: 0.5
+2014-02-19 22:12:04,018 DEBUG Found positive transaction: <Transaction transaction_price:13.5 item:3 member:1 archived:False> with payment_price: 13.5
+2014-02-19 22:12:04,019 DEBUG Changing transaction <Transaction transaction_price:13.5 item:3 member:1 archived:False> transaction_price to 13.0
+2014-02-19 22:12:04,020 DEBUG Adding transaction with item 7, transaction_price -0.5 for member 1
+2014-02-19 22:12:21,403 DEBUG Adding transaction with item 1, transaction_price 10 for member 1
+2014-02-19 22:15:19,760 DEBUG Read config
+2014-02-19 22:15:19,845 DEBUG Session setup
+2014-02-19 22:15:19,909 INFO Starting telnet protocol
+2014-02-19 22:15:19,911 INFO Starting barcode monitor
+2014-02-19 22:15:19,911 DEBUG Using serial port /dev/ttySCAN
+2014-02-19 22:16:05,559 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 379, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 94, in handleBarcode
+    self.receivedMember=events.MemberBarcodeScannedEvent.fire(self.receivedMember)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 38, in fire
+    return super(_BarcodeScannedEvent,self).fire(member=member)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 153, in identifyMember
+    self.newBarcode = member.barcode
+AttributeError: 'NoneType' object has no attribute 'barcode'
+
+2014-02-19 22:16:16,507 ERROR Exception occured during commit:
+Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 273, in addMember
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 64, in save_obj
+    table, insert)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 569, in _emit_insert_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+IntegrityError: (IntegrityError) duplicate key value violates unique constraint "members_barcode_key"
+DETAIL:  Key (barcode)=(USR1) already exists.
+ 'INSERT INTO members (creationdatetime, lastmodifieddatetime, barcode, nick) VALUES (%(creationdatetime)s, %(lastmodifieddatetime)s, %(barcode)s, %(nick)s) RETURNING members.member_id' {'nick': 'New User', 'lastmodifieddatetime': datetime.datetime(2014, 2, 19, 22, 16, 16, 492441), 'barcode': u'USR1', 'creationdatetime': datetime.datetime(2014, 2, 19, 22, 16, 16, 492367)}
+
+2014-02-19 22:21:07,681 DEBUG Read config
+2014-02-19 22:21:07,769 DEBUG Session setup
+2014-02-19 22:21:07,833 INFO Starting telnet protocol
+2014-02-19 22:21:07,835 INFO Starting barcode monitor
+2014-02-19 22:21:07,835 DEBUG Using serial port /dev/ttySCAN

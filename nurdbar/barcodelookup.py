@@ -30,9 +30,13 @@ class UPCDatabaseProvider(BarcodeLookupProvider):
         logging.warn(params)
         results = self.server.lookup(params)
         logging.warn(results)
-        if results['found']:
-            return (results['description'],results['size'],results['issuerCountry'])
-        return None
+        try:
+            if results['found']:
+                return (results['description'],results['size'],results['issuerCountry'])
+            return None
+        except:
+            logging.warn('Scan resulted in error.')
+            return None
 
 class BarcodeLookup(object):
 
