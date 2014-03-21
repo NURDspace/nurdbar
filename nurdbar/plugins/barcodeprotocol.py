@@ -98,13 +98,13 @@ class BarcodeProtocol(basic.LineReceiver):
 
     def modeChange(self,event):
         command=event.attributes['command']
-        if not self.handlerFinish(): return
         if command == 'RESET':
             self.state = 'BUY'
             self.resetFlags()
             self.resetScans()
             self.screenObj.addLine('Transaction cancelled.','top')
         else:
+            if not self.handlerFinish(): return
             self.resetFlags()
             self.state = command
             self.screenObj.addLine('Changing to mode: '+str(command),'top')
@@ -295,7 +295,7 @@ class BarcodeProtocol(basic.LineReceiver):
             return
         if not self.newItemPrice:
             try:
-                self.newItemPrice = int(self.lastLine.strip())
+                self.newItemPrice = float(self.lastLine.strip())
             except:
                 self.newItemPrice = 0
                 self.screenObj.addLine('Invalid entry.','top')
@@ -320,7 +320,8 @@ class BarcodeProtocol(basic.LineReceiver):
                 self.screenObj.addLine("Please enter a price (in EUR). If you don't know one, leave blank.",'top')
                 return
             else:
-                self.screenObj.addLine('Not found. Please enter a description or name.','top')
+                self.screenObj.addLine('Not found. Now asking you for a description, then a size, a country of origin and a price.','top')
+                self.screenObj.addLine('Please enter a description or name.','top')
                 return
         if not self.newItemDesc:
             self.newItemDesc = str(self.lastLine.strip())

@@ -22,8 +22,6 @@ class IRC(IRCClient):
         self.handleTimeout=0
         forgetter = LoopingCall(self.checkForgetHandle)
         forgetter.start(60) #seconds\
-        pinger = LoopingCall(self.Ping)
-        pinger.start(180) #seconds
 
     def lineReceived(self, line):
         """ When receiving a line, filter and add it to the output buffer """
@@ -71,10 +69,16 @@ class IRC(IRCClient):
         IRCClient.connectionMade(self)
         self.screenObj.addLine("* CONNECTED")
         self.sendLine('JOIN '+self.channel)
+        self.pinger = LoopingCall(self.Ping)
+        self.pinger.start(180) #seconds
 
     def clientConnectionLost(self, connection, reason):
         self.screenObj.addLine("* DISCONNECTED")
-        pass
+        try:
+            if self.pinger:
+                self.pinger.stop()
+        except:
+            pass
 
     def Ping(self):
         self.sendLine('PING space.nurdspace.nl')

@@ -3,6 +3,10 @@ import curses.wrapper
 
 from twisted.python import log
 
+'''Handler functions'''
+def chunks (l,n):
+    return [l[i:i+n] for i in range (0,len(l),n)]
+
 class CursesStdIO:
     """fake fd to be registered as a reader with the twisted reactor.
        Curses classes needing input should extend this"""
@@ -49,10 +53,12 @@ class Screen(CursesStdIO):
 
     def addLine(self, text, window='bottom'):
         """ add a line to the internal list of lines"""
-        if window == 'bottom':
-            self.bottomlines.append(text)
-        elif window == 'top':
-            self.toplines.append(text)
+        ctext = chunks(text,self.cols)
+        for chunk in ctext:
+            if window == 'bottom':
+                self.bottomlines.append(chunk)
+            elif window == 'top':
+                self.toplines.append(chunk)
         self.redisplayLines()
 
     def redisplayLines(self):
@@ -120,7 +126,7 @@ class Screen(CursesStdIO):
 
         elif c == curses.KEY_ENTER or c == 10:
             if self.cursorpos == 'bottom':
-                idchange = re.match ('/nick (\w+)',text)
+                idchange = re.match (r'[\/]nick (\w+)',text)
                 if idchange:
                     handle = idchange.group(1)
                     self.statusText = 'IDENTIFIED AS '+handle+'. CHANGE NAMES WITH /nick <name>'
@@ -152,7 +158,7 @@ class Screen(CursesStdIO):
             text = ''
 
         else:
-            if len(text) == self.cols-2: return
+#            if len(text) == self.cols-2: return
             try:
                     text = text + chr(c)
             except:
@@ -164,11 +170,11 @@ class Screen(CursesStdIO):
             self.barText = text
 
         self.stdscr.addstr(self.rows-1, 0, 
-                           self.ircText + (' ' * (
+                           self.ircText[-self.cols+1:] + (' ' * (
                            self.cols-len(self.ircText)-2)),
                                curses.color_pair(2))
         self.stdscr.addstr(self.toprows, 0, 
-                           self.barText + (' ' * (
+                           self.barText[-self.cols+1:] + (' ' * (
                            self.cols-len(self.barText)-2)),
                                curses.color_pair(3))
         self.cursorMove()
@@ -177,9 +183,9 @@ class Screen(CursesStdIO):
 
     def cursorMove(self):
         if self.cursorpos == 'bottom':
-            self.stdscr.move(self.rows-1, len(self.ircText))
+            self.stdscr.move(self.rows-1, len(self.ircText[-self.cols+1:]))
         if self.cursorpos == 'top':
-            self.stdscr.move(self.toprows, len(self.barText))
+            self.stdscr.move(self.toprows, len(self.barText[-self.cols+1:]))
 
     def Ping(self):
         self.irc.sendLine('PING space.nurdspace.nl')

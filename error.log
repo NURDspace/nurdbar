@@ -31,22 +31,3 @@ DEBUG:__main__:Starting interfaces
   import traceback
 /home/ircguest/nurdbar/nurdbar/plugins/telnetprotocol.py:5: RuntimeWarning: Parent module 'nurdbar/plugins' not found while handling absolute import
   from nurdbar.plugins.api import *
-Unhandled error in Deferred:
-Unhandled Error
-Traceback (most recent call last):
-  File "/home/ircguest/nurdbar/cursesclient/twirc.py", line 99, in __init__
-    self.irc = self.protocol(screenObj,nickname,channel,forgettime,debug)
-  File "/home/ircguest/nurdbar/cursesclient/twirc.py", line 26, in __init__
-    pinger.start(180) #seconds
-  File "/usr/lib/python2.7/dist-packages/twisted/internet/task.py", line 173, in start
-    self()
-  File "/usr/lib/python2.7/dist-packages/twisted/internet/task.py", line 218, in __call__
-    d = defer.maybeDeferred(self.f, *self.a, **self.kw)
---- <exception caught here> ---
-  File "/usr/lib/python2.7/dist-packages/twisted/internet/defer.py", line 137, in maybeDeferred
-    result = f(*args, **kw)
-  File "/home/ircguest/nurdbar/cursesclient/twirc.py", line 80, in Ping
-    self.sendLine('PING space.nurdspace.nl')
-  File "/usr/lib/python2.7/dist-packages/twisted/words/protocols/irc.py", line 1098, in sendLine
-    self._queue.append(line)
-exceptions.AttributeError: 'NoneType' object has no attribute 'append'

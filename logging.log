@@ -1360,3 +1360,2323 @@ DETAIL:  Key (barcode)=(USR1) already exists.
 2014-02-19 22:21:07,833 INFO Starting telnet protocol
 2014-02-19 22:21:07,835 INFO Starting barcode monitor
 2014-02-19 22:21:07,835 DEBUG Using serial port /dev/ttySCAN
+2014-02-19 23:58:05,402 DEBUG Read config
+2014-02-19 23:58:05,487 DEBUG Session setup
+2014-02-19 23:58:05,543 INFO Starting telnet protocol
+2014-02-19 23:58:05,545 INFO Starting barcode monitor
+2014-02-19 23:58:05,545 DEBUG Using serial port /dev/ttySCAN
+2014-02-20 02:09:42,935 INFO Changing stock of item 8 from 0 to 8435834852438534
+2014-02-20 02:09:42,944 DEBUG Adding transaction with item 8, transaction_price 1.12787111977e+19 for member 4
+2014-02-20 02:09:42,964 ERROR Exception occured during commit:
+Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 9, 42, 951024), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:09:49,810 INFO Changing stock of item 8 from 0 to 8435834852438534
+2014-02-20 02:09:49,811 DEBUG Adding transaction with item 8, transaction_price 1.12787111977e+19 for member 4
+2014-02-20 02:09:49,818 ERROR Exception occured during commit:
+Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 9, 49, 815686), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:09:49,852 INFO Changing stock of item 8 from 0 to 8435834852438534
+2014-02-20 02:09:49,853 DEBUG Adding transaction with item 8, transaction_price 1.12787111977e+19 for member 4
+2014-02-20 02:09:49,861 ERROR Exception occured during commit:
+Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 9, 49, 858099), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:09:49,863 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 379, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 94, in handleBarcode
+    self.receivedMember=events.MemberBarcodeScannedEvent.fire(self.receivedMember)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 38, in fire
+    return super(_BarcodeScannedEvent,self).fire(member=member)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 150, in identifyMember
+    if not self.handlerFinish(): return
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 81, in handlerFinish
+    if self.sellingItem: self.sellItemHandler()
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 252, in sellItemHandler
+    self.bar.sellItem(self.currentMember.barcode, self.newBarcode, self.newItemPrice, amount=self.newItemNumber)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 147, in sellItem
+    return self.addTransaction(item,member,transaction_price=buy_price*amount)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 9, 49, 858099), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:04,470 INFO Changing stock of item 8 from 0 to 8435834852438534
+2014-02-20 02:10:04,471 DEBUG Adding transaction with item 8, transaction_price 1.12787111977e+19 for member 4
+2014-02-20 02:10:04,479 ERROR Exception occured during commit:
+Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 4, 475944), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:04,511 INFO Changing stock of item 8 from 0 to 8435834852438534
+2014-02-20 02:10:04,512 DEBUG Adding transaction with item 8, transaction_price 1.12787111977e+19 for member 4
+2014-02-20 02:10:04,525 ERROR Exception occured during commit:
+Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 4, 516489), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:04,527 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 379, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 94, in handleBarcode
+    self.receivedMember=events.MemberBarcodeScannedEvent.fire(self.receivedMember)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 38, in fire
+    return super(_BarcodeScannedEvent,self).fire(member=member)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 150, in identifyMember
+    if not self.handlerFinish(): return
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 81, in handlerFinish
+    if self.sellingItem: self.sellItemHandler()
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 252, in sellItemHandler
+    self.bar.sellItem(self.currentMember.barcode, self.newBarcode, self.newItemPrice, amount=self.newItemNumber)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 147, in sellItem
+    return self.addTransaction(item,member,transaction_price=buy_price*amount)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 4, 516489), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:05,837 INFO Changing stock of item 8 from 0 to 8435834852438534
+2014-02-20 02:10:05,838 DEBUG Adding transaction with item 8, transaction_price 1.12787111977e+19 for member 4
+2014-02-20 02:10:05,846 ERROR Exception occured during commit:
+Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 5, 843026), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:05,880 INFO Changing stock of item 8 from 0 to 8435834852438534
+2014-02-20 02:10:05,880 DEBUG Adding transaction with item 8, transaction_price 1.12787111977e+19 for member 4
+2014-02-20 02:10:05,887 ERROR Exception occured during commit:
+Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 5, 884769), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:05,889 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 379, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 94, in handleBarcode
+    self.receivedMember=events.MemberBarcodeScannedEvent.fire(self.receivedMember)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 38, in fire
+    return super(_BarcodeScannedEvent,self).fire(member=member)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 150, in identifyMember
+    if not self.handlerFinish(): return
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 81, in handlerFinish
+    if self.sellingItem: self.sellItemHandler()
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 252, in sellItemHandler
+    self.bar.sellItem(self.currentMember.barcode, self.newBarcode, self.newItemPrice, amount=self.newItemNumber)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 147, in sellItem
+    return self.addTransaction(item,member,transaction_price=buy_price*amount)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 5, 884769), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:06,863 INFO Changing stock of item 8 from 0 to 8435834852438534
+2014-02-20 02:10:06,864 DEBUG Adding transaction with item 8, transaction_price 1.12787111977e+19 for member 4
+2014-02-20 02:10:06,871 ERROR Exception occured during commit:
+Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 6, 868506), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:06,904 INFO Changing stock of item 8 from 0 to 8435834852438534
+2014-02-20 02:10:06,904 DEBUG Adding transaction with item 8, transaction_price 1.12787111977e+19 for member 4
+2014-02-20 02:10:06,912 ERROR Exception occured during commit:
+Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 6, 909087), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:06,914 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 379, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 94, in handleBarcode
+    self.receivedMember=events.MemberBarcodeScannedEvent.fire(self.receivedMember)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 38, in fire
+    return super(_BarcodeScannedEvent,self).fire(member=member)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 150, in identifyMember
+    if not self.handlerFinish(): return
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 81, in handlerFinish
+    if self.sellingItem: self.sellItemHandler()
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 252, in sellItemHandler
+    self.bar.sellItem(self.currentMember.barcode, self.newBarcode, self.newItemPrice, amount=self.newItemNumber)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 147, in sellItem
+    return self.addTransaction(item,member,transaction_price=buy_price*amount)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 6, 909087), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:13,316 INFO Changing stock of item 8 from 0 to 8435834852438534
+2014-02-20 02:10:13,316 DEBUG Adding transaction with item 8, transaction_price 1.12787111977e+19 for member 4
+2014-02-20 02:10:13,324 ERROR Exception occured during commit:
+Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 13, 321110), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:13,363 INFO Changing stock of item 8 from 0 to 8435834852438534
+2014-02-20 02:10:13,363 DEBUG Adding transaction with item 8, transaction_price 1.12787111977e+19 for member 4
+2014-02-20 02:10:13,370 ERROR Exception occured during commit:
+Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 13, 367728), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:13,372 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 379, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 96, in handleBarcode
+    events.CommandBarcodeScannedEvent.fire(self.commandChange(barcode))
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 58, in fire
+    return super(_BarcodeScannedEvent,self).fire(command=command)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 101, in modeChange
+    if not self.handlerFinish(): return
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 81, in handlerFinish
+    if self.sellingItem: self.sellItemHandler()
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 252, in sellItemHandler
+    self.bar.sellItem(self.currentMember.barcode, self.newBarcode, self.newItemPrice, amount=self.newItemNumber)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 147, in sellItem
+    return self.addTransaction(item,member,transaction_price=buy_price*amount)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 13, 367728), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:19,562 INFO Changing stock of item 8 from 0 to 8435834852438534
+2014-02-20 02:10:19,563 DEBUG Adding transaction with item 8, transaction_price 1.12787111977e+19 for member 4
+2014-02-20 02:10:19,570 ERROR Exception occured during commit:
+Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 19, 567679), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:19,603 INFO Changing stock of item 8 from 0 to 8435834852438534
+2014-02-20 02:10:19,603 DEBUG Adding transaction with item 8, transaction_price 1.12787111977e+19 for member 4
+2014-02-20 02:10:19,611 ERROR Exception occured during commit:
+Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 19, 608321), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:19,613 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 379, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 96, in handleBarcode
+    events.CommandBarcodeScannedEvent.fire(self.commandChange(barcode))
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 58, in fire
+    return super(_BarcodeScannedEvent,self).fire(command=command)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 101, in modeChange
+    if not self.handlerFinish(): return
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 81, in handlerFinish
+    if self.sellingItem: self.sellItemHandler()
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 252, in sellItemHandler
+    self.bar.sellItem(self.currentMember.barcode, self.newBarcode, self.newItemPrice, amount=self.newItemNumber)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 147, in sellItem
+    return self.addTransaction(item,member,transaction_price=buy_price*amount)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 19, 608321), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:23,093 INFO Changing stock of item 8 from 0 to 8435834852438534
+2014-02-20 02:10:23,094 DEBUG Adding transaction with item 8, transaction_price 1.12787111977e+19 for member 4
+2014-02-20 02:10:23,101 ERROR Exception occured during commit:
+Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 23, 98897), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:23,134 INFO Changing stock of item 8 from 0 to 8435834852438534
+2014-02-20 02:10:23,134 DEBUG Adding transaction with item 8, transaction_price 1.12787111977e+19 for member 4
+2014-02-20 02:10:23,143 ERROR Exception occured during commit:
+Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 23, 140852), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:23,146 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 379, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 96, in handleBarcode
+    events.CommandBarcodeScannedEvent.fire(self.commandChange(barcode))
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 58, in fire
+    return super(_BarcodeScannedEvent,self).fire(command=command)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 101, in modeChange
+    if not self.handlerFinish(): return
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 81, in handlerFinish
+    if self.sellingItem: self.sellItemHandler()
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 252, in sellItemHandler
+    self.bar.sellItem(self.currentMember.barcode, self.newBarcode, self.newItemPrice, amount=self.newItemNumber)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 147, in sellItem
+    return self.addTransaction(item,member,transaction_price=buy_price*amount)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 23, 140852), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:23,644 INFO Changing stock of item 8 from 0 to 8435834852438534
+2014-02-20 02:10:23,645 DEBUG Adding transaction with item 8, transaction_price 1.12787111977e+19 for member 4
+2014-02-20 02:10:23,652 ERROR Exception occured during commit:
+Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 23, 649444), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:23,685 INFO Changing stock of item 8 from 0 to 8435834852438534
+2014-02-20 02:10:23,685 DEBUG Adding transaction with item 8, transaction_price 1.12787111977e+19 for member 4
+2014-02-20 02:10:23,693 ERROR Exception occured during commit:
+Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 23, 690218), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:23,695 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 379, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 96, in handleBarcode
+    events.CommandBarcodeScannedEvent.fire(self.commandChange(barcode))
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 58, in fire
+    return super(_BarcodeScannedEvent,self).fire(command=command)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 101, in modeChange
+    if not self.handlerFinish(): return
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 81, in handlerFinish
+    if self.sellingItem: self.sellItemHandler()
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 252, in sellItemHandler
+    self.bar.sellItem(self.currentMember.barcode, self.newBarcode, self.newItemPrice, amount=self.newItemNumber)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 147, in sellItem
+    return self.addTransaction(item,member,transaction_price=buy_price*amount)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 23, 690218), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:24,010 INFO Changing stock of item 8 from 0 to 8435834852438534
+2014-02-20 02:10:24,011 DEBUG Adding transaction with item 8, transaction_price 1.12787111977e+19 for member 4
+2014-02-20 02:10:24,018 ERROR Exception occured during commit:
+Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 24, 15834), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:24,052 INFO Changing stock of item 8 from 0 to 8435834852438534
+2014-02-20 02:10:24,052 DEBUG Adding transaction with item 8, transaction_price 1.12787111977e+19 for member 4
+2014-02-20 02:10:24,062 ERROR Exception occured during commit:
+Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 24, 59298), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:24,064 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 379, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 96, in handleBarcode
+    events.CommandBarcodeScannedEvent.fire(self.commandChange(barcode))
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 58, in fire
+    return super(_BarcodeScannedEvent,self).fire(command=command)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 101, in modeChange
+    if not self.handlerFinish(): return
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 81, in handlerFinish
+    if self.sellingItem: self.sellItemHandler()
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 252, in sellItemHandler
+    self.bar.sellItem(self.currentMember.barcode, self.newBarcode, self.newItemPrice, amount=self.newItemNumber)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 147, in sellItem
+    return self.addTransaction(item,member,transaction_price=buy_price*amount)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 24, 59298), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:24,538 INFO Changing stock of item 8 from 0 to 8435834852438534
+2014-02-20 02:10:24,539 DEBUG Adding transaction with item 8, transaction_price 1.12787111977e+19 for member 4
+2014-02-20 02:10:24,546 ERROR Exception occured during commit:
+Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 24, 543631), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:24,579 INFO Changing stock of item 8 from 0 to 8435834852438534
+2014-02-20 02:10:24,580 DEBUG Adding transaction with item 8, transaction_price 1.12787111977e+19 for member 4
+2014-02-20 02:10:24,588 ERROR Exception occured during commit:
+Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 24, 585106), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:24,590 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 379, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 96, in handleBarcode
+    events.CommandBarcodeScannedEvent.fire(self.commandChange(barcode))
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 58, in fire
+    return super(_BarcodeScannedEvent,self).fire(command=command)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 101, in modeChange
+    if not self.handlerFinish(): return
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 81, in handlerFinish
+    if self.sellingItem: self.sellItemHandler()
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 252, in sellItemHandler
+    self.bar.sellItem(self.currentMember.barcode, self.newBarcode, self.newItemPrice, amount=self.newItemNumber)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 147, in sellItem
+    return self.addTransaction(item,member,transaction_price=buy_price*amount)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 24, 585106), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:24,872 INFO Changing stock of item 8 from 0 to 8435834852438534
+2014-02-20 02:10:24,873 DEBUG Adding transaction with item 8, transaction_price 1.12787111977e+19 for member 4
+2014-02-20 02:10:24,880 ERROR Exception occured during commit:
+Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 24, 877473), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:24,912 INFO Changing stock of item 8 from 0 to 8435834852438534
+2014-02-20 02:10:24,913 DEBUG Adding transaction with item 8, transaction_price 1.12787111977e+19 for member 4
+2014-02-20 02:10:24,922 ERROR Exception occured during commit:
+Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 24, 919350), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:24,924 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 379, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 96, in handleBarcode
+    events.CommandBarcodeScannedEvent.fire(self.commandChange(barcode))
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 58, in fire
+    return super(_BarcodeScannedEvent,self).fire(command=command)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 101, in modeChange
+    if not self.handlerFinish(): return
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 81, in handlerFinish
+    if self.sellingItem: self.sellItemHandler()
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 252, in sellItemHandler
+    self.bar.sellItem(self.currentMember.barcode, self.newBarcode, self.newItemPrice, amount=self.newItemNumber)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 147, in sellItem
+    return self.addTransaction(item,member,transaction_price=buy_price*amount)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 24, 919350), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:10:40,573 INFO Changing stock of item 8 from 0 to 8435834852438534
+2014-02-20 02:10:40,573 DEBUG Adding transaction with item 8, transaction_price 1.12787111977e+19 for member 4
+2014-02-20 02:10:40,581 ERROR Exception occured during commit:
+Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 401, in addTransaction
+    self.session.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 721, in commit
+    self.transaction.commit()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 354, in commit
+    self._prepare_impl()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _prepare_impl
+    self.session.flush()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1818, in flush
+    self._flush(objects)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1936, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 58, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 1900, in _flush
+    flush_context.execute()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 372, in execute
+    rec.execute(self)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 525, in execute
+    uow
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 59, in save_obj
+    mapper, table, update)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 495, in _emit_update_statements
+    execute(statement, params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 662, in execute
+    params)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 761, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 874, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1024, in _handle_dbapi_exception
+    exc_info
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 195, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 867, in _execute_context
+    context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 324, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (DataError) integer out of range
+ 'UPDATE items SET lastmodifieddatetime=%(lastmodifieddatetime)s, stock=%(stock)s WHERE items.item_id = %(items_item_id)s' {'lastmodifieddatetime': datetime.datetime(2014, 2, 20, 2, 10, 40, 578456), 'items_item_id': 8, 'stock': 8435834852438534}
+
+2014-02-20 02:12:03,502 INFO Changing stock of item 8 from 0 to 1337
+2014-02-20 02:12:03,503 DEBUG Adding transaction with item 8, transaction_price 1787569.0 for member 4
+2014-02-20 02:12:30,117 INFO Member 4 has taken 5 item(s) 8 with barcode 23058415
+2014-02-20 02:12:30,118 INFO Partially changing stock of item 8 from 1337 to 1332
+2014-02-20 02:12:30,118 DEBUG total taken_price: 6685.0
+2014-02-20 02:12:30,141 DEBUG Found positive transaction: <Transaction transaction_price:1787569.0 item:8 member:4 archived:False> with payment_price: 1787569.0
+2014-02-20 02:12:30,141 DEBUG Changing transaction <Transaction transaction_price:1787569.0 item:8 member:4 archived:False> transaction_price to 1780884.0
+2014-02-20 02:12:30,142 DEBUG Adding transaction with item 8, transaction_price -6685.0 for member 4
+2014-02-20 13:43:02,740 DEBUG Read config
+2014-02-20 13:43:03,581 DEBUG Session setup
+2014-02-20 13:43:03,980 INFO Starting telnet protocol
+2014-02-20 13:43:03,982 INFO Starting barcode monitor
+2014-02-20 13:43:03,983 DEBUG Using serial port /dev/ttySCAN
+2014-02-20 13:46:37,638 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '8728500002714'}
+2014-02-20 13:46:38,644 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-20 13:47:12,686 DEBUG Identified country as nld
+2014-02-20 14:16:36,974 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '4006062972114'}
+2014-02-20 14:16:38,600 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-20 14:16:38,600 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '4006062972114'}
+2014-02-20 14:16:39,082 WARNING {'status': 'success', 'found': False, 'message': 'No database entry found.'}
+2014-02-20 14:17:17,209 DEBUG Identified country as deu
+2014-02-20 15:11:47,523 DEBUG Read config
+2014-02-20 15:11:48,397 DEBUG Session setup
+2014-02-20 15:11:48,796 INFO Starting telnet protocol
+2014-02-20 15:11:48,798 INFO Starting barcode monitor
+2014-02-20 15:11:48,799 DEBUG Using serial port /dev/ttySCAN
+2014-02-20 17:58:59,349 DEBUG Read config
+2014-02-20 17:59:02,325 DEBUG Session setup
+2014-02-20 17:59:03,534 INFO Starting telnet protocol
+2014-02-20 17:59:03,536 INFO Starting barcode monitor
+2014-02-20 17:59:03,536 DEBUG Using serial port /dev/ttySCAN
+2014-02-20 18:14:13,345 DEBUG Read config
+2014-02-20 18:14:14,193 DEBUG Session setup
+2014-02-20 18:14:14,601 INFO Starting telnet protocol
+2014-02-20 18:14:14,603 INFO Starting barcode monitor
+2014-02-20 18:14:14,604 DEBUG Using serial port /dev/ttySCAN
+2014-02-21 21:54:45,797 DEBUG Read config
+2014-02-21 21:54:48,980 DEBUG Session setup
+2014-02-21 21:54:50,131 INFO Starting telnet protocol
+2014-02-21 21:54:50,133 INFO Starting barcode monitor
+2014-02-21 21:54:50,134 DEBUG Using serial port /dev/ttySCAN
+2014-02-22 00:40:28,472 DEBUG Read config
+2014-02-22 00:40:28,557 DEBUG Session setup
+2014-02-22 00:40:28,646 INFO Starting telnet protocol
+2014-02-22 00:40:28,648 INFO Starting barcode monitor
+2014-02-22 00:40:28,648 DEBUG Using serial port /dev/ttySCAN
+2014-02-22 00:42:48,714 DEBUG Read config
+2014-02-22 00:42:48,800 DEBUG Session setup
+2014-02-22 00:42:48,865 INFO Starting telnet protocol
+2014-02-22 00:42:48,867 INFO Starting barcode monitor
+2014-02-22 00:42:48,867 DEBUG Using serial port /dev/ttySCAN
+2014-02-22 00:44:51,805 DEBUG Adding transaction with item 1, transaction_price 1 for member 1
+2014-02-22 00:56:38,938 DEBUG Read config
+2014-02-22 00:56:39,024 DEBUG Session setup
+2014-02-22 00:56:39,080 INFO Starting telnet protocol
+2014-02-22 00:56:39,082 INFO Starting barcode monitor
+2014-02-22 00:56:39,083 DEBUG Using serial port /dev/ttySCAN
+2014-02-22 12:13:15,607 DEBUG Read config
+2014-02-22 12:13:16,406 DEBUG Session setup
+2014-02-22 12:13:16,806 INFO Starting telnet protocol
+2014-02-22 12:13:16,808 INFO Starting barcode monitor
+2014-02-22 12:13:16,808 DEBUG Using serial port /dev/ttySCAN
+2014-02-22 14:57:54,794 DEBUG Read config
+2014-02-22 14:57:55,600 DEBUG Session setup
+2014-02-22 14:57:56,000 INFO Starting telnet protocol
+2014-02-22 14:57:56,002 INFO Starting barcode monitor
+2014-02-22 14:57:56,003 DEBUG Using serial port /dev/ttySCAN
+2014-02-22 20:50:32,515 DEBUG Read config
+2014-02-22 20:50:33,348 DEBUG Session setup
+2014-02-22 20:50:33,748 INFO Starting telnet protocol
+2014-02-22 20:50:33,750 INFO Starting barcode monitor
+2014-02-22 20:50:33,750 DEBUG Using serial port /dev/ttySCAN
+2014-02-22 21:05:19,163 INFO Member 4 has taken 1 item(s) 3 with barcode 4029764001807
+2014-02-22 21:05:19,164 INFO Partially changing stock of item 3 from 10 to 9
+2014-02-22 21:05:19,165 DEBUG total taken_price: 1.5
+2014-02-22 21:05:19,226 DEBUG Found positive transaction: <Transaction transaction_price:1780884.0 item:8 member:4 archived:False> with payment_price: 1780884.0
+2014-02-22 21:05:19,226 DEBUG Changing transaction <Transaction transaction_price:1780884.0 item:8 member:4 archived:False> transaction_price to 1780882.5
+2014-02-22 21:05:19,227 DEBUG Adding transaction with item 3, transaction_price -1.5 for member 4
+2014-02-22 21:05:39,328 INFO Member 4 has taken 1 item(s) 3 with barcode 4029764001807
+2014-02-22 21:05:39,329 INFO Partially changing stock of item 3 from 9 to 8
+2014-02-22 21:05:39,329 DEBUG total taken_price: 1.5
+2014-02-22 21:05:39,350 DEBUG Found positive transaction: <Transaction transaction_price:1780882.5 item:8 member:4 archived:False> with payment_price: 1780882.5
+2014-02-22 21:05:39,351 DEBUG Changing transaction <Transaction transaction_price:1780882.5 item:8 member:4 archived:False> transaction_price to 1780881.0
+2014-02-22 21:05:39,352 DEBUG Adding transaction with item 3, transaction_price -1.5 for member 4
+2014-02-22 21:05:59,768 INFO Member 4 has taken 1 item(s) 3 with barcode 4029764001807
+2014-02-22 21:05:59,768 INFO Partially changing stock of item 3 from 8 to 7
+2014-02-22 21:05:59,769 DEBUG total taken_price: 1.5
+2014-02-22 21:05:59,794 DEBUG Found positive transaction: <Transaction transaction_price:1780881.0 item:8 member:4 archived:False> with payment_price: 1780881.0
+2014-02-22 21:05:59,795 DEBUG Changing transaction <Transaction transaction_price:1780881.0 item:8 member:4 archived:False> transaction_price to 1780879.5
+2014-02-22 21:05:59,795 DEBUG Adding transaction with item 3, transaction_price -1.5 for member 4
+2014-02-22 21:06:10,824 INFO Member 4 has taken 1 item(s) 3 with barcode 4029764001807
+2014-02-22 21:06:10,824 INFO Partially changing stock of item 3 from 7 to 6
+2014-02-22 21:06:10,825 DEBUG total taken_price: 1.5
+2014-02-22 21:06:10,844 DEBUG Found positive transaction: <Transaction transaction_price:1780879.5 item:8 member:4 archived:False> with payment_price: 1780879.5
+2014-02-22 21:06:10,845 DEBUG Changing transaction <Transaction transaction_price:1780879.5 item:8 member:4 archived:False> transaction_price to 1780878.0
+2014-02-22 21:06:10,846 DEBUG Adding transaction with item 3, transaction_price -1.5 for member 4
+2014-02-23 00:25:05,753 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '8710400154358'}
+2014-02-23 00:25:06,878 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2010-04-20T20:34:04' at 3416f38>, 'description': 'AH Flashwafels', 'noCacheAfterUTC': <DateTime '2014-02-23T17:25:06' at 3416680>, 'ean': '8710400154358', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': '250 g', 'issuerCountry': 'Netherlands', 'issuerCountryCode': 'nl'}
+2014-02-23 00:25:06,879 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '8710400154358'}
+2014-02-23 00:25:07,126 WARNING {'status': 'success', 'lastModifiedUTC': <DateTime '2010-04-20T20:34:04' at 3416170>, 'description': 'AH Flashwafels', 'noCacheAfterUTC': <DateTime '2014-02-23T17:25:07' at 3416200>, 'ean': '8710400154358', 'pendingUpdates': 0, 'found': True, 'message': 'Database entry found', 'size': '250 g', 'issuerCountry': 'Netherlands', 'issuerCountryCode': 'nl'}
+2014-02-23 00:25:19,823 DEBUG Identified country as nld
+2014-02-23 00:25:32,017 INFO Changing stock of item 9 from 0 to 25
+2014-02-23 00:25:32,017 DEBUG Adding transaction with item 9, transaction_price 62.5 for member 4
+2014-02-25 19:25:40,616 DEBUG Read config
+2014-02-25 19:25:47,680 DEBUG Session setup
+2014-02-25 19:25:48,941 INFO Starting telnet protocol
+2014-02-25 19:25:48,943 INFO Starting barcode monitor
+2014-02-25 19:25:48,943 DEBUG Using serial port /dev/ttySCAN
+2014-02-26 16:39:39,355 DEBUG Read config
+2014-02-26 16:39:40,187 DEBUG Session setup
+2014-02-26 16:39:40,587 INFO Starting telnet protocol
+2014-02-26 16:39:40,589 INFO Starting barcode monitor
+2014-02-26 16:39:40,589 DEBUG Using serial port /dev/ttySCAN
+2014-02-27 11:15:05,216 DEBUG Read config
+2014-02-27 11:15:08,892 DEBUG Session setup
+2014-02-27 11:15:10,212 INFO Starting telnet protocol
+2014-02-27 11:15:10,213 INFO Starting barcode monitor
+2014-02-27 11:15:10,214 DEBUG Using serial port /dev/ttySCAN
+2014-02-27 15:58:34,610 DEBUG Read config
+2014-02-27 15:58:35,401 DEBUG Session setup
+2014-02-27 15:58:35,801 INFO Starting telnet protocol
+2014-02-27 15:58:35,802 INFO Starting barcode monitor
+2014-02-27 15:58:35,803 DEBUG Using serial port /dev/ttySCAN
+2014-02-27 20:36:52,058 DEBUG Read config
+2014-02-27 20:36:52,907 DEBUG Session setup
+2014-02-27 20:36:53,283 INFO Starting telnet protocol
+2014-02-27 20:36:53,285 INFO Starting barcode monitor
+2014-02-27 20:36:53,285 DEBUG Using serial port /dev/ttySCAN
+2014-02-28 13:39:04,896 DEBUG Read config
+2014-02-28 13:39:08,654 DEBUG Session setup
+2014-02-28 13:39:09,931 INFO Starting telnet protocol
+2014-02-28 13:39:09,933 INFO Starting barcode monitor
+2014-02-28 13:39:09,934 DEBUG Using serial port /dev/ttySCAN
+2014-02-28 16:28:46,825 DEBUG Read config
+2014-02-28 16:28:47,641 DEBUG Session setup
+2014-02-28 16:28:48,050 INFO Starting telnet protocol
+2014-02-28 16:28:48,052 INFO Starting barcode monitor
+2014-02-28 16:28:48,052 DEBUG Using serial port /dev/ttySCAN
+2014-02-28 18:47:22,653 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0MK9520-37C41'}
+2014-02-28 18:47:24,018 WARNING {'status': 'fail', 'message': 'Invalid EAN value'}
+2014-02-28 18:47:24,019 WARNING Scan resulted in error.
+2014-02-28 18:49:11,928 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0MK9520-37C41'}
+2014-02-28 18:49:12,615 WARNING {'status': 'fail', 'message': 'Invalid EAN value'}
+2014-02-28 18:49:12,616 WARNING Scan resulted in error.
+2014-02-28 18:49:12,616 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0MK9520-37C41'}
+2014-02-28 18:49:13,129 WARNING {'status': 'fail', 'message': 'Invalid EAN value'}
+2014-02-28 18:49:13,129 WARNING Scan resulted in error.
+2014-02-28 18:52:31,770 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0003503021610'}
+2014-02-28 18:52:32,640 WARNING {'status': 'fail', 'message': 'Invalid check digit'}
+2014-02-28 18:52:32,640 WARNING Scan resulted in error.
+2014-02-28 18:52:32,640 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0003503021610'}
+2014-02-28 18:52:33,685 WARNING {'status': 'fail', 'message': 'Invalid check digit'}
+2014-02-28 18:52:33,685 WARNING Scan resulted in error.
+2014-02-28 18:52:33,686 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0003503021610'}
+2014-02-28 18:52:34,683 WARNING {'status': 'fail', 'message': 'Invalid check digit'}
+2014-02-28 18:52:34,684 WARNING Scan resulted in error.
+2014-02-28 18:53:03,741 DEBUG Identified country as zwe
+2014-02-28 18:53:29,772 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0MK9520-37C41'}
+2014-02-28 18:53:30,282 WARNING {'status': 'fail', 'message': 'Invalid EAN value'}
+2014-02-28 18:53:30,282 WARNING Scan resulted in error.
+2014-02-28 18:53:30,283 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0MK9520-37C41'}
+2014-02-28 18:53:30,766 WARNING {'status': 'fail', 'message': 'Invalid EAN value'}
+2014-02-28 18:53:30,766 WARNING Scan resulted in error.
+2014-02-28 18:53:30,767 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0MK9520-37C41'}
+2014-02-28 18:53:31,311 WARNING {'status': 'fail', 'message': 'Invalid EAN value'}
+2014-02-28 18:53:31,312 WARNING Scan resulted in error.
+2014-02-28 18:53:31,312 WARNING {'rpc_key': 'c4a7f4f0bd0a0f2ea4df549d4f8bcbd3e0229b08', 'ean': '0MK9520-37C41'}
+2014-02-28 18:53:31,811 WARNING {'status': 'fail', 'message': 'Invalid EAN value'}
+2014-02-28 18:53:31,812 WARNING Scan resulted in error.
+2014-02-28 18:53:48,026 DEBUG Identified country as zwe
+2014-02-28 18:54:33,511 INFO Changing stock of item 10 from 0 to 1
+2014-02-28 18:54:33,512 DEBUG Adding transaction with item 10, transaction_price 6236.0 for member 4
+2014-02-28 18:54:35,090 INFO Changing stock of item 10 from 1 to 2
+2014-02-28 18:54:35,091 DEBUG Adding transaction with item 10, transaction_price 6236.0 for member 4
+2014-02-28 18:54:36,000 INFO Changing stock of item 10 from 2 to 3
+2014-02-28 18:54:36,001 DEBUG Adding transaction with item 10, transaction_price 6236.0 for member 4
+2014-02-28 18:54:36,868 INFO Changing stock of item 10 from 3 to 4
+2014-02-28 18:54:36,869 DEBUG Adding transaction with item 10, transaction_price 6236.0 for member 4
+2014-02-28 18:54:38,982 INFO Changing stock of item 10 from 4 to 5
+2014-02-28 18:54:38,983 DEBUG Adding transaction with item 10, transaction_price 6236.0 for member 4
+2014-02-28 18:54:40,204 INFO Changing stock of item 10 from 5 to 6
+2014-02-28 18:54:40,204 DEBUG Adding transaction with item 10, transaction_price 6236.0 for member 4
+2014-02-28 18:54:41,681 INFO Changing stock of item 10 from 6 to 7
+2014-02-28 18:54:41,681 DEBUG Adding transaction with item 10, transaction_price 6236.0 for member 4
+2014-02-28 18:54:48,278 INFO Changing stock of item 10 from 7 to 8
+2014-02-28 18:54:48,278 DEBUG Adding transaction with item 10, transaction_price 6236.0 for member 4
+2014-02-28 18:55:04,150 INFO Member 1 has taken 1 item(s) 10 with barcode 3503021610
+2014-02-28 18:55:04,151 INFO Partially changing stock of item 10 from 8 to 7
+2014-02-28 18:55:04,151 DEBUG total taken_price: 6236.0
+2014-02-28 18:55:04,179 DEBUG Found positive transaction: <Transaction transaction_price:13.0 item:3 member:1 archived:False> with payment_price: 13.0
+2014-02-28 18:55:04,180 DEBUG Setting transaction <Transaction transaction_price:13.0 item:3 member:1 archived:False> to archived=True
+2014-02-28 18:55:04,190 DEBUG Found positive transaction: <Transaction transaction_price:15 item:1 member:1 archived:False> with payment_price: 15
+2014-02-28 18:55:04,191 DEBUG Setting transaction <Transaction transaction_price:15 item:1 member:1 archived:False> to archived=True
+2014-02-28 18:55:04,199 DEBUG Found positive transaction: <Transaction transaction_price:0.5 item:7 member:1 archived:False> with payment_price: 0.5
+2014-02-28 18:55:04,200 DEBUG Setting transaction <Transaction transaction_price:0.5 item:7 member:1 archived:False> to archived=True
+2014-02-28 18:55:04,201 DEBUG Found positive transaction: <Transaction transaction_price:0.5 item:7 member:1 archived:False> with payment_price: 0.5
+2014-02-28 18:55:04,202 DEBUG Setting transaction <Transaction transaction_price:0.5 item:7 member:1 archived:False> to archived=True
+2014-02-28 18:55:04,203 DEBUG Found positive transaction: <Transaction transaction_price:0.5 item:7 member:1 archived:False> with payment_price: 0.5
+2014-02-28 18:55:04,203 DEBUG Setting transaction <Transaction transaction_price:0.5 item:7 member:1 archived:False> to archived=True
+2014-02-28 18:55:04,204 DEBUG Found positive transaction: <Transaction transaction_price:0.5 item:7 member:1 archived:False> with payment_price: 0.5
+2014-02-28 18:55:04,205 DEBUG Setting transaction <Transaction transaction_price:0.5 item:7 member:1 archived:False> to archived=True
+2014-02-28 18:55:04,206 DEBUG Found positive transaction: <Transaction transaction_price:0.5 item:7 member:1 archived:False> with payment_price: 0.5
+2014-02-28 18:55:04,206 DEBUG Setting transaction <Transaction transaction_price:0.5 item:7 member:1 archived:False> to archived=True
+2014-02-28 18:55:04,207 DEBUG Found positive transaction: <Transaction transaction_price:0.5 item:7 member:1 archived:False> with payment_price: 0.5
+2014-02-28 18:55:04,208 DEBUG Setting transaction <Transaction transaction_price:0.5 item:7 member:1 archived:False> to archived=True
+2014-02-28 18:55:04,209 DEBUG Found positive transaction: <Transaction transaction_price:0.5 item:7 member:1 archived:False> with payment_price: 0.5
+2014-02-28 18:55:04,209 DEBUG Setting transaction <Transaction transaction_price:0.5 item:7 member:1 archived:False> to archived=True
+2014-02-28 18:55:04,210 DEBUG Found positive transaction: <Transaction transaction_price:0.5 item:7 member:1 archived:False> with payment_price: 0.5
+2014-02-28 18:55:04,211 DEBUG Setting transaction <Transaction transaction_price:0.5 item:7 member:1 archived:False> to archived=True
+2014-02-28 18:55:04,212 DEBUG Found positive transaction: <Transaction transaction_price:10 item:1 member:1 archived:False> with payment_price: 10
+2014-02-28 18:55:04,212 DEBUG Setting transaction <Transaction transaction_price:10 item:1 member:1 archived:False> to archived=True
+2014-02-28 18:55:04,213 DEBUG Found positive transaction: <Transaction transaction_price:1 item:1 member:1 archived:False> with payment_price: 1
+2014-02-28 18:55:04,214 DEBUG Setting transaction <Transaction transaction_price:1 item:1 member:1 archived:False> to archived=True
+2014-02-28 18:55:04,215 DEBUG Adding transaction with item 10, transaction_price -43.0 for member 1
+2014-02-28 18:55:04,277 DEBUG Adding transaction with item 10, transaction_price -6193.0 for member 1
+2014-02-28 18:55:05,006 INFO Member 1 has taken 1 item(s) 10 with barcode 3503021610
+2014-02-28 18:55:05,007 INFO Partially changing stock of item 10 from 7 to 6
+2014-02-28 18:55:05,007 DEBUG total taken_price: 6236.0
+2014-02-28 18:55:05,016 DEBUG Adding transaction with item 10, transaction_price -6236.0 for member 1
+2014-02-28 18:55:08,789 INFO Member 1 has taken 1 item(s) 10 with barcode 3503021610
+2014-02-28 18:55:08,790 INFO Partially changing stock of item 10 from 6 to 5
+2014-02-28 18:55:08,791 DEBUG total taken_price: 6236.0
+2014-02-28 18:55:08,799 DEBUG Adding transaction with item 10, transaction_price -6236.0 for member 1
+2014-02-28 18:55:10,287 INFO Member 1 has taken 1 item(s) 10 with barcode 3503021610
+2014-02-28 18:55:10,288 INFO Partially changing stock of item 10 from 5 to 4
+2014-02-28 18:55:10,288 DEBUG total taken_price: 6236.0
+2014-02-28 18:55:10,297 DEBUG Adding transaction with item 10, transaction_price -6236.0 for member 1
+2014-02-28 18:55:13,896 INFO Member 1 has taken 1 item(s) 10 with barcode 3503021610
+2014-02-28 18:55:13,897 INFO Partially changing stock of item 10 from 4 to 3
+2014-02-28 18:55:13,897 DEBUG total taken_price: 6236.0
+2014-02-28 18:55:13,908 DEBUG Adding transaction with item 10, transaction_price -6236.0 for member 1
+2014-02-28 18:55:13,991 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 380, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 105, in handleBarcode
+    events.ItemBarcodeScannedEvent.fire(item,bdesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 46, in fire
+    return super(_BarcodeScannedEvent,self).fire(item=item,barcodedesc=barcodedesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 136, in scanItem
+    self.buyItemHandler()
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 262, in buyItemHandler
+    price = self.currentItem.sell_price
+AttributeError: 'NoneType' object has no attribute 'sell_price'
+
+2014-03-01 14:38:53,074 DEBUG Read config
+2014-03-01 14:38:57,425 DEBUG Session setup
+2014-03-01 14:38:58,661 INFO Starting telnet protocol
+2014-03-01 14:38:58,663 INFO Starting barcode monitor
+2014-03-01 14:38:58,663 DEBUG Using serial port /dev/ttySCAN
+2014-03-02 16:00:06,651 DEBUG Read config
+2014-03-02 16:00:11,369 DEBUG Session setup
+2014-03-02 16:00:12,814 INFO Starting telnet protocol
+2014-03-02 16:00:12,816 INFO Starting barcode monitor
+2014-03-02 16:00:12,816 DEBUG Using serial port /dev/ttySCAN
+2014-03-03 19:46:12,831 DEBUG Read config
+2014-03-03 19:46:17,946 DEBUG Session setup
+2014-03-03 19:46:19,232 INFO Starting telnet protocol
+2014-03-03 19:46:19,234 INFO Starting barcode monitor
+2014-03-03 19:46:19,234 DEBUG Using serial port /dev/ttySCAN
+2014-03-03 19:57:24,823 DEBUG Read config
+2014-03-03 19:57:25,680 DEBUG Session setup
+2014-03-03 19:57:26,105 INFO Starting telnet protocol
+2014-03-03 19:57:26,107 INFO Starting barcode monitor
+2014-03-03 19:57:26,107 DEBUG Using serial port /dev/ttySCAN
+2014-03-04 17:34:32,762 DEBUG Read config
+2014-03-04 17:34:33,594 DEBUG Session setup
+2014-03-04 17:34:33,994 INFO Starting telnet protocol
+2014-03-04 17:34:33,996 INFO Starting barcode monitor
+2014-03-04 17:34:33,997 DEBUG Using serial port /dev/ttySCAN
+2014-03-04 17:40:43,369 DEBUG Read config
+2014-03-04 17:40:44,219 DEBUG Session setup
+2014-03-04 17:40:44,626 INFO Starting telnet protocol
+2014-03-04 17:40:44,628 INFO Starting barcode monitor
+2014-03-04 17:40:44,629 DEBUG Using serial port /dev/ttySCAN
+2014-03-05 15:41:02,696 DEBUG Read config
+2014-03-05 15:41:07,534 DEBUG Session setup
+2014-03-05 15:41:08,682 INFO Starting telnet protocol
+2014-03-05 15:41:08,684 INFO Starting barcode monitor
+2014-03-05 15:41:08,684 DEBUG Using serial port /dev/ttySCAN
+2014-03-05 16:50:57,420 DEBUG Read config
+2014-03-05 16:50:58,277 DEBUG Session setup
+2014-03-05 16:50:58,685 INFO Starting telnet protocol
+2014-03-05 16:50:58,687 INFO Starting barcode monitor
+2014-03-05 16:50:58,687 DEBUG Using serial port /dev/ttySCAN
+2014-03-05 17:03:58,810 DEBUG Read config
+2014-03-05 17:03:59,670 DEBUG Session setup
+2014-03-05 17:04:00,075 INFO Starting telnet protocol
+2014-03-05 17:04:00,077 INFO Starting barcode monitor
+2014-03-05 17:04:00,077 DEBUG Using serial port /dev/ttySCAN
+2014-03-05 19:41:12,940 INFO Member 1 has taken 1 item(s) 10 with barcode 3503021610
+2014-03-05 19:41:12,940 INFO Partially changing stock of item 10 from 3 to 2
+2014-03-05 19:41:12,941 DEBUG total taken_price: 6236.0
+2014-03-05 19:41:13,017 DEBUG Adding transaction with item 10, transaction_price -6236.0 for member 1
+2014-03-05 19:41:14,207 INFO Member 1 has taken 1 item(s) 10 with barcode 3503021610
+2014-03-05 19:41:14,208 INFO Partially changing stock of item 10 from 2 to 1
+2014-03-05 19:41:14,208 DEBUG total taken_price: 6236.0
+2014-03-05 19:41:14,217 DEBUG Adding transaction with item 10, transaction_price -6236.0 for member 1
+2014-03-05 19:41:15,243 INFO Member 1 has taken 1 item(s) 10 with barcode 3503021610
+2014-03-05 19:41:15,244 INFO Partially changing stock of item 10 from 1 to 0
+2014-03-05 19:41:15,244 DEBUG total taken_price: 6236.0
+2014-03-05 19:41:15,253 DEBUG Adding transaction with item 10, transaction_price -6236.0 for member 1
+2014-03-05 19:41:17,409 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 380, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 105, in handleBarcode
+    events.ItemBarcodeScannedEvent.fire(item,bdesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 46, in fire
+    return super(_BarcodeScannedEvent,self).fire(item=item,barcodedesc=barcodedesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 136, in scanItem
+    self.buyItemHandler()
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 262, in buyItemHandler
+    price = self.currentItem.sell_price
+AttributeError: 'NoneType' object has no attribute 'sell_price'
+
+2014-03-05 21:40:06,068 INFO Member 4 has taken 1 item(s) 3 with barcode 4029764001807
+2014-03-05 21:40:06,069 INFO Partially changing stock of item 3 from 6 to 5
+2014-03-05 21:40:06,069 DEBUG total taken_price: 1.5
+2014-03-05 21:40:06,098 DEBUG Found positive transaction: <Transaction transaction_price:1780878.0 item:8 member:4 archived:False> with payment_price: 1780878.0
+2014-03-05 21:40:06,099 DEBUG Changing transaction <Transaction transaction_price:1780878.0 item:8 member:4 archived:False> transaction_price to 1780876.5
+2014-03-05 21:40:06,099 DEBUG Adding transaction with item 3, transaction_price -1.5 for member 4
+2014-03-05 21:40:08,865 INFO Member 4 has taken 1 item(s) 3 with barcode 4029764001807
+2014-03-05 21:40:08,865 INFO Partially changing stock of item 3 from 5 to 4
+2014-03-05 21:40:08,866 DEBUG total taken_price: 1.5
+2014-03-05 21:40:08,890 DEBUG Found positive transaction: <Transaction transaction_price:1780876.5 item:8 member:4 archived:False> with payment_price: 1780876.5
+2014-03-05 21:40:08,890 DEBUG Changing transaction <Transaction transaction_price:1780876.5 item:8 member:4 archived:False> transaction_price to 1780875.0
+2014-03-05 21:40:08,891 DEBUG Adding transaction with item 3, transaction_price -1.5 for member 4
+2014-03-05 21:40:10,385 INFO Member 4 has taken 1 item(s) 3 with barcode 4029764001807
+2014-03-05 21:40:10,386 INFO Partially changing stock of item 3 from 4 to 3
+2014-03-05 21:40:10,386 DEBUG total taken_price: 1.5
+2014-03-05 21:40:10,410 DEBUG Found positive transaction: <Transaction transaction_price:1780875.0 item:8 member:4 archived:False> with payment_price: 1780875.0
+2014-03-05 21:40:10,411 DEBUG Changing transaction <Transaction transaction_price:1780875.0 item:8 member:4 archived:False> transaction_price to 1780873.5
+2014-03-05 21:40:10,412 DEBUG Adding transaction with item 3, transaction_price -1.5 for member 4
+2014-03-05 21:40:11,536 INFO Member 4 has taken 1 item(s) 3 with barcode 4029764001807
+2014-03-05 21:40:11,537 INFO Partially changing stock of item 3 from 3 to 2
+2014-03-05 21:40:11,537 DEBUG total taken_price: 1.5
+2014-03-05 21:40:11,561 DEBUG Found positive transaction: <Transaction transaction_price:1780873.5 item:8 member:4 archived:False> with payment_price: 1780873.5
+2014-03-05 21:40:11,562 DEBUG Changing transaction <Transaction transaction_price:1780873.5 item:8 member:4 archived:False> transaction_price to 1780872.0
+2014-03-05 21:40:11,563 DEBUG Adding transaction with item 3, transaction_price -1.5 for member 4
+2014-03-05 21:40:12,593 INFO Member 4 has taken 1 item(s) 3 with barcode 4029764001807
+2014-03-05 21:40:12,593 INFO Partially changing stock of item 3 from 2 to 1
+2014-03-05 21:40:12,594 DEBUG total taken_price: 1.5
+2014-03-05 21:40:12,618 DEBUG Found positive transaction: <Transaction transaction_price:1780872.0 item:8 member:4 archived:False> with payment_price: 1780872.0
+2014-03-05 21:40:12,619 DEBUG Changing transaction <Transaction transaction_price:1780872.0 item:8 member:4 archived:False> transaction_price to 1780870.5
+2014-03-05 21:40:12,619 DEBUG Adding transaction with item 3, transaction_price -1.5 for member 4
+2014-03-05 21:40:13,556 INFO Member 4 has taken 1 item(s) 3 with barcode 4029764001807
+2014-03-05 21:40:13,557 INFO Partially changing stock of item 3 from 1 to 0
+2014-03-05 21:40:13,557 DEBUG total taken_price: 1.5
+2014-03-05 21:40:13,581 DEBUG Found positive transaction: <Transaction transaction_price:1780870.5 item:8 member:4 archived:False> with payment_price: 1780870.5
+2014-03-05 21:40:13,582 DEBUG Changing transaction <Transaction transaction_price:1780870.5 item:8 member:4 archived:False> transaction_price to 1780869.0
+2014-03-05 21:40:13,583 DEBUG Adding transaction with item 3, transaction_price -1.5 for member 4
+2014-03-05 21:40:14,578 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 380, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 105, in handleBarcode
+    events.ItemBarcodeScannedEvent.fire(item,bdesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 46, in fire
+    return super(_BarcodeScannedEvent,self).fire(item=item,barcodedesc=barcodedesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 136, in scanItem
+    self.buyItemHandler()
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 262, in buyItemHandler
+    price = self.currentItem.sell_price
+AttributeError: 'NoneType' object has no attribute 'sell_price'
+
+2014-03-05 21:40:15,549 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 380, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 105, in handleBarcode
+    events.ItemBarcodeScannedEvent.fire(item,bdesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 46, in fire
+    return super(_BarcodeScannedEvent,self).fire(item=item,barcodedesc=barcodedesc)
+  File "/home/ircguest/nurdbar/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 136, in scanItem
+    self.buyItemHandler()
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 262, in buyItemHandler
+    price = self.currentItem.sell_price
+AttributeError: 'NoneType' object has no attribute 'sell_price'
+
+2014-03-05 21:41:01,917 INFO Changing stock of item 3 from 0 to 520
+2014-03-05 21:41:01,917 DEBUG Adding transaction with item 3, transaction_price 780.0 for member 1
+2014-03-05 21:41:37,196 INFO Member 4 has taken 1 item(s) 3 with barcode 4029764001807
+2014-03-05 21:41:37,197 INFO Partially changing stock of item 3 from 520 to 519
+2014-03-05 21:41:37,198 DEBUG total taken_price: 1.5
+2014-03-05 21:41:37,228 DEBUG Found positive transaction: <Transaction transaction_price:1780869.0 item:8 member:4 archived:False> with payment_price: 1780869.0
+2014-03-05 21:41:37,229 DEBUG Changing transaction <Transaction transaction_price:1780869.0 item:8 member:4 archived:False> transaction_price to 1780867.5
+2014-03-05 21:41:37,230 DEBUG Adding transaction with item 3, transaction_price -1.5 for member 4
+2014-03-06 11:46:18,805 DEBUG Read config
+2014-03-06 11:46:19,721 DEBUG Session setup
+2014-03-06 11:46:20,112 INFO Starting telnet protocol
+2014-03-06 11:46:20,114 INFO Starting barcode monitor
+2014-03-06 11:46:20,114 DEBUG Using serial port /dev/ttySCAN
+2014-03-06 14:24:25,062 DEBUG Read config
+2014-03-06 14:24:25,945 DEBUG Session setup
+2014-03-06 14:24:26,320 INFO Starting telnet protocol
+2014-03-06 14:24:26,322 INFO Starting barcode monitor
+2014-03-06 14:24:26,322 DEBUG Using serial port /dev/ttySCAN
+2014-03-06 15:00:48,780 DEBUG Read config
+2014-03-06 15:00:49,704 DEBUG Session setup
+2014-03-06 15:00:50,120 INFO Starting telnet protocol
+2014-03-06 15:00:50,122 INFO Starting barcode monitor
+2014-03-06 15:00:50,123 DEBUG Using serial port /dev/ttySCAN
+2014-03-06 17:16:43,462 DEBUG Read config
+2014-03-06 17:16:46,870 DEBUG Session setup
+2014-03-06 17:16:48,093 INFO Starting telnet protocol
+2014-03-06 17:16:48,095 INFO Starting barcode monitor
+2014-03-06 17:16:48,095 DEBUG Using serial port /dev/ttySCAN
+2014-03-06 20:13:59,135 DEBUG Read config
+2014-03-06 20:14:00,051 DEBUG Session setup
+2014-03-06 20:14:00,443 INFO Starting telnet protocol
+2014-03-06 20:14:00,445 INFO Starting barcode monitor
+2014-03-06 20:14:00,445 DEBUG Using serial port /dev/ttySCAN
+2014-03-07 12:40:20,571 DEBUG Read config
+2014-03-07 12:40:21,461 DEBUG Session setup
+2014-03-07 12:40:21,853 INFO Starting telnet protocol
+2014-03-07 12:40:21,855 INFO Starting barcode monitor
+2014-03-07 12:40:21,855 DEBUG Using serial port /dev/ttySCAN
+2014-03-07 19:01:52,547 DEBUG Read config
+2014-03-07 19:01:56,248 DEBUG Session setup
+2014-03-07 19:01:57,462 INFO Starting telnet protocol
+2014-03-07 19:01:57,464 INFO Starting barcode monitor
+2014-03-07 19:01:57,464 DEBUG Using serial port /dev/ttySCAN
+2014-03-08 17:34:30,686 DEBUG Read config
+2014-03-08 17:34:31,552 DEBUG Session setup
+2014-03-08 17:34:31,928 INFO Starting telnet protocol
+2014-03-08 17:34:31,930 INFO Starting barcode monitor
+2014-03-08 17:34:31,930 DEBUG Using serial port /dev/ttySCAN
+2014-03-08 20:00:17,966 DEBUG Read config
+2014-03-08 20:00:21,093 DEBUG Session setup
+2014-03-08 20:00:22,300 INFO Starting telnet protocol
+2014-03-08 20:00:22,302 INFO Starting barcode monitor
+2014-03-08 20:00:22,302 DEBUG Using serial port /dev/ttySCAN
+2014-03-09 15:12:21,463 DEBUG Read config
+2014-03-09 15:12:22,361 DEBUG Session setup
+2014-03-09 15:12:22,745 INFO Starting telnet protocol
+2014-03-09 15:12:22,747 INFO Starting barcode monitor
+2014-03-09 15:12:22,747 DEBUG Using serial port /dev/ttySCAN
+2014-03-10 10:52:50,988 DEBUG Read config
+2014-03-10 10:52:55,403 DEBUG Session setup
+2014-03-10 10:52:56,642 INFO Starting telnet protocol
+2014-03-10 10:52:56,644 INFO Starting barcode monitor
+2014-03-10 10:52:56,645 DEBUG Using serial port /dev/ttySCAN
+2014-03-10 18:12:02,300 DEBUG Read config
+2014-03-10 18:12:03,199 DEBUG Session setup
+2014-03-10 18:12:03,582 INFO Starting telnet protocol
+2014-03-10 18:12:03,584 INFO Starting barcode monitor
+2014-03-10 18:12:03,585 DEBUG Using serial port /dev/ttySCAN
+2014-03-10 19:00:18,178 DEBUG Read config
+2014-03-10 19:00:19,077 DEBUG Session setup
+2014-03-10 19:00:19,460 INFO Starting telnet protocol
+2014-03-10 19:00:19,462 INFO Starting barcode monitor
+2014-03-10 19:00:19,462 DEBUG Using serial port /dev/ttySCAN
+2014-03-11 17:52:08,814 DEBUG Read config
+2014-03-11 17:52:13,013 DEBUG Session setup
+2014-03-11 17:52:14,222 INFO Starting telnet protocol
+2014-03-11 17:52:14,224 INFO Starting barcode monitor
+2014-03-11 17:52:14,225 DEBUG Using serial port /dev/ttySCAN
+2014-03-12 16:46:02,064 DEBUG Read config
+2014-03-12 16:46:02,972 DEBUG Session setup
+2014-03-12 16:46:03,339 INFO Starting telnet protocol
+2014-03-12 16:46:03,341 INFO Starting barcode monitor
+2014-03-12 16:46:03,341 DEBUG Using serial port /dev/ttySCAN
+2014-03-12 16:58:53,228 DEBUG Read config
+2014-03-12 16:58:54,160 DEBUG Session setup
+2014-03-12 16:58:54,544 INFO Starting telnet protocol
+2014-03-12 16:58:54,546 INFO Starting barcode monitor
+2014-03-12 16:58:54,546 DEBUG Using serial port /dev/ttySCAN
+2014-03-13 11:58:21,639 DEBUG Read config
+2014-03-13 11:58:26,220 DEBUG Session setup
+2014-03-13 11:58:27,339 INFO Starting telnet protocol
+2014-03-13 11:58:27,341 INFO Starting barcode monitor
+2014-03-13 11:58:27,342 DEBUG Using serial port /dev/ttySCAN
+2014-03-14 18:17:10,635 DEBUG Read config
+2014-03-14 18:17:15,547 DEBUG Session setup
+2014-03-14 18:17:16,798 INFO Starting telnet protocol
+2014-03-14 18:17:16,801 INFO Starting barcode monitor
+2014-03-14 18:17:16,801 DEBUG Using serial port /dev/ttySCAN
+2014-03-15 14:30:23,032 DEBUG Read config
+2014-03-15 14:30:23,948 DEBUG Session setup
+2014-03-15 14:30:24,339 INFO Starting telnet protocol
+2014-03-15 14:30:24,341 INFO Starting barcode monitor
+2014-03-15 14:30:24,341 DEBUG Using serial port /dev/ttySCAN
+2014-03-16 12:58:33,598 DEBUG Read config
+2014-03-16 12:58:38,354 DEBUG Session setup
+2014-03-16 12:58:39,623 INFO Starting telnet protocol
+2014-03-16 12:58:39,625 INFO Starting barcode monitor
+2014-03-16 12:58:39,626 DEBUG Using serial port /dev/ttySCAN
+2014-03-16 15:21:38,522 DEBUG Read config
+2014-03-16 15:21:39,412 DEBUG Session setup
+2014-03-16 15:21:39,788 INFO Starting telnet protocol
+2014-03-16 15:21:39,790 INFO Starting barcode monitor
+2014-03-16 15:21:39,790 DEBUG Using serial port /dev/ttySCAN
+2014-03-16 16:00:05,039 DEBUG Read config
+2014-03-16 16:00:05,913 DEBUG Session setup
+2014-03-16 16:00:06,289 INFO Starting telnet protocol
+2014-03-16 16:00:06,291 INFO Starting barcode monitor
+2014-03-16 16:00:06,291 DEBUG Using serial port /dev/ttySCAN
+2014-03-16 21:45:59,580 DEBUG Read config
+2014-03-16 21:46:00,504 DEBUG Session setup
+2014-03-16 21:46:00,896 INFO Starting telnet protocol
+2014-03-16 21:46:00,898 INFO Starting barcode monitor
+2014-03-16 21:46:00,898 DEBUG Using serial port /dev/ttySCAN
+2014-03-17 17:08:04,100 DEBUG Read config
+2014-03-17 17:08:08,598 DEBUG Session setup
+2014-03-17 17:08:09,618 INFO Starting telnet protocol
+2014-03-17 17:08:09,620 INFO Starting barcode monitor
+2014-03-17 17:08:09,620 DEBUG Using serial port /dev/ttySCAN
+2014-03-17 18:34:42,151 DEBUG Read config
+2014-03-17 18:34:43,060 DEBUG Session setup
+2014-03-17 18:34:43,450 INFO Starting telnet protocol
+2014-03-17 18:34:43,452 INFO Starting barcode monitor
+2014-03-17 18:34:43,452 DEBUG Using serial port /dev/ttySCAN
+2014-03-18 19:46:43,663 DEBUG Read config
+2014-03-18 19:46:48,034 DEBUG Session setup
+2014-03-18 19:46:49,237 INFO Starting telnet protocol
+2014-03-18 19:46:49,240 INFO Starting barcode monitor
+2014-03-18 19:46:49,241 DEBUG Using serial port /dev/ttySCAN
+2014-03-19 12:03:32,973 DEBUG Read config
+2014-03-19 12:03:33,796 DEBUG Session setup
+2014-03-19 12:03:34,172 INFO Starting telnet protocol
+2014-03-19 12:03:34,174 INFO Starting barcode monitor
+2014-03-19 12:03:34,175 DEBUG Using serial port /dev/ttySCAN
+2014-03-19 16:36:24,305 DEBUG Read config
+2014-03-19 16:36:25,170 DEBUG Session setup
+2014-03-19 16:36:25,546 INFO Starting telnet protocol
+2014-03-19 16:36:25,548 INFO Starting barcode monitor
+2014-03-19 16:36:25,548 DEBUG Using serial port /dev/ttySCAN
+2014-03-19 17:41:58,329 DEBUG Read config
+2014-03-19 17:41:59,236 DEBUG Session setup
+2014-03-19 17:41:59,628 INFO Starting telnet protocol
+2014-03-19 17:41:59,630 INFO Starting barcode monitor
+2014-03-19 17:41:59,631 DEBUG Using serial port /dev/ttySCAN
+2014-03-20 16:21:59,671 DEBUG Read config
+2014-03-20 16:22:04,297 DEBUG Session setup
+2014-03-20 16:22:05,450 INFO Starting telnet protocol
+2014-03-20 16:22:05,452 INFO Starting barcode monitor
+2014-03-20 16:22:05,452 DEBUG Using serial port /dev/ttySCAN
+2014-03-20 17:01:07,166 DEBUG Read config
+2014-03-20 17:01:08,067 DEBUG Session setup
+2014-03-20 17:01:08,473 INFO Starting telnet protocol
+2014-03-20 17:01:08,474 INFO Starting barcode monitor
+2014-03-20 17:01:08,475 DEBUG Using serial port /dev/ttySCAN
+2014-03-21 16:48:32,231 DEBUG Read config
+2014-03-21 16:48:37,138 DEBUG Session setup
+2014-03-21 16:48:38,349 INFO Starting telnet protocol
+2014-03-21 16:48:38,351 INFO Starting barcode monitor
+2014-03-21 16:48:38,352 DEBUG Using serial port /dev/ttySCAN
+2014-03-21 23:17:28,712 DEBUG Read config
+2014-03-21 23:17:28,797 DEBUG Session setup
+2014-03-21 23:17:28,860 INFO Starting telnet protocol
+2014-03-21 23:17:28,862 INFO Starting barcode monitor
+2014-03-21 23:17:28,862 DEBUG Using serial port /dev/ttySCAN
+2014-03-21 23:21:42,649 DEBUG Read config
+2014-03-21 23:21:42,734 DEBUG Session setup
+2014-03-21 23:21:42,790 INFO Starting telnet protocol
+2014-03-21 23:21:42,792 INFO Starting barcode monitor
+2014-03-21 23:21:42,792 DEBUG Using serial port /dev/ttySCAN
+2014-03-21 23:22:55,171 DEBUG Read config
+2014-03-21 23:22:55,256 DEBUG Session setup
+2014-03-21 23:22:55,313 INFO Starting telnet protocol
+2014-03-21 23:22:55,315 INFO Starting barcode monitor
+2014-03-21 23:22:55,315 DEBUG Using serial port /dev/ttySCAN
+2014-03-21 23:58:10,043 DEBUG Read config
+2014-03-21 23:58:10,128 DEBUG Session setup
+2014-03-21 23:58:10,185 INFO Starting telnet protocol
+2014-03-21 23:58:10,187 INFO Starting barcode monitor
+2014-03-21 23:58:10,187 DEBUG Using serial port /dev/ttySCAN
+2014-03-21 23:59:38,235 DEBUG Read config
+2014-03-21 23:59:38,321 DEBUG Session setup
+2014-03-21 23:59:38,378 INFO Starting telnet protocol
+2014-03-21 23:59:38,380 INFO Starting barcode monitor
+2014-03-21 23:59:38,380 DEBUG Using serial port /dev/ttySCAN
+2014-03-22 00:01:51,579 DEBUG Read config
+2014-03-22 00:01:51,664 DEBUG Session setup
+2014-03-22 00:01:51,720 INFO Starting telnet protocol
+2014-03-22 00:01:51,722 INFO Starting barcode monitor
+2014-03-22 00:01:51,722 DEBUG Using serial port /dev/ttySCAN
+2014-03-22 00:02:27,483 DEBUG Read config
+2014-03-22 00:02:27,567 DEBUG Session setup
+2014-03-22 00:02:27,623 INFO Starting telnet protocol
+2014-03-22 00:02:27,624 INFO Starting barcode monitor
+2014-03-22 00:02:27,625 DEBUG Using serial port /dev/ttySCAN
+2014-03-22 00:05:07,245 DEBUG Read config
+2014-03-22 00:05:07,329 DEBUG Session setup
+2014-03-22 00:05:07,385 INFO Starting telnet protocol
+2014-03-22 00:05:07,387 INFO Starting barcode monitor
+2014-03-22 00:05:07,387 DEBUG Using serial port /dev/ttySCAN
+2014-03-22 00:06:30,791 DEBUG Read config
+2014-03-22 00:06:30,875 DEBUG Session setup
+2014-03-22 00:06:30,932 INFO Starting telnet protocol
+2014-03-22 00:06:30,934 INFO Starting barcode monitor
+2014-03-22 00:06:30,934 DEBUG Using serial port /dev/ttySCAN
