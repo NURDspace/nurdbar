@@ -1,5 +1,5 @@
 import time, re, traceback
-from twisted.internet.protocol import ClientFactory
+from twisted.internet.protocol import ReconnectingClientFactory
 from twisted.words.protocols.irc import IRCClient
 from twisted.internet.task import LoopingCall
 
@@ -43,6 +43,8 @@ class IRC(IRCClient):
             type = line
         if 'PING' in type:
             self.sendLine('PONG :'+msg)
+            return
+        if 'PONG' in type:
             return
         elif 'PRIVMSG' in type:
             if self.channel in type:
@@ -91,7 +93,7 @@ class IRC(IRCClient):
             self.sendLine('NICK '+self.nickname)
             self.screenObj.redisplayLines()
 
-class IRCFactory(ClientFactory):
+class IRCFactory(ReconnectingClientFactory):
 
     """
     Factory used for creating IRC protocol objects 
@@ -106,4 +108,7 @@ class IRCFactory(ClientFactory):
         return self.irc
 
     def clientConnectionLost(self, conn, reason):
-        pass
+        return self.retry()
+
+    def clientConnectionFailed(self, conn, reason):
+        return self.retry()
