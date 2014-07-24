@@ -30,6 +30,8 @@ class Member(Base):
     barcode = Column(String,unique=True)
     #: Nick of the Member
     nick = Column(String)
+    #: IRC reporting opt-out
+    irc_report = Column(Boolean,default=True)
 
     @property
     def balance(self):

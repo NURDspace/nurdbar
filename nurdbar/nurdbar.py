@@ -499,3 +499,5 @@ class NurdBar(object):
             return 'BUY'
         elif barcode == self.commandPrefix+'012':
             return 'DEPOSIT'
+        elif barcode == self.commandPrefix+'013':
+            return 'TOGGLE_IRC'

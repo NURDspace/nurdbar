@@ -90,7 +90,7 @@ class BarcodeProtocol(basic.LineReceiver):
                 if self.sellingItem: self.sellItemHandler(default=True)
             except:
                 self.screenObj.addLine("Last transaction not completed. Cancelled.",'top')
-            if self.currentMember:
+            if self.currentMember is not None:
                 self.state = 'BUY'
                 self.resetFlags()
                 self.resetScans()
@@ -103,6 +103,15 @@ class BarcodeProtocol(basic.LineReceiver):
             self.resetFlags()
             self.resetScans()
             self.screenObj.addLine('Transaction cancelled. Resetting to default.','top')
+        elif command == 'TOGGLE_IRC':
+           if self.currentMember is not None:
+               if self.currentMember.irc_report:
+                    self.currentMember.irc_report = False
+                    self.screenObj.addLine('No longer changing nick.','top')
+               else:
+                    self.currentMember.irc_report = True
+                    self.screenObj.addLine('Automatically changing nick.','top')
+           return
         else:
             if not self.handlerFinish(): return
             self.resetFlags()
@@ -110,6 +119,7 @@ class BarcodeProtocol(basic.LineReceiver):
             self.screenObj.addLine('Changing to action: '+str(command),'top')
             if self.state == 'DEPOSIT':
                 self.depositHandler()
+
 
     def scanItem(self,event):
         #Reset state machines if in progress
@@ -164,7 +174,8 @@ class BarcodeProtocol(basic.LineReceiver):
             self.screenObj.addLine("Hello, "+str(member.nick),'top')
             self.screenObj.addLine("your current Balance: EUR "+"{:.2f}".format(member.balance),'top')
             self.screenObj.addLine("Default action: BUY",'top')
-            self.screenObj.nickChange(str(member.nick))
+            if member.irc_report:
+                self.screenObj.nickChange(str(member.nick))
         else:
             self.screenObj.addLine("Unknown member barcode.",'top')
 
@@ -261,7 +272,7 @@ class BarcodeProtocol(basic.LineReceiver):
         self.screenObj.addLine('Buying from '+str(self.currentMember.nick)+' Item: '+str(name),'top')
         self.screenObj.addLine('Number: '+str(self.newItemNumber)+' Buying at EUR '+"{:.2f}".format(self.newItemPrice),'top')
         self.bar.sellItem(self.currentMember.barcode, self.newBarcode, self.newItemPrice, amount=self.newItemNumber)
-        self.screenObj.sendIrcLine('Sell: '+str(self.newItemNumber)+'x Item: '+str(name)+' at EUR '+"{:.2f}".format(self.newItemPrice))
+        self.screenObj.sendIrcLine('Sell: '+str(self.newItemNumber)+'x '+str(name)+' at EUR '+"{:.2f}".format(self.newItemPrice))
         self.resetFlags()
         self.resetVariables()
         return
@@ -296,14 +307,14 @@ class BarcodeProtocol(basic.LineReceiver):
                 name = self.newBarcode
             price = self.currentItem.sell_price
             self.screenObj.addLine('Selling '+str(self.newItemNumber)+'x '+str(name)+' to '+str(self.currentMember.nick)+' at EUR '+"{:.2f}".format(price),'top')
-            self.screenObj.sendIrcLine('Buy: '+str(self.newItemNumber)+'x Item: '+str(name)+' at EUR '+"{:.2f}".format(price))
+            self.screenObj.sendIrcLine('Buy: '+str(self.newItemNumber)+'x '+str(name)+' at EUR '+"{:.2f}".format(price))
             self.bar.buyItem(self.currentMember.barcode, self.newBarcode, amount=self.newItemNumber)
             self.resetFlags()
             self.resetVariables()
             return
 
     def depositHandler(self,default=False):
-        if not self.currentMember:
+        if self.currentMember is None:
             self.screenObj.addLine("Please log in first.","top")
             return            
         if self.depositing == False:
@@ -320,7 +331,7 @@ class BarcodeProtocol(basic.LineReceiver):
                 self.screenObj.addLine('Invalid entry.','top')
                 return
             self.screenObj.addLine('Depositing EUR '+"{:.2f}".format(self.newItemPrice)+' to '+str(self.currentMember.nick),'top')
-            self.screenObj.sendIrcLine('Deposit: EUR '+"{:.2f}".format(self.newItemPrice))
+#            self.screenObj.sendIrcLine('Deposit: EUR '+"{:.2f}".format(self.newItemPrice))
             self.bar.payAmount(self.currentMember,self.newItemPrice)
             self.resetFlags()
             self.resetVariables()
