@@ -90,6 +90,8 @@ class Item(Base):
     buy_price = Column(Numeric)
     #: Sell price of the Item (for which the Item will be sold). Defaults to buy_price
     sell_price = Column(Numeric)
+    #: The amount by default in one crate/box/container
+    crate_number = Column(Integer)
     #: The amount of the Item in stock (modified by creating transactions).
     stock = Column(Integer)
 

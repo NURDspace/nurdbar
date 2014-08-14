@@ -66,6 +66,7 @@ class BarcodeProtocol(basic.LineReceiver):
             self.newUsername=None
             self.newItemNumber=None
             self.oldItemPrice=None
+            self.crateMode=None
             self.newItemPrice=None
             self.newItemDesc=None
             self.newItemVolume=None
@@ -228,32 +229,69 @@ class BarcodeProtocol(basic.LineReceiver):
             self.resetFlags()
             self.resetVariables()
             self.sellingItem=True
-            self.screenObj.addLine('How many individual units are you selling? (Default: 1)','top')
+            self.screenObj.addLine('Are you selling an entire crate? (Default: Y)','top')
             return
+        try:
+            name = self.currentBarcodeDesc.description
+        except:
+            name = self.newBarcode
+        if self.crateMode is None:
+            if self.lastLine.strip().lower() in ['','y','yes','true','1']:
+                self.crateMode=True
+                try:
+                    n = self.bar.getItemByBarcode(self.newBarcode).crate_number
+                    if n is not None:
+                        self.screenObj.addLine('Default for '+name+' is '+str(n)+' per crate/container. Please correct here if this is not so.','top')
+                    else: raise ValueError
+                except:
+                    self.screenObj.addLine('Please enter how many are in each crate/container/etc.','top')
+                return
+            else:
+                self.crateMode=False
+                self.screenObj.addLine('How many individual units are you selling? (Default: 1)','top')
+                return
         if not self.newItemNumber:
-            if self.lastLine.strip() == '':
-                self.newItemNumber = 1
+            if self.crateMode:
+                try:
+                    self.newItemNumber = int(self.lastLine.strip())
+                except:
+                    if self.crateMode:
+                        try:
+                            n = self.bar.getItemByBarcode(self.newBarcode).crate_number
+                            if n is not None:
+                                self.newItemNumber = n
+                                self.screenObj.addLine('Defaulting to '+str(self.newItemNumber),'top')
+                            else: raise ValueError
+                        except:
+                            self.screenObj.addLine('Invalid entry. Please try again.','top')
+                            return
             else:
                 try:
                     self.newItemNumber = int(self.lastLine.strip())
                 except:
+                    self.screenObj.addLine('Defaulting to 1.','top')
                     self.newItemNumber = 1
-                    self.screenObj.addLine('Invalid entry. Defaulting to 1...','top')
             try:
                 self.oldItemPrice = self.bar.getItemByBarcode(self.newBarcode).buy_price
             except:
                 self.oldItemPrice = None
-
-            if self.oldItemPrice:
-                self.screenObj.addLine('Please enter a price (in EUR) (Default: '+"{:.2f}".format(self.oldItemPrice)+')','top')
+            if not self.crateMode:
+                if self.oldItemPrice:
+                    self.screenObj.addLine('Please enter a price per item (including deposits) (in EUR) (Default: '+"{:.2f}".format(self.oldItemPrice)+')','top')
+                else:
+                    self.screenObj.addLine('Please enter a price per item (including deposits) (in EUR)','top')
             else:
-                self.screenObj.addLine('Please enter a price (in EUR)','top')
-
+                if self.oldItemPrice:
+                    self.oldItemPrice = self.oldItemPrice*self.newItemNumber
+                    self.screenObj.addLine('Please enter the price of the entire crate with crate and bottles included. (in EUR) (Default: '+"{:.2f}".format(self.oldItemPrice)+')','top')
+                else:
+                    self.screenObj.addLine('Please enter the price of the entire crate with bottles and crate (in EUR)','top')
             if default:
                 if not self.oldItemPrice: raise exceptions.ItemDoesNotExistError
                 self.newItemPrice = self.oldItemPrice
             else:
                 return
+#        self.screenObj.addLine('DEBUG: ItemNumber: '+str(self.newItemNumber),'top')
         if not self.newItemPrice:
             try:
                 self.newItemPrice = float(self.lastLine.strip())
@@ -265,14 +303,23 @@ class BarcodeProtocol(basic.LineReceiver):
                     self.newItemPrice = None
                     self.screenObj.addLine('Invalid value. Please try again.','top')
                     return
+#        self.screenObj.addLine('DEBUG: Price: '+str(self.newItemPrice),'top')
         try:
             name = self.currentBarcodeDesc.description
         except:
             name = self.newBarcode
+        if self.crateMode:
+            self.newItemPrice = self.newItemPrice/self.newItemNumber
         self.screenObj.addLine('Buying from '+str(self.currentMember.nick)+' Item: '+str(name),'top')
         self.screenObj.addLine('Number: '+str(self.newItemNumber)+' Buying at EUR '+"{:.2f}".format(self.newItemPrice),'top')
         self.bar.sellItem(self.currentMember.barcode, self.newBarcode, self.newItemPrice, amount=self.newItemNumber)
-        self.screenObj.sendIrcLine('Sell: '+str(self.newItemNumber)+'x '+str(name)+' at EUR '+"{:.2f}".format(self.newItemPrice))
+        if self.crateMode:
+            self.bar.getItemByBarcode(self.newBarcode).crate_number = self.newItemNumber
+            self.screenObj.sendIrcLine('Sell '+str(self.newItemNumber)+'x crate of '+str(name)+': EUR '+"{:.2f}".format(self.newItemPrice)+' each.')
+        else:
+            self.screenObj.sendIrcLine('Sell: '+str(self.newItemNumber)+'x '+str(name)+' at EUR '+"{:.2f}".format(self.newItemPrice))
+
+
         self.resetFlags()
         self.resetVariables()
         return
@@ -337,6 +384,20 @@ class BarcodeProtocol(basic.LineReceiver):
             self.resetVariables()
             return
 
+    def askNextNewItemQuestion(self):
+        if not self.newItemDesc:
+            self.screenObj.addLine('Please enter a description or name.','top')
+            return
+        if not self.newItemVolume:
+            self.screenObj.addLine('Please enter a size or volume (e.g. 500ml).','top')
+            return
+        if not self.newItemCountry:
+            self.screenObj.addLine('Please enter a country of origin (e.g. Germany).','top')
+            return
+        if self.newItemPrice is None:
+            self.screenObj.addLine("Please enter a price (in EUR). If you don't know one, leave blank.",'top')
+            return
+
     def registerNewItem(self):
         if self.registeringItem == False:
             self.resetFlags()
@@ -347,30 +408,34 @@ class BarcodeProtocol(basic.LineReceiver):
             response = barcodelookup.BarcodeLookup().lookupBarcode(self.newBarcode)
             if response:
                 self.newItemDesc,self.newItemVolume,self.newItemCountry = response
-                self.screenObj.addLine('I think this is '+str(self.newItemDesc)+' '+str(self.newItemVolume)+' from '+str(self.newItemCountry)+'.','top')
-                self.screenObj.addLine("Please enter a price (in EUR). If you don't know one, leave blank.",'top')
+                try:
+                    name = countries.get(self.newItemCountry).name
+                except:
+                    name = self.newItemCountry
+                self.screenObj.addLine('I think this is '+str(self.newItemDesc)+' '+str(self.newItemVolume)+' from '+name+'.','top')
+                self.askNextNewItemQuestion()
                 return
             else:
                 self.screenObj.addLine('Not found. Now asking you for a description, then a size, a country of origin and a price.','top')
-                self.screenObj.addLine('Please enter a description or name.','top')
+                self.askNextNewItemQuestion()
                 return
         if not self.newItemDesc:
             self.newItemDesc = str(self.lastLine.strip())
-            self.screenObj.addLine('Please enter a size or volume (e.g. 500ml).','top')
+            self.askNextNewItemQuestion()
             return
         if not self.newItemVolume:
             self.newItemVolume = str(self.lastLine.strip())
-            self.screenObj.addLine('Please enter a country of origin (e.g. Germany).','top')
+            self.askNextNewItemQuestion()
             return
         if self.newItemCountry is None:
             if self.lastLine.strip() is not '':
                 try:
                     countries.get(str(self.lastLine.strip()))
                 except:
-                    self.screenObj.addLine('Unrecognised country. Please try again (or leave blank).','top')
+                    self.screenObj.addLine("Unrecognised country. Please try again (or leave blank) (HINT: ccTLD's work best).",'top')
                     return
             self.newItemCountry = str(self.lastLine.strip())
-            self.screenObj.addLine("Please enter a price (in EUR). If you don't know one, leave blank.",'top')
+            self.askNextNewItemQuestion()
             return
         if self.newItemPrice is None:
             if self.lastLine.strip() == '':
