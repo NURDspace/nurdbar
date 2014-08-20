@@ -229,7 +229,7 @@ class BarcodeProtocol(basic.LineReceiver):
             self.resetFlags()
             self.resetVariables()
             self.sellingItem=True
-            self.screenObj.addLine('Are you selling an entire crate? (Default: Y)','top')
+            self.screenObj.addLine('Are you selling one entire crate? (Default: Y)','top')
             return
         try:
             name = self.currentBarcodeDesc.description
@@ -315,7 +315,7 @@ class BarcodeProtocol(basic.LineReceiver):
         self.bar.sellItem(self.currentMember.barcode, self.newBarcode, self.newItemPrice, amount=self.newItemNumber)
         if self.crateMode:
             self.bar.getItemByBarcode(self.newBarcode).crate_number = self.newItemNumber
-            self.screenObj.sendIrcLine('Sell '+str(self.newItemNumber)+'x crate of '+str(name)+': EUR '+"{:.2f}".format(self.newItemPrice)+' each.')
+            self.screenObj.sendIrcLine('Sell 1 crate of '+str(name)+' ('+str(self.newItemNumber)+'): EUR '+"{:.2f}".format(self.newItemPrice)+' each.')
         else:
             self.screenObj.sendIrcLine('Sell: '+str(self.newItemNumber)+'x '+str(name)+' at EUR '+"{:.2f}".format(self.newItemPrice))
 
