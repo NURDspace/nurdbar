@@ -406,13 +406,13 @@ class BarcodeProtocol(basic.LineReceiver):
 
             self.screenObj.addLine('Looking online for what this is...','top')
             response = barcodelookup.BarcodeLookup().lookupBarcode(self.newBarcode)
-            if response:
+            if response != (None,None,None):
                 self.newItemDesc,self.newItemVolume,self.newItemCountry = response
                 try:
                     name = countries.get(self.newItemCountry).name
                 except:
                     name = self.newItemCountry
-                self.screenObj.addLine('I think this is '+str(self.newItemDesc)+' '+str(self.newItemVolume)+' from '+name+'.','top')
+                self.screenObj.addLine('I think this is '+str(self.newItemDesc)+' '+str(self.newItemVolume)+' from '+str(name)+'.','top')
                 self.askNextNewItemQuestion()
                 return
             else:

@@ -53,18 +53,18 @@ class BarcodeLookup(object):
 
     def lookupBarcode(self,barcode):
         results=[]
-        for p in self.providers:
-            if p.lookupBarcode(barcode) not in ('',None):
-                results.append(p.lookupBarcode(barcode))
-        if len(results)>0:
-            return results[0]
-        else:
-            if len(barcode) in [8,13] and all(x in digits for x in barcode):#We have an EAN-8 or EAN-13
+        if len(barcode) in [8,13] and all(x in digits for x in barcode):#We have an EAN-8 or EAN-13
+            for p in self.providers:
+                if p.lookupBarcode(barcode) not in ('',None):
+                    results.append(p.lookupBarcode(barcode))
+            if len(results)>0:
+                return results[0]
+            else:
                 for code in GS_CC:
                     if barcode.startswith(code):
                         return (None,None,GS_CC[code])
-            else:
-                return (None,None,None)
+        else:
+            return (None,None,None)
 
 
 if __name__=='__main__':
