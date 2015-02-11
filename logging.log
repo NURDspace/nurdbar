@@ -18036,3 +18036,200 @@ ValueError: Unknown format code 'f' for object of type 'str'
     self.screenObj.addLine("your current Balance: EUR "+"{:.2f}".format(member.balance),'top')
 ValueError: Unknown format code 'f' for object of type 'str'
 
+2015-02-11 22:04:24,895 DEBUG Read config
+2015-02-11 22:04:24,983 DEBUG Session setup
+2015-02-11 22:04:25,043 INFO Starting telnet protocol
+2015-02-11 22:04:25,045 INFO Starting barcode monitor
+2015-02-11 22:04:25,045 DEBUG Using serial port /dev/ttySCAN
+2015-02-11 22:04:39,546 INFO Member 6 has taken 1 item(s) 60 with barcode 4029764001807
+2015-02-11 22:04:39,547 INFO Partially changing stock of item 60 from 7 to 6
+2015-02-11 22:04:39,547 DEBUG total taken_price: 1.0
+2015-02-11 22:04:39,548 DEBUG Adding transaction with item 60, transaction_price -1.0 for member 6
+2015-02-11 22:11:52,147 DEBUG Read config
+2015-02-11 22:11:52,233 DEBUG Session setup
+2015-02-11 22:11:52,292 INFO Starting telnet protocol
+2015-02-11 22:11:52,294 INFO Starting barcode monitor
+2015-02-11 22:11:52,295 DEBUG Using serial port /dev/ttySCAN
+2015-02-11 22:12:07,881 INFO Member 6 has taken 1 item(s) 60 with barcode 4029764001807
+2015-02-11 22:12:07,882 INFO Partially changing stock of item 60 from 7 to 6
+2015-02-11 22:12:07,883 DEBUG total taken_price: 1.0
+2015-02-11 22:12:07,883 DEBUG Adding transaction with item 60, transaction_price -1.0 for member 6
+2015-02-11 22:12:07,901 DEBUG Price: -1.0
+2015-02-11 22:13:23,246 DEBUG Read config
+2015-02-11 22:13:23,332 DEBUG Session setup
+2015-02-11 22:13:23,392 INFO Starting telnet protocol
+2015-02-11 22:13:23,394 INFO Starting barcode monitor
+2015-02-11 22:13:23,394 DEBUG Using serial port /dev/ttySCAN
+2015-02-11 22:13:26,441 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar_test/nurdbar/plugins/barcodeprotocol.py", line 478, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar_test/nurdbar/nurdbar.py", line 94, in handleBarcode
+    self.receivedMember=events.MemberBarcodeScannedEvent.fire(self.receivedMember)
+  File "/home/ircguest/nurdbar_test/nurdbar/events.py", line 38, in fire
+    return super(_BarcodeScannedEvent,self).fire(member=member)
+  File "/home/ircguest/nurdbar_test/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar_test/nurdbar/plugins/barcodeprotocol.py", line 176, in identifyMember
+    self.screenObj.addLine("your current Balance: EUR "+"{:.2f}".format(member.balance),'top')
+ValueError: Unknown format code 'f' for object of type 'str'
+
+2015-02-11 22:13:40,609 INFO Changing stock of item 60 from 6 to 9
+2015-02-11 22:13:40,610 DEBUG Adding transaction with item 60, transaction_price 3.0 for member 6
+2015-02-11 22:13:40,628 DEBUG Price: 3.0
+2015-02-11 22:13:40,649 DEBUG Current balance: None
+2015-02-11 22:15:39,356 DEBUG Read config
+2015-02-11 22:15:39,441 DEBUG Session setup
+2015-02-11 22:15:39,500 INFO Starting telnet protocol
+2015-02-11 22:15:39,502 INFO Starting barcode monitor
+2015-02-11 22:15:39,502 DEBUG Using serial port /dev/ttySCAN
+2015-02-11 22:15:42,009 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar_test/nurdbar/plugins/barcodeprotocol.py", line 478, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar_test/nurdbar/nurdbar.py", line 94, in handleBarcode
+    self.receivedMember=events.MemberBarcodeScannedEvent.fire(self.receivedMember)
+  File "/home/ircguest/nurdbar_test/nurdbar/events.py", line 38, in fire
+    return super(_BarcodeScannedEvent,self).fire(member=member)
+  File "/home/ircguest/nurdbar_test/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar_test/nurdbar/plugins/barcodeprotocol.py", line 176, in identifyMember
+    self.screenObj.addLine("your current Balance: EUR "+"{:.2f}".format(member.balance),'top')
+ValueError: Unknown format code 'f' for object of type 'str'
+
+2015-02-11 22:15:48,932 INFO Member 6 has taken 1 item(s) 60 with barcode 4029764001807
+2015-02-11 22:15:48,933 INFO Partially changing stock of item 60 from 9 to 8
+2015-02-11 22:15:48,934 DEBUG total taken_price: 1.0
+2015-02-11 22:15:48,934 DEBUG Adding transaction with item 60, transaction_price -1.0 for member 6
+2015-02-11 22:15:48,965 DEBUG Price: -1.0
+2015-02-11 22:15:48,965 DEBUG Current balance: None
+2015-02-11 22:15:58,421 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar_test/nurdbar/plugins/barcodeprotocol.py", line 478, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar_test/nurdbar/nurdbar.py", line 94, in handleBarcode
+    self.receivedMember=events.MemberBarcodeScannedEvent.fire(self.receivedMember)
+  File "/home/ircguest/nurdbar_test/nurdbar/events.py", line 38, in fire
+    return super(_BarcodeScannedEvent,self).fire(member=member)
+  File "/home/ircguest/nurdbar_test/nurdbar/events.py", line 18, in fire
+    handler(event)
+  File "/home/ircguest/nurdbar_test/nurdbar/plugins/barcodeprotocol.py", line 176, in identifyMember
+    self.screenObj.addLine("your current Balance: EUR "+"{:.2f}".format(member.balance),'top')
+ValueError: Unknown format code 'f' for object of type 'str'
+
+2015-02-11 22:16:54,315 DEBUG Read config
+2015-02-11 22:16:54,400 DEBUG Session setup
+2015-02-11 22:16:54,460 INFO Starting telnet protocol
+2015-02-11 22:16:54,462 INFO Starting barcode monitor
+2015-02-11 22:16:54,462 DEBUG Using serial port /dev/ttySCAN
+2015-02-11 22:17:01,609 INFO Member 6 has taken 1 item(s) 60 with barcode 4029764001807
+2015-02-11 22:17:01,610 INFO Partially changing stock of item 60 from 8 to 7
+2015-02-11 22:17:01,610 DEBUG total taken_price: 1.0
+2015-02-11 22:17:01,611 DEBUG Adding transaction with item 60, transaction_price -1.0 for member 6
+2015-02-11 22:17:01,642 DEBUG Price: -1.0
+2015-02-11 22:17:01,642 DEBUG Current balance: 10.16
+2015-02-11 22:17:01,643 DEBUG Count: 0
+2015-02-11 22:20:50,936 DEBUG Read config
+2015-02-11 22:20:51,022 DEBUG Session setup
+2015-02-11 22:20:51,081 INFO Starting telnet protocol
+2015-02-11 22:20:51,083 INFO Starting barcode monitor
+2015-02-11 22:20:51,084 DEBUG Using serial port /dev/ttySCAN
+2015-02-11 22:20:59,133 INFO Member 6 has taken 1 item(s) 60 with barcode 4029764001807
+2015-02-11 22:20:59,134 INFO Partially changing stock of item 60 from 7 to 6
+2015-02-11 22:20:59,134 DEBUG total taken_price: 1.0
+2015-02-11 22:20:59,135 DEBUG Adding transaction with item 60, transaction_price -1.0 for member 6
+2015-02-11 22:20:59,164 DEBUG Price: -1.0
+2015-02-11 22:20:59,165 DEBUG Current balance: 10.16
+2015-02-11 22:20:59,165 DEBUG Count: 0
+2015-02-11 22:30:49,270 DEBUG Read config
+2015-02-11 22:30:49,356 DEBUG Session setup
+2015-02-11 22:30:49,415 INFO Starting telnet protocol
+2015-02-11 22:30:49,417 INFO Starting barcode monitor
+2015-02-11 22:30:49,418 DEBUG Using serial port /dev/ttySCAN
+2015-02-11 22:31:30,173 DEBUG Read config
+2015-02-11 22:31:30,258 DEBUG Session setup
+2015-02-11 22:31:30,317 INFO Starting telnet protocol
+2015-02-11 22:31:30,319 INFO Starting barcode monitor
+2015-02-11 22:31:30,320 DEBUG Using serial port /dev/ttySCAN
+2015-02-11 22:33:43,126 INFO Changing stock of item 60 from 6 to 59
+2015-02-11 22:33:43,127 DEBUG Adding transaction with item 60, transaction_price 53.0 for member 1
+2015-02-11 22:33:53,939 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 478, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 98, in handleBarcode
+    item=self.getAvailableItemByBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 284, in getAvailableItemByBarcode
+    return self.session.query(Item).filter(Item.barcode==barcode,Item.stock>0).order_by(Item.creationdatetime).first()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 2278, in first
+    ret = list(self[0:1])
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 2145, in __getitem__
+    return list(res)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 2349, in __iter__
+    return self._execute_and_instances(context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 2362, in _execute_and_instances
+    close_with_result=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 2353, in _connection_from_session
+    **kw)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 799, in connection
+    close_with_result=close_with_result)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 803, in _connection_for_bind
+    return self.transaction._connection_for_bind(engine)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 282, in _connection_for_bind
+    self._assert_active()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 194, in _assert_active
+    % self._rollback_exception
+InvalidRequestError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (IntegrityError) duplicate key value violates unique constraint "transactions_pkey"
+DETAIL:  Key (transaction_id)=(1505) already exists.
+ 'INSERT INTO transactions (item_id, item_amount, member_id, transactiondatetime, transaction_price, running_total) VALUES (%(item_id)s, %(item_amount)s, %(member_id)s, %(transactiondatetime)s, %(transaction_price)s, %(running_total)s) RETURNING transactions.transaction_id' {'running_total': None, 'member_id': None, 'item_id': None, 'item_amount': None, 'transactiondatetime': datetime.datetime(2015, 2, 11, 22, 33, 43, 138497), 'transaction_price': None}
+
+2015-02-11 22:33:59,701 ERROR Traceback (most recent call last):
+  File "/home/ircguest/nurdbar/nurdbar/plugins/barcodeprotocol.py", line 478, in lineReceived
+    self.bar.handleBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 93, in handleBarcode
+    self.receivedMember=self.getMemberByBarcode(barcode)
+  File "/home/ircguest/nurdbar/nurdbar/nurdbar.py", line 215, in getMemberByBarcode
+    member=self.session.query(Member).filter_by(barcode=barcode).first()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 2278, in first
+    ret = list(self[0:1])
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 2145, in __getitem__
+    return list(res)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 2349, in __iter__
+    return self._execute_and_instances(context)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 2362, in _execute_and_instances
+    close_with_result=True)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 2353, in _connection_from_session
+    **kw)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 799, in connection
+    close_with_result=close_with_result)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 803, in _connection_for_bind
+    return self.transaction._connection_for_bind(engine)
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 282, in _connection_for_bind
+    self._assert_active()
+  File "/usr/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 194, in _assert_active
+    % self._rollback_exception
+InvalidRequestError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (IntegrityError) duplicate key value violates unique constraint "transactions_pkey"
+DETAIL:  Key (transaction_id)=(1505) already exists.
+ 'INSERT INTO transactions (item_id, item_amount, member_id, transactiondatetime, transaction_price, running_total) VALUES (%(item_id)s, %(item_amount)s, %(member_id)s, %(transactiondatetime)s, %(transaction_price)s, %(running_total)s) RETURNING transactions.transaction_id' {'running_total': None, 'member_id': None, 'item_id': None, 'item_amount': None, 'transactiondatetime': datetime.datetime(2015, 2, 11, 22, 33, 43, 138497), 'transaction_price': None}
+
+2015-02-11 22:34:05,913 DEBUG Read config
+2015-02-11 22:34:05,999 DEBUG Session setup
+2015-02-11 22:34:06,058 INFO Starting telnet protocol
+2015-02-11 22:34:06,060 INFO Starting barcode monitor
+2015-02-11 22:34:06,060 DEBUG Using serial port /dev/ttySCAN
+2015-02-11 22:36:05,686 INFO Changing stock of item 60 from 6 to 59
+2015-02-11 22:36:05,687 DEBUG Adding transaction with item 60, transaction_price 53.0 for member 1
+2015-02-11 22:36:05,719 DEBUG Price: 53.0
+2015-02-11 22:36:05,720 DEBUG Current balance: -49533.33
+2015-02-11 22:36:05,720 DEBUG Count: 53
+2015-02-11 22:37:04,273 INFO Changing stock of item 61 from 0 to 3
+2015-02-11 22:37:04,274 DEBUG Adding transaction with item 61, transaction_price 7.5 for member 1
+2015-02-11 22:37:04,301 DEBUG Price: 7.5
+2015-02-11 22:37:04,302 DEBUG Current balance: -49480.33
+2015-02-11 22:37:04,302 DEBUG Count: 3
+2015-02-11 22:43:40,798 DEBUG Read config
+2015-02-11 22:43:40,886 DEBUG Session setup
+2015-02-11 22:43:40,945 INFO Starting telnet protocol
+2015-02-11 22:43:40,947 INFO Starting barcode monitor
+2015-02-11 22:43:40,947 DEBUG Using serial port /dev/ttySCAN
+2015-02-11 22:43:57,013 DEBUG Read config
+2015-02-11 22:43:57,099 DEBUG Session setup
+2015-02-11 22:43:57,158 INFO Starting telnet protocol
+2015-02-11 22:43:57,160 INFO Starting barcode monitor
+2015-02-11 22:43:57,161 DEBUG Using serial port /dev/ttySCAN

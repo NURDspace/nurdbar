@@ -331,11 +331,9 @@ class NurdBar(object):
         self.log.debug('Adding transaction with item %s, transaction_price %s for member %s'%(item.item_id,transaction_price,member.member_id))
         trans=Transaction()
         self.session.add(trans)
+        running_total=member.balance
         trans.item=item
         trans.member=member
-        trans.transaction_price=transaction_price
-        trans.running_total=member.balance-transaction_price
-        trans.item_amount=number
         try:
             self.session.commit()
             self.session.flush()
@@ -343,6 +341,12 @@ class NurdBar(object):
             self.log.error("Exception occured during commit:\n%s"%traceback.format_exc())
             self.session.rollback()
             raise
+        self.log.debug("Price: %s"%transaction_price)
+        trans.transaction_price=transaction_price
+        self.log.debug("Current balance: %s"%running_total)
+        trans.running_total=running_total+transaction_price
+        self.log.debug("Count: %s"%number)
+        trans.item_amount=number
         try:
             self.session.commit()
             self.session.flush()
