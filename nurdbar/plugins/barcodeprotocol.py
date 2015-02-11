@@ -21,7 +21,7 @@ class BarcodeProtocol(basic.LineReceiver):
         self.screenObj = screenObj
         self.screenObj.bar = self
 
-        self.maxIdle = 15
+        self.maxIdle = 20
         self.idleTime=0
         idle = LoopingCall(self.idleHandler)
         idle.start(1) #seconds
@@ -287,7 +287,9 @@ class BarcodeProtocol(basic.LineReceiver):
                 else:
                     self.screenObj.addLine('Please enter the price of the entire crate with bottles and crate (in EUR)','top')
             if default:
-                if not self.oldItemPrice: raise exceptions.ItemDoesNotExistError
+                if not self.oldItemPrice:
+                    raise exceptions.ItemDoesNotExistError
+                    return
                 self.newItemPrice = self.oldItemPrice
             else:
                 return

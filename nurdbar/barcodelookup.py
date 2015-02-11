@@ -63,8 +63,7 @@ class BarcodeLookup(object):
                 for code in GS_CC:
                     if barcode.startswith(code):
                         return (None,None,GS_CC[code])
-        else:
-            return (None,None,None)
+        return (None,None,None)
 
 
 if __name__=='__main__':

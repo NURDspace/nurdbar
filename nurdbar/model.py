@@ -3,7 +3,7 @@ The datamodel for the NurdBar. The datamodel is created using SQLAlchemy. Instan
 Manipulation of the database can be done by instantiating and manipulating these objects.
 For a first intro on SQLAlchemy see http://docs.sqlalchemy.org/en/rel_0_7/orm/tutorial.html#querying
 """
-from sqlalchemy import create_engine, Column, Integer, String, Numeric, DateTime, Boolean, func
+from sqlalchemy import create_engine, Column, Integer, String, Numeric, DateTime, Boolean, func, desc
 from sqlalchemy.schema import UniqueConstraint
 from sqlalchemy.types import BigInteger
 from sqlalchemy.ext.declarative import declarative_base
@@ -36,30 +36,34 @@ class Member(Base):
     @property
     def balance(self):
         """
-        The (financial) balance for the Member. It is dynamically calculated from the member's (non-archived) transactions.
+        The (financial) balance for the Member.
         """
-        return sum([t.transaction_price for t in self.transactions])
+        row=self._transactions.order_by(desc(Transaction.transactiondatetime)).first()
+        if row:
+            return row.running_total
+        else:
+            return 0
 
     @property
     def transactions(self):
         """
-        The members (non-archived) transactions.
+        The members transactions.
         """
-        return self._transactions.filter(Transaction.archived==False).order_by(Transaction.transactiondatetime).all()
+        return self._transactions.order_by(Transaction.transactiondatetime).all()
 
     @property
     def negativeTransactions(self):
         """
-        The members (non-archived) negative transactions (items bought).
+        The members negative transactions (items bought).
         """
-        return self._transactions.filter(Transaction.archived==False,Transaction.transaction_price<0).order_by(Transaction.transactiondatetime).all()
+        return self._transactions.filter(Transaction.transaction_price<0).order_by(Transaction.transactiondatetime).all()
 
     @property
     def positiveTransactions(self):
         """
-        The members (non-archived) positive transactions (items sold and payments).
+        The members positive transactions (items sold and payments).
         """
-        return self._transactions.filter(Transaction.archived==False,Transaction.transaction_price>0).order_by(Transaction.transactiondatetime).all()
+        return self._transactions.filter(Transaction.transaction_price>0).order_by(Transaction.transactiondatetime).all()
 
     @property
     def allTransactions(self):
@@ -134,10 +138,11 @@ class Transaction(Base):
     __tablename__ = 'transactions'
     transaction_id = Column(Integer, primary_key=True)
     item_id = Column(Integer, ForeignKey('items.item_id'))
+    item_amount = Column(Numeric)
     member_id = Column(Integer, ForeignKey('members.member_id'))
     transactiondatetime = Column(DateTime,default=datetime.datetime.now)
-    archived = Column(Boolean,default=False)
     transaction_price = Column(Numeric)
+    running_total = Column(Numeric)
 
     _item = relationship("Item",backref=backref('_transactions',lazy='dynamic'))
     member = relationship("Member",backref=backref('_transactions',lazy='dynamic'))
@@ -157,4 +162,4 @@ class Transaction(Base):
         pass
 
     def __repr__(self):
-        return "<Transaction transaction_price:%s item:%s member:%s archived:%s>"%(self.transaction_price,self.item.item_id,self.member.member_id,self.archived)
+        return "<Transaction transaction_price:%s item:%s count:%s member:%s new_total:%s>"%(self.transaction_price,self.item.item_id,self.item_amount,self.member.member_id,self.running_total)

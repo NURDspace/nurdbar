@@ -26,7 +26,7 @@ FORGETTIME = 20
 SCREENSRATIO=0.333
 NICKNAME = 'popcorn'
 DEBUGMODE = False
-CATCHEXIT = True
+CATCHEXIT = False
 
 def sighandler(signum,frame):
     pass
