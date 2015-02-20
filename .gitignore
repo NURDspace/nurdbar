@@ -1,8 +1,8 @@
-test.cfg
 .*.swp
 *.pyc
 *.db
 *.db
 .coverage
 _trial_temp
-nurdbar.cfg
+*.cfg
+*.log

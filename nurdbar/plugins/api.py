@@ -47,9 +47,19 @@ class TransportInterfacePluginRegistry(BasePluginRegistry):
     def getPlugins(self):
         return self.plugins
 
+class CursesInterfacePluginRegistry(BasePluginRegistry):
+    _EMPTY_PLUGIN_CONTAINER=[]
+
+    def registerPlugin(self,function):
+        self.plugins.append(function)
+
+    def getPlugins(self):
+        return self.plugins
+
 pluginregistry={
     'tcpinterfaceplugin':TCPInterfacePluginRegistry(),
-    'transportinterfaceplugin':TransportInterfacePluginRegistry()
+    'transportinterfaceplugin':TransportInterfacePluginRegistry(),
+    'cursesinterfaceplugin':CursesInterfacePluginRegistry()
 }
 
 def TCPInterfacePlugin(portnum):
@@ -77,4 +87,12 @@ def TransportInterfacePlugin(function):
     pluginregistry['transportinterfaceplugin'].registerPlugin(function)
     def wrapped(bar,reactor):
         return function(bar,reactor)
+    return wrapped
+
+def CursesInterfacePlugin(function):
+    '''Decorator for CursesInterfacePlugin. Curses interfaces get their input through local sockets/files/ports, and output to a screen object.
+    '''
+    pluginregistry['cursesinterfaceplugin'].registerPlugin(function)
+    def wrapped(bar,screenObj,reactor):
+        return function(bar,screenObj,reactor)
     return wrapped

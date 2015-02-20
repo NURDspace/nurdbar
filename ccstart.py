@@ -1,14 +1,40 @@
 #!/usr/bin/env python
+#!/usr/bin/env python
 from twisted.internet import reactor
 from nurdbar import NurdBar
+
 import sys, os
 import logging
 import pkgutil
+
 from nurdbar.plugins.api import *
+
+import curses
+import signal
+
+from cursesclient import cursesirc
+from cursesclient import twirc
+
 logging.basicConfig(level=logging.DEBUG)
 
-
 log=logging.getLogger(__name__)
+#fh = logging.FileHandler('logging.log')
+#fh.setLevel(logging.DEBUG)
+
+CHANNEL = '#nurds'
+FORGETTIME = 20
+SCREENSRATIO=0.333
+NICKNAME = 'popcorn'
+DEBUGMODE = False
+CATCHEXIT = True
+
+def sighandler(signum,frame):
+    pass
+
+if CATCHEXIT:
+    signal.signal(signal.SIGINT, sighandler)
+    signal.signal(signal.SIGTERM, sighandler)
+    signal.signal(signal.SIGTSTP, sighandler)
 
 def importPlugins(plugindir):
     log.debug('importing plugins from %s'%plugindir)
@@ -20,6 +46,10 @@ def importPlugins(plugindir):
 
 def main(configfile):
     log.debug('Starting interfaces')
+    stdscr = curses.initscr() # initialize curses
+    screen = cursesirc.Screen(stdscr,SCREENSRATIO)   # create Screen object
+    stdscr.refresh()
+
     bar=NurdBar(configfile)
     importPlugins('nurdbar/plugins')
     if bar.config.has_option('plugins','plugindir'):
@@ -31,7 +61,15 @@ def main(configfile):
 
     for factory in pluginregistry['transportinterfaceplugin'].getPlugins():
         factory(bar,reactor)
-    reactor.run()
+
+    for factory in pluginregistry['cursesinterfaceplugin'].getPlugins():
+        factory(bar,screen,reactor)
+
+    ircFactory = twirc.IRCFactory(screen, NICKNAME, CHANNEL, FORGETTIME, DEBUGMODE)
+    reactor.addReader(screen) # add screen object as a reader to the reactor
+    reactor.connectTCP("irc.oftc.net",6667,ircFactory) # connect to IRC
+    reactor.run() # have fun!
+    screen.close()
 
 if __name__=='__main__':
     try:
@@ -43,3 +81,4 @@ if __name__=='__main__':
             with open (configfile,'a'):
                 os.utime(configfile,None)
     main(configfile)
+
